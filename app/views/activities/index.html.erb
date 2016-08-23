@@ -1,0 +1,11 @@
+<h1>This is the Activities INDEX page</h1>
+
+<% @activities.each do |activity|%>
+  <%= image_tag activity.photo, class: 'img-responsive'%>
+  <h5><%= activity.name %></h5>
+  <p><%= activity.description %></p>
+  <p><%= activity.address %></p>
+  <p><%= activity.cost %></p>
+  <p><%= activity.duration %></p>
+  <%= link_to 'Show', activity_path(activity), class: 'btn btn-primary' %>
+<% end %>

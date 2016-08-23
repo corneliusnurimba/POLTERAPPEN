@@ -17,10 +17,19 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+#added by group
+gem 'faker'
+# gem 'cloudinary', '1.1.0'
+# gem 'carrierwave'
+# gem 'geocoder'
+# gem "coffee-rails"
+# gem "gmaps4rails"
+# gem 'fullcalendar-rails'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-  
+
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
