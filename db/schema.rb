@@ -16,13 +16,12 @@ ActiveRecord::Schema.define(version: 20160823113035) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string   "category"
+    t.string   "type"
     t.string   "name"
     t.string   "description"
     t.string   "address"
     t.integer  "cost"
     t.integer  "duration"
-    t.string   "photo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -80,16 +79,15 @@ ActiveRecord::Schema.define(version: 20160823113035) do
   end
 
   create_table "upvotes", force: :cascade do |t|
+    t.integer  "activity_polterabends_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["activity_polterabends_id"], name: "index_upvotes_on_activity_polterabends_id", using: :btree
     t.index ["user_id"], name: "index_upvotes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "photo"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -115,5 +113,6 @@ ActiveRecord::Schema.define(version: 20160823113035) do
   add_foreign_key "favourites", "users"
   add_foreign_key "memberships", "polterabends"
   add_foreign_key "memberships", "users"
+  add_foreign_key "upvotes", "activity_polterabends", column: "activity_polterabends_id"
   add_foreign_key "upvotes", "users"
 end

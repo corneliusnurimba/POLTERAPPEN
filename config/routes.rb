@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :activities, only: [:index, :show]
+  resources :dayplanners
 
-  resources :polterabends do
-    resources :activities
-    resources :memberships
-    resources :dayplanners
-  end
+  # resources :polterabends do
+  #   resources :activities
+  #   resources :memberships
+  #   resources :dayplanners
+  # end
 
 end
