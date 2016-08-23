@@ -19,12 +19,13 @@ gem 'autoprefixer-rails'
 
 #added by group
 gem 'faker'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 # gem 'cloudinary', '1.1.0'
 # gem 'carrierwave'
 # gem 'geocoder'
 # gem "coffee-rails"
 # gem "gmaps4rails"
-# gem 'fullcalendar-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
