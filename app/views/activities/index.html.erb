@@ -9,3 +9,14 @@
   <p><%= activity.duration %></p>
   <%= link_to 'Show', activity_path(activity), class: 'btn btn-primary' %>
 <% end %>
+
+
+<i class="fa fa-hand-peace-o upvote-hand" aria-hidden="true"></i>
+
+<script>
+(function(){
+ $(".upvote-hand").on("click", function(event) {
+    console.log("activity saved");
+  });
+});
+</script>
