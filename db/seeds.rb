@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Activity.destroy_all
+
+5.times do
+  Activity.create(
+    category: 'adventure',
+    name: Faker::Name.title,
+    description: Faker::ChuckNorris.fact,
+    address: Faker::Address.street_address,
+    cost: Faker::Number.number(3),
+    duration: Faker::Number.number(1),
+    photo: 'activity_adventure.jpeg'
+  )
+end
+
+5.times do
+  Activity.create(
+    category: 'sexy',
+    name: Faker::Name.title,
+    description: Faker::ChuckNorris.fact,
+    address: Faker::Address.street_address,
+    cost: Faker::Number.number(3),
+    duration: Faker::Number.number(1),
+    photo: 'activity_sexy.jpeg'
+  )
+end
