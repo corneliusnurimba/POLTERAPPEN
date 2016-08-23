@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160823113035) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string   "type"
+    t.string   "category"
     t.string   "name"
     t.string   "description"
     t.string   "address"

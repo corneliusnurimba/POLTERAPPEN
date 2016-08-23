@@ -7,6 +7,7 @@ class CreateActivities < ActiveRecord::Migration[5.0]
       t.string :address
       t.integer :cost
       t.integer :duration
+      t.string :photo
 
       t.timestamps
     end
