@@ -1,0 +1,2 @@
+class PolterabendsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+module ActivitiesdayplannersHelper
+end

@@ -1,0 +1,2 @@
+class ActivitiesPolterabendsController < ApplicationController
+end

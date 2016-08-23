@@ -1,0 +1,2 @@
+module ActivitiespolterabendsHelper
+end
