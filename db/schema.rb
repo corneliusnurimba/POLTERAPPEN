@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160823113035) do
     t.string   "address"
     t.integer  "cost"
     t.integer  "duration"
+    t.string   "photo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
