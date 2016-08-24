@@ -1,2 +1,140 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active banner" style="background-image: url(<%= image_path 'activity_sexy.jpg' %>);">
+      <div class="carousel-caption">
+        Cornelius
+      </div>
+    </div>
+    <div class="item banner" style="background-image: url(<%= image_path 'activity_adventure.jpg' %>);">
+      <div class="carousel-caption">
+        Cornelius
+      </div>
+    </div>
+    <div class="item banner" style="background-image: url(<%= image_path 'activity_boring.jpg' %>);">
+      <div class="carousel-caption">
+        Cornelius
+      </div>
+    </div>
+    ...
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<div class="wrapper-grey padded">
+  <div class="container">
+    <h2 class="text-center header" >Discover Barbers in your city</h2>
+    <div class="row">
+      <% @activities.sample(3).each do |activity|%>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <%= link_to activity_path(activity) do %>
+              <%= image_tag activity.photo, class: 'card img-responsive' %>
+            <% end %>
+            <div class="card-category"></div>
+            <div class="card-description">
+              <h2 class=><%= activity.name %></h2>
+              <p><%= activity.cost %></p>
+              <p><%= activity.duration %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<h2 class="text-center header" >Explore, Enjoy, Relax</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="card-images-2 col-xs-12 col-sm-6 col-md-8">
+      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive' %>
+      <div class="card-description-images-2">
+        <h2>Haircut</h2>
+        <p>Old-school style makeover.</p>
+      </div>
+    </div>
+    <div class="card-images-2 col-xs-12 col-sm-3 col-md-4">
+      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive width' %>
+      <div class="card-description-images-2">
+        <h2>Grooming</h2>
+        <p>Time to get groomed, dude.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="card-images col-xs-12 col-sm-6 col-md-4">
+      <%= image_tag 'placeholder.jpg', class: 'card-images img-responsive' %>
+      <div class="card-description-images">
+        <h2>Rio de Janeiro</h2>
+      </div>
+    </div>
+    <div class="card-images col-xs-12 col-sm-6 col-md-4">
+      <%= image_tag 'placeholder.jpg', class: 'card-images img-responsive' %>
+      <div class="card-description-images-3">
+        <h2>Perth</h2>
+      </div>
+    </div>
+    <div class="card-images col-xs-12 col-sm-6 col-md-4">
+      <%= image_tag 'placeholder.jpg', class: 'card-images img-responsive' %>
+      <div class="card-description-images">
+        <h2>Copenhagen</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="card-images-2 col-xs-12 col-sm-3 col-md-4">
+      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive' %>
+      <div class="card-description-images-2">
+        <h2>Haircut</h2>
+        <p>You are gonna look great.</p>
+      </div>
+    </div>
+    <div class="card-images-2 col-xs-12 col-sm-6 col-md-8">
+      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive width' %>
+      <div class="card-description-images-2">
+        <h2>Haircut</h2>
+        <p>Get the full barbershop experience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="text-center padded" id="newsletter">
+  <h2 class="header">Get news from us</h2>
+
+  <p>Leave us your mail and get news from us</p>
+  <form class="form-inline">
+    <input type="email" placeholder="bob@gmail.com" class="form-control">
+    <input type="submit" value="Subscribe" class="btn btn-primary">
+  </form>
+</div>
