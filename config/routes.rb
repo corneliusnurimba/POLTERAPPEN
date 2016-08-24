@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :activities, only: [:index, :show]
   resources :dayplanners
+  resources :memberships
 
   # resources :polterabends do
   #   resources :activities

@@ -1,11 +1,60 @@
 <h1>This is the Activities INDEX page</h1>
 
-<% @activities.each do |activity|%>
+<% @activities.each do |activity| %>
   <%= image_tag activity.photo, class: 'img-responsive'%>
+  <div class="upvote-hand <%= activity.name %>">
+    <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
+    <div style="display:none;" class="activity_id"><%= activity.id %></div>
+  </div>
+
   <h5><%= activity.name %></h5>
   <p><%= activity.description %></p>
   <p><%= activity.address %></p>
   <p><%= activity.cost %></p>
   <p><%= activity.duration %></p>
+
   <%= link_to 'Show', activity_path(activity), class: 'btn btn-primary' %>
 <% end %>
+
+<div class="pa-acts-btn">
+  <%= submit_tag "Save", class: "btn btn-primary" %>
+</div>
+
+
+
+
+<%= javascript_include_tag 'application' %>
+<script>
+$(".upvote-hand").on("click", function() {
+  console.log($(this).attr("class"));
+  if ($(this).hasClass('blue')){
+    $(this).removeClass('blue');
+  } else {
+    $(this).addClass('blue');
+  }
+});
+</script>
+
+<script>
+  $(".pa-acts-btn").on("click", function() {
+    var array = $(".upvote-hand.blue>.activity_id");
+    var arrayLength = array.length;
+    for (var i = 0; i < arrayLength; i++) {
+      console.log(array[i]);
+      console.log((array[i]).innerHTML + "\n");
+      var json_for_activities = {};
+      var polterabend_id = <%= user.memberships[0].polterabend_id %> [activity_id]
+
+    }
+  });
+</script>
+
+
+<!--
+<script>
+
+  var = {}
+  $(".upvote-hand").each(function('.blue'))
+
+  JSON.parse()
+</script> -->
