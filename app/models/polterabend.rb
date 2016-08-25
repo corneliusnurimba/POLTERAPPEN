@@ -1,4 +1,5 @@
 class Polterabend < ApplicationRecord
-  has_many :activities
-  has_many :users
+  has_many :memberships
+  has_one :dayplanner
+  belongs_to :activity_polterabend
 end
