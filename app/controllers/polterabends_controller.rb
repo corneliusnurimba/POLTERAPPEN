@@ -48,7 +48,7 @@ class PolterabendsController < ApplicationController
   private
 
   def polterabend_params
-    params.require(:polterabend).permit(:title)
+    params.require(:polterabend).permit(:title, :photo, :photo_cache)
   end
 
 end

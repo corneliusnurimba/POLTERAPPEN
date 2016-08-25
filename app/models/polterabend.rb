@@ -5,4 +5,6 @@ class Polterabend < ApplicationRecord
   has_one :dayplanner
   belongs_to :activity_polterabend
 
+  mount_uploader :photo, PhotoUploader
+
 end
