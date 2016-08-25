@@ -1,17 +1,12 @@
 
-<div class="container">
-  <div class="row">
-   <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div id="form-popup" class="modal-content">
       <%= simple_form_for Polterabend.new do |f| %>
-      <%= f.error_notification %>
-       <div class="form-inputs">
+        <%= f.error_notification %>
         <%= f.input :title %>
-        </div>
-        <div class="form-actions button-margin">
         <%= f.button :submit, class: 'btn btn-primary'%>
-      </div>
       <% end %>
     </div>
   </div>
 </div>
-
