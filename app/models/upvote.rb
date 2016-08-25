@@ -1,4 +1,4 @@
 class Upvote < ApplicationRecord
   belongs_to :user
-  belongs_to :activitypolterabend
+  belongs_to :activity_polterabend
 end
