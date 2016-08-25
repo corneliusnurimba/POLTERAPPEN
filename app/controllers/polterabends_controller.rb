@@ -4,6 +4,21 @@ class PolterabendsController < ApplicationController
   end
 
   def show
+
+    @polterabend = Polterabend.find_by_id(params[:id])
+    @pacts = ActivityPolterabend.where(polterabend_id: @polterabend.id)
+    @pacts_and_acts = []
+    @pacts.each do |p|
+      @pacts_and_acts << [p, Activity.find(p.activity_id)]
+    end
+    @memberships = Membership.where(polterabend_id: @polterabend.id)
+    @members = []
+    @memberships.each do |m|
+      @members << User.find(m.user_id)
+    end
+    @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
+
+
     # @barber = Barber.find(params[:id])
     # @booking = @barber.bookings.build
     # @alert_message = "You are viewing #{@barber.name}"
