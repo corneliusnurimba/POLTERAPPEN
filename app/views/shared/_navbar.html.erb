@@ -17,18 +17,11 @@
       </button>
     </form>
 
-    <!-- Link to create Polterabend -->
-    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Please sign-up to create an awesome Polterabend.">
-      Create a Polterabend
-    </button>
-
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
     <!-- Link to create Polterabend -->
-    <div id='open-overlay' class="btn btn-primary">
-      Create a Polterabend
-    </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Create a Polterabend</button>
 
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
@@ -64,6 +57,9 @@
       </div>
 
     <% else %>
+
+      <!-- Link to create Polterabend -->
+      <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Please sign-up to create an awesome Polterabend.">Create a Polterabend</button>
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
