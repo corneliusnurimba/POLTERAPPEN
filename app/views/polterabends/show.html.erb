@@ -1,1 +1,17 @@
-<h1>This is the Polterabend SHOW page</h1>
+
+<h2> <%= @polterabend.title %> </h2>
+<h3> polterabend activities </h3>
+<% @pacts_and_acts.each do |pact_act| %>
+  <%= link_to pact_act[1].name,
+              polterabend_activity_polterabend_path(@polterabend.id, pact_act[0].id) %><br>
+<% end %>
+<h3> motherfuckers who are coming </h3>
+<% @members.each do |member| %>
+  <%= member.first_name %> <%= member.last_name %> <%= member.email %><br>
+<% end %>
+
+<% if @dayplanner %>
+  <h3> crappy dayplanner </h3>
+  <%= link_to 'dayplanner', polterabend_dayplanner_path(@polterabend.id, @dayplanner.id)%>
+<% end %>
+

@@ -1,0 +1,7 @@
+<h2>This is the dayplanner awesomeness page</h2>
+
+<h3> polterabend activities </h3>
+<% @plans_and_acts.each do |plan_act| %>
+  <%= link_to plan_act[1].name,
+              polterabend_activity_dayplanner_path(@polterabend.id, plan_act[0].id) %><br>
+<% end %>

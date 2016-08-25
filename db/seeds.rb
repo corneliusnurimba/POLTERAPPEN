@@ -33,3 +33,27 @@ end
     photo: 'activity_sexy.jpeg'
   )
 end
+
+[ { first_name: Faker::Name.title,
+    last_name: Faker::Name.title,
+    password: '123456',
+    email: 'a@b.c',
+    admin: true
+    },
+  { first_name: Faker::Name.title,
+    last_name: Faker::Name.title,
+    password: '123456',
+    email: 'b@b.c'
+    },
+  { first_name: Faker::Name.title,
+    last_name: Faker::Name.title,
+    password: '123456',
+    email: 'c@b.c'
+    },
+  { first_name: Faker::Name.title,
+    last_name: Faker::Name.title,
+    password: '123456',
+    email: 'd@b.c'
+    }].each do |user|
+      User.create(user)
+end
