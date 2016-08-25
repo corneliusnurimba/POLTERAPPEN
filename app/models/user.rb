@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :favourites
   has_many :memberships
 
+  mount_uploader :photo, PhotoUploader
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
