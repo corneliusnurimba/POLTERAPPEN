@@ -8,6 +8,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+
     <!-- Search form -->
     <form action="" class="navbar-wagon-search">
       <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
@@ -16,8 +17,18 @@
       </button>
     </form>
 
+    <!-- Link to create Polterabend -->
+    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Please sign-up to create an awesome Polterabend.">
+      Create a Polterabend
+    </button>
+
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
+
+    <!-- Link to create Polterabend -->
+    <div id='open-overlay' class="btn btn-primary">
+      Create a Polterabend
+    </div>
 
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
@@ -75,4 +86,5 @@
     </div>
   </div>
 </div>
+
 

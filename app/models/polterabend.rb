@@ -1,4 +1,5 @@
 class Polterabend < ApplicationRecord
+  validates :title, presence: true
 
   has_many :memberships
   has_one :dayplanner

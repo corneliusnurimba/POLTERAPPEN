@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   resources :dayplanners
   resources :memberships
 
-  # resources :polterabends do
-  #   resources :activities
-  #   resources :memberships
-  #   resources :dayplanners
-  # end
+  resources :polterabends do
+    resources :activities
+    resources :memberships
+    resources :dayplanners
+  end
 
 end
