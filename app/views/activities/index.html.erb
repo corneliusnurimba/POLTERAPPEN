@@ -1,24 +1,52 @@
 <h1>This is the Activities INDEX page</h1>
 
-<% @activities.each do |activity| %>
-  <%= image_tag activity.photo_url, class: 'img-responsive'%>
-  <div class="upvote-hand <%= activity.name %>">
-    <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
-    <div style="display:none;" class="activity_id"><%= activity.id %></div>
-  </div>
-
-  <h5><%= activity.name %></h5>
-  <p><%= activity.description %></p>
-  <p><%= activity.address %></p>
-  <p><%= activity.cost %></p>
-  <p><%= activity.duration %></p>
-
-  <%= link_to 'Show', activity_path(activity), class: 'btn btn-primary' %>
-<% end %>
 
 <div class="pa-acts-btn">
   <%= submit_tag "Save", class: "btn btn-primary" %>
 </div>
+
+
+<div class="container">
+  <div class="row">
+    <% @activities.each do |activity| %>
+      <div class="col-xs-4">
+        <div class="activity-card">
+          <div class="card-category"><%= activity.category %></div>
+          <div class="activity-pic">
+            <%= image_tag activity.photo_url, class: 'img-responsive'%>
+          </div><!-- activity-pic end -->
+          <div class="activity-deets">
+
+            <div class="deets-lhs">
+              <div class="card-duration"><%= activity.duration %></div>
+              <div class="card-cost"><%= activity.cost %> DKK</div>
+            </div><!-- deets-rhs end -->
+
+            <div class="deets-center">
+              <div class="card-title">
+                <%= link_to activity.name, activity_path(activity) %>
+              </div>
+              <!--
+              <div class="card-description"><%= activity.description %></div>
+              -->
+              <div class="card-city"><%= activity.address %></div>
+            </div><!-- deets-center end -->
+
+            <div class="deets-rhs">
+              <div class="upvote-hand <%= activity.name %>">
+                <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
+                <div style="display:none !important;" class="activity_id">
+                  <%= activity.id %>
+                </div>
+              </div>
+            </div><!-- deets-rhs -->
+          </div><!-- activity-deets end -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 <!-- google map api -->
 <div class="container">
@@ -58,18 +86,16 @@ $(".upvote-hand").on("click", function() {
 </script>
 
 <script>
-  $(".pa-acts-btn").on("click", function() {
-    var array = $(".upvote-hand.blue>.activity_id");
-    var arrayLength = array.length;
-    for (var i = 0; i < arrayLength; i++) {
-      console.log(array[i]);
-      console.log((array[i]).innerHTML + "\n");
-      var json_for_activities = {};
-
-
-    var polterabend_id = { <%= current_user.memberships.polterabend_id %> [activity_id]
-    }
-  });
+//  $(".pa-acts-btn").on("click", function() {
+//    var array = $(".upvote-hand.blue>.activity_id");
+//    var arrayLength = array.length;
+//    for (var i = 0; i < arrayLength; i++) {
+//      console.log(array[i]);
+//      console.log((array[i]).innerHTML + "\n");
+//      var json_for_activities = {};
+//      var polterabend_id = <%= :polterabend_id %>
+//    }
+//    });
 </script>
 
 
