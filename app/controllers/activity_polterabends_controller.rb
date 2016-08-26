@@ -8,9 +8,20 @@ class ActivityPolterabendsController < ApplicationController
   end
 
   def save_activities
-    activities = JSON.parse(params) # => converts json to ruby hash
-    polterabend_id = activities[:polterabend_id]
-    render :json => activities[polterabend_id]
+
+    # activities = JSON.parse(params) # => converts json to ruby hash
+    $stderr.puts('================================================')
+    $stderr.puts('polterabend_id: '+params[:polterabend_id])
+    $stderr.puts('activity_ids: '+params[:activity_ids].inspect)
+    $stderr.puts('================================================')
+    polterabend_id = params[:polterabend_id]
+    params[:activity_ids].each do |activity_id|
+      ActivityPolterabend.create( total_upvotes: 0,
+                                  polterabend_id: polterabend_id,
+                                  activity_id: activity_id
+                                  ).save
+    end
+    render :json => params
 
 
     # activities[:polterabend_id].each do |activity_id|
