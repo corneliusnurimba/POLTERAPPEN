@@ -6,6 +6,13 @@ class DayplannersController < ApplicationController
 
   def show
     @dayplanner = Dayplanner.find(params[:id])
+    @polterabend = Polterabend.find_by_id(@dayplanner.polterabend_id)
+    @plans = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
+
+    @plans_and_acts = []
+    @plans.each do |p|
+      @plans_and_acts << [p, Activity.find(p.activity_id)]
+    end
   end
 
   def new

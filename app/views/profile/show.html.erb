@@ -1,0 +1,6 @@
+<h2>Profile show page</h2>
+<% @polterabends.each do |polterabend| %>
+  <%= link_to polterabend.title, polterabend_path(polterabend.id), class: "" %><br>
+<% end %>
+
+

@@ -22,8 +22,8 @@ gem 'faker'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'omniauth-facebook'
-# gem 'cloudinary', '1.1.0'
-# gem 'carrierwave'
+gem 'cloudinary', '1.1.0'
+gem 'carrierwave'
 gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"

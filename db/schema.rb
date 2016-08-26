@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824175012) do
+ActiveRecord::Schema.define(version: 20160825135851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,14 +78,15 @@ ActiveRecord::Schema.define(version: 20160824175012) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "photo"
   end
 
   create_table "upvotes", force: :cascade do |t|
-    t.integer  "activity_polterabends_id"
+    t.integer  "activity_polterabend_id"
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["activity_polterabends_id"], name: "index_upvotes_on_activity_polterabends_id", using: :btree
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["activity_polterabend_id"], name: "index_upvotes_on_activity_polterabend_id", using: :btree
     t.index ["user_id"], name: "index_upvotes_on_user_id", using: :btree
   end
 
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20160824175012) do
     t.string   "last_name"
     t.string   "token"
     t.datetime "token_expiry"
+    t.string   "photo"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -123,6 +125,6 @@ ActiveRecord::Schema.define(version: 20160824175012) do
   add_foreign_key "favourites", "users"
   add_foreign_key "memberships", "polterabends"
   add_foreign_key "memberships", "users"
-  add_foreign_key "upvotes", "activity_polterabends", column: "activity_polterabends_id"
+  add_foreign_key "upvotes", "activity_polterabends"
   add_foreign_key "upvotes", "users"
 end

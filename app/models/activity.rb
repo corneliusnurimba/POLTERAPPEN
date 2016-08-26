@@ -1,8 +1,8 @@
 class Activity < ApplicationRecord
 
-  has_many :activity_dayplanners
-  has_many :activity_polterabends
-  has_many :favourites
+  has_many :activity_dayplanners, :dependent => :delete_all
+  has_many :activity_polterabends, :dependent => :delete_all
+  has_many :favourites, :dependent => :delete_all
 
 
   geocoded_by :address

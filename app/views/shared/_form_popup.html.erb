@@ -1,0 +1,12 @@
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div id="form-popup" class="modal-content">
+      <%= simple_form_for Polterabend.new do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :title %>
+        <%= f.button :submit, class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+  </div>
+</div>
