@@ -10,13 +10,16 @@
 
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
+    <!-- <form action="" class="navbar-wagon-search">
       <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
       <button type="submit" class="navbar-wagon-search-btn">
         <i class="fa fa-search"></i>
       </button>
-    </form>
+    </form> -->
 
+<div class= "navbar-wagon-activities navbar-wagon-link">
+Activities
+</div>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
@@ -67,7 +70,7 @@
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "Create event"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
