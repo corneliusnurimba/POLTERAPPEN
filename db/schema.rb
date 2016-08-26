@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825135851) do
+ActiveRecord::Schema.define(version: 20160826133136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string   "type"
+    t.string   "category"
     t.string   "name"
     t.string   "description"
     t.string   "address"
     t.integer  "cost"
     t.integer  "duration"
+    t.string   "photo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.float    "latitude"
@@ -45,6 +46,12 @@ ActiveRecord::Schema.define(version: 20160825135851) do
     t.datetime "updated_at",     null: false
     t.index ["activity_id"], name: "index_activity_polterabends_on_activity_id", using: :btree
     t.index ["polterabend_id"], name: "index_activity_polterabends_on_polterabend_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "dayplanners", force: :cascade do |t|

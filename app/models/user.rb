@@ -6,7 +6,7 @@ class User < ApplicationRecord
          omniauth_providers: [:facebook]
   has_many :upvotes
   has_many :favourites
-  has_many :memberships, :dependent => :delete_all
+  has_one :membership, :dependent => :delete_all
 
   mount_uploader :photo, PhotoUploader
 
