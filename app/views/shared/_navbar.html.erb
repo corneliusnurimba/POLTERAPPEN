@@ -17,15 +17,15 @@
       </button>
     </form> -->
 
-<div class= "navbar-wagon-activities navbar-wagon-link">
-Activities
+<div class= "navbar-wagon-activities">
+  <%= link_to 'Activities', activities_path, class: 'navbar-wagon-link' %>
 </div>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-    <!-- Link to create Polterabend -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Create a Polterabend</button>
-
+    <!-- <!- Link to create Polterabend -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Create a Polterabend</button> -->
+<!--  -->
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
