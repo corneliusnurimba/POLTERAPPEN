@@ -16,13 +16,12 @@ ActiveRecord::Schema.define(version: 20160825135851) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string   "category"
+    t.string   "type"
     t.string   "name"
     t.string   "description"
     t.string   "address"
     t.integer  "cost"
     t.integer  "duration"
-    t.string   "photo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.float    "latitude"
