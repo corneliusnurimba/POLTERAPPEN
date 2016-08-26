@@ -11,37 +11,38 @@
     <% @activities.each do |activity| %>
       <div class="col-xs-4">
         <div class="activity-card">
-          <div class="card-category"><%= activity.category %></div>
+
           <div class="activity-pic">
             <%= image_tag activity.photo_url, class: 'img-responsive'%>
           </div><!-- activity-pic end -->
           <div class="activity-deets">
 
-            <div class="deets-lhs">
-              <div class="card-duration"><%= activity.duration %></div>
-              <div class="card-cost"><%= activity.cost %> DKK</div>
-            </div><!-- deets-rhs end -->
-
             <div class="deets-center">
-              <div class="card-title">
+              <h4>
                 <%= link_to activity.name, activity_path(activity) %>
-              </div>
+              </h4>
+              <div class="card-category"><%= activity.category %></div>
               <!--
               <div class="card-description"><%= activity.description %></div>
               -->
-              <div class="card-city"><%= activity.address %></div>
+              <div class="card-city sm-text"><%= activity.address %></div>
             </div><!-- deets-center end -->
 
             <div class="deets-rhs">
             <% unless current_user.nil? %>
               <div class="upvote-hand <%= activity.name %>">
-                <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
                 <div style="display:none !important;" class="activity_id">
                   <%= activity.id %>
                 </div>
               </div>
             <% end %>
+            <div class="deets-lhs">
+              <!-- <div class="card-duration"><%= activity.duration %></div> -->
+              <div class="card-cost"><%= activity.cost %> DKK</div>
+            </div><!-- deets-rhs end -->
             </div><!-- deets-rhs -->
+
           </div><!-- activity-deets end -->
         </div>
       </div>
