@@ -4,27 +4,96 @@
     <div class="col-xs-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h1 class="panel-title">Panel 1</h1>
+          <h1 class="panel-title">Favourites</h1>
         </div>
         <div id="container1" class="panel-body box-container">
-          <div itemid="itm-1" class="btn btn-default box-item">Item 1</div>
-          <div itemid="itm-2" class="btn btn-default box-item">Item 2</div>
-          <div itemid="itm-3" class="btn btn-default box-item">Item 3</div>
-          <div itemid="itm-4" class="btn btn-default box-item">Item 4</div>
-          <div itemid="itm-5" class="btn btn-default box-item">Item 5</div>
+          <% @activities.each do |activity| %>
+            <div itemid="<%= "itm-" + "#{activity.id}" %>" id='test' class="btn btn-default box-item" ><%= activity.name %>
+<!--             <div itemid="<%#= "itm-" + "#{activity.id}" %>" id='test' class="<%#= "btn btn-default box-item-" + "#{activity.duration}" %>"><%#= activity.name %> -->
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
+    </div>
+
+    <div class="test col-xs-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Time</h1>
+        </div>
+        <div class="box-container">
+          <div class="btn btn-default box-item-time">06:00</div>
+          <div class="btn btn-default box-item-time">07:00</div>
+          <div class="btn btn-default box-item-time">08:00</div>
+          <div class="btn btn-default box-item-time">09:00</div>
+          <div class="btn btn-default box-item-time">10:00</div>
+          <div class="btn btn-default box-item-time">12:00</div>
+          <div class="btn btn-default box-item-time">13:00</div>
+          <div class="btn btn-default box-item-time">14:00</div>
+          <div class="btn btn-default box-item-time">15:00</div>
+          <div class="btn btn-default box-item-time">16:00</div>
+          <div class="btn btn-default box-item-time">17:00</div>
+          <div class="btn btn-default box-item-time">18:00</div>
+          <div class="btn btn-default box-item-time">19:00</div>
+          <div class="btn btn-default box-item-time">20:00</div>
+          <div class="btn btn-default box-item-time">21:00</div>
+          <div class="btn btn-default box-item-time">22:00</div>
+          <div class="btn btn-default box-item-time">23:00</div>
+          <div class="btn btn-default box-item-time">00:00</div>
+          <div class="btn btn-default box-item-time">01:00</div>
+          <div class="btn btn-default box-item-time">02:00</div>
+          <div class="btn btn-default box-item-time">03:00</div>
+          <div class="btn btn-default box-item-time">04:00</div>
+          <div class="btn btn-default box-item-time">05:00</div>
+          <div class="btn btn-default box-item-time">06:00</div>
         </div>
       </div>
     </div>
+
     <div class="col-xs-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h1 class="panel-title">Panel 2</h1>
+          <h1 class="panel-title">Polterabend</h1>
         </div>
-        <div id="container2" class="panel-body box-container"></div>
+        <div id="container2" class="box-container">
+
+        </div>
       </div>
     </div>
+
   </div>
 
 
+<!-- test -->
 
+<div id="container">
+  <div id="boxA" class="box">
+    <h4>box A</h4>
 
+    <div id="A1" class="slot">
+      <div id="a1" class="item"></div>
+    </div>
+    <div id="A2" class="slot">
+      <div id="a2" class="item"></div>
+    </div>
+    <div id="A3" class="slot">
+      <div id="a3" class="item"></div>
+    </div>
+    <div id="A4" class="slot"></div>
+    <div id="A5" class="slot"></div>
+  </div>
+  <div id="boxB" class="box">
+    <h4>box B</h4>
+
+    <div id="B1" class="slot"></div>
+    <div id="B2" class="slot">
+      <div id="b2" class="item"></div>
+    </div>
+    <div id="B3" class="slot"></div>
+    <div id="B4" class="slot"></div>
+    <div id="B5" class="slot">
+      <div id="b5" class="item"></div>
+    </div>
+  </div>
+</div>
