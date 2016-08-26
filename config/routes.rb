@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :activity_dayplanners
     resources :comments, only: :create
 
+
   end
+
+  post '/save_activities', to: 'activity_polterabends#save_activities'
 
 end

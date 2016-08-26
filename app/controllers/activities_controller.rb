@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @barber = Activity.find(params[:id])
+    @activity = Activity.find(params[:id])
   end
 
   private

@@ -1,0 +1,61 @@
+.activity-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 380px;
+  background-color: pink;
+  margin: 20px;
+}
+.upvote-hand{
+  z-index:1000;
+}
+.activity-pic{
+  display: flex;
+  justify-contents: center;
+  align-items: center;
+  max-width: 90%;
+  height: 200px ;
+}
+.activity-pic>img{
+  margin:10px;
+}
+.activity-deets{
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.deets-rhs, .deets-center, .deets-lhs{
+  display: flex;
+  flex-direction: column;
+}
+.deets-lhs{
+  align-self: flex-start;
+  padding: 5px;
+}
+.deets-center{
+  align-self: center;
+  padding: 5px;
+}
+.deets-rhs{
+  align-self: flex-start;
+}
+
+.card-title
+{
+  font-size:22px;
+  color: #757575;
+}
+
+.card-category
+{
+  font-size:18px;
+  color: #757575;
+}
+
+.card-city
+{
+  font-size: 18px;
+  color: #757575;
+}
