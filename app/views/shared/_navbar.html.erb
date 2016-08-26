@@ -17,15 +17,15 @@
       </button>
     </form> -->
 
-<div class= "navbar-wagon-activities navbar-wagon-link">
-Activities
+<div class= "navbar-wagon-activities">
+  <%= link_to 'Activities', activities_path, class: 'navbar-wagon-link' %>
 </div>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-    <!-- Link to create Polterabend -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Create a Polterabend</button>
-
+    <!-- <!- Link to create Polterabend -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Create a Polterabend</button> -->
+<!--  -->
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
@@ -61,17 +61,15 @@ Activities
 
     <% else %>
 
-      <!-- Link to create Polterabend -->
-      <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Please sign-up to create an awesome Polterabend.">Create a Polterabend</button>
+
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Create event"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
-  </div>
+  <!-- Link to create Polterabend -->
+      <button type="button" class="navbar-wagon-item navbar-wagon-button btn" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Please sign-up to create an awesome Polterabend.">Create Event</button>
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
