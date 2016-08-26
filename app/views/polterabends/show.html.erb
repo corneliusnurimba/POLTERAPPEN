@@ -15,3 +15,20 @@
   <%= link_to 'dayplanner', polterabend_dayplanner_path(@polterabend.id, @dayplanner.id)%>
 <% end %>
 
+
+
+<h2>
+  <%= pluralize @polterabend.comments.size, "comment" %>
+</h2>
+
+<div id="comments">
+  <% if @polterabend.comments.blank? %>
+    Be the first to leave a review for <%= @polterabend.title %>
+  <% else %>
+    <% @polterabend.comments.each do |comment| %>
+      <%= render 'comments/show', comment: comment %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render 'comments/form', polterabend: @polterabend, comment: @comment %>

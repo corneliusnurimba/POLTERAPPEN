@@ -11,14 +11,14 @@ class PolterabendsController < ApplicationController
     @pacts.each do |p|
       @pacts_and_acts << [p, Activity.find(p.activity_id)]
     end
-    @memberships = Membership.where(polterabend_id: @polterabend.id)
+    @membership = Membership.where(polterabend_id: @polterabend.id)
     @members = []
-    @memberships.each do |m|
+    @membership.each do |m|
       @members << User.find(m.user_id)
     end
     @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
 
-
+    @comment = Comment.new
     # @barber = Barber.find(params[:id])
     # @booking = @barber.bookings.build
     # @alert_message = "You are viewing #{@barber.name}"

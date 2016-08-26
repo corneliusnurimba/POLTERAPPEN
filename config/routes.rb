@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :memberships
     resources :dayplanners
     resources :activity_dayplanners
+    resources :comments, only: :create
+
+
   end
 
   post '/save_activities', to: 'activity_polterabends#save_activities'
