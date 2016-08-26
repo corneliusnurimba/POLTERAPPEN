@@ -16,13 +16,12 @@ ActiveRecord::Schema.define(version: 20160824175012) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string   "category"
+    t.string   "type"
     t.string   "name"
     t.string   "description"
     t.string   "address"
     t.integer  "cost"
     t.integer  "duration"
-    t.string   "photo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.float    "latitude"
@@ -54,15 +53,6 @@ ActiveRecord::Schema.define(version: 20160824175012) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["polterabend_id"], name: "index_dayplanners_on_polterabend_id", using: :btree
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "favourites", force: :cascade do |t|

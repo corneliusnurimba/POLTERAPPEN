@@ -45,40 +45,79 @@
     <h2 class="text-center header" >Discover Barbers in your city</h2>
     <div class="row">
       <% @activities.sample(3).each do |activity|%>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card">
-            <%= link_to activity_path(activity) do %>
-              <%= image_tag activity.photo, class: 'card img-responsive' %>
-            <% end %>
-            <div class="card-category"></div>
-            <div class="card-description">
-              <h2 class=><%= activity.name %></h2>
-              <p><%= activity.cost %></p>
-              <p><%= activity.duration %></p>
-            </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card">
+          <%= link_to activity_path(activity) do %>
+          <%= image_tag activity.photo, class: 'card img-responsive' %>
+          <% end %>
+          <div class="card-category"></div>
+          <div class="card-description">
+            <h2 class=><%= activity.name %></h2>
+            <p><%= activity.cost %></p>
+            <p><%= activity.duration %></p>
           </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+   <div class="col-md-4">
+    <div class="card">
+      <div class="card-image">
+        <img src="http://unsplash.it/200" alt="">
+      </div>
+      <div class="card-details" >
+        <div class="card-title">Activity name</div>
+        <div class="card-category">Adventure</div>
+        <div class="card-city">Copenhagen</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-image">
+        <img src="http://unsplash.it/200" alt="">
+      </div>
+      <div class="card-details" >
+        <div class="card-title">Activity name</div>
+        <div class="card-category">Adventure</div>
+        <div class="card-city">Copenhagen</div>
+      </div>
+    </div>
+  </div>
 
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-image">
+        <img src="http://unsplash.it/200" alt="">
+      </div>
+      <div class="card-details" >
+        <div class="card-title">Activity name</div>
+        <div class="card-category">Adventure</div>
+        <div class="card-city">Copenhagen</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h2 class="text-center header" >Explore, Enjoy, Relax</h2>
 
 <div class="container">
   <div class="row">
-    <div class="card-images-2 col-xs-12 col-sm-6 col-md-8">
-      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive' %>
-      <div class="card-description-images-2">
+    <div class="category-big col-xs-12 col-sm-6 col-md-8">
+      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive' %>
+      <div class="category-big-details">
         <h2>Haircut</h2>
         <p>Old-school style makeover.</p>
       </div>
     </div>
-    <div class="card-images-2 col-xs-12 col-sm-3 col-md-4">
-      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive width' %>
-      <div class="card-description-images-2">
+    <div class="category-big col-xs-12 col-sm-3 col-md-4">
+      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive width' %>
+      <div class="category-big-details">
         <h2>Grooming</h2>
         <p>Time to get groomed, dude.</p>
       </div>
@@ -88,21 +127,21 @@
 
 <div class="container">
   <div class="row">
-    <div class="card-images col-xs-12 col-sm-6 col-md-4">
-      <%= image_tag 'placeholder.jpg', class: 'card-images img-responsive' %>
-      <div class="card-description-images">
+  <div class="category col-xs-12 col-sm-6 col-md-4">
+  <%= image_tag 'placeholder.jpg', class: 'category img-responsive' %>
+      <div class="category-details">
         <h2>Rio de Janeiro</h2>
       </div>
     </div>
-    <div class="card-images col-xs-12 col-sm-6 col-md-4">
-      <%= image_tag 'placeholder.jpg', class: 'card-images img-responsive' %>
-      <div class="card-description-images-3">
+    <div class="category col-xs-12 col-sm-6 col-md-4">
+    <%= image_tag 'placeholder.jpg', class: 'category img-responsive' %>
+      <div class="category-middle-details">
         <h2>Perth</h2>
       </div>
     </div>
-    <div class="card-images col-xs-12 col-sm-6 col-md-4">
-      <%= image_tag 'placeholder.jpg', class: 'card-images img-responsive' %>
-      <div class="card-description-images">
+    <div class="category col-xs-12 col-sm-6 col-md-4">
+    <%= image_tag 'placeholder.jpg', class: 'category img-responsive' %>
+      <div class="category-details">
         <h2>Copenhagen</h2>
       </div>
     </div>
@@ -111,16 +150,16 @@
 
 <div class="container">
   <div class="row">
-    <div class="card-images-2 col-xs-12 col-sm-3 col-md-4">
-      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive' %>
-      <div class="card-description-images-2">
+    <div class="category-big col-xs-12 col-sm-3 col-md-4">
+      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive' %>
+      <div class="category-big-details">
         <h2>Haircut</h2>
         <p>You are gonna look great.</p>
       </div>
     </div>
-    <div class="card-images-2 col-xs-12 col-sm-6 col-md-8">
-      <%= image_tag 'placeholder.jpg', class: 'card-images-2 img-responsive width' %>
-      <div class="card-description-images-2">
+    <div class="category-big col-xs-12 col-sm-6 col-md-8">
+      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive width' %>
+      <div class="category-big-details">
         <h2>Haircut</h2>
         <p>Get the full barbershop experience.</p>
       </div>
@@ -135,6 +174,6 @@
   <p>Leave us your mail and get news from us</p>
   <form class="form-inline">
     <input type="email" placeholder="bob@gmail.com" class="form-control">
-    <input type="submit" value="Subscribe" class="btn btn-primary">
+    <input type="submit" value="Subscribe" class="btn">
   </form>
 </div>
