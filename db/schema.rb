@@ -50,8 +50,12 @@ ActiveRecord::Schema.define(version: 20160826133136) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "membership_id"
+    t.integer  "polterabend_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["membership_id"], name: "index_comments_on_membership_id", using: :btree
+    t.index ["polterabend_id"], name: "index_comments_on_polterabend_id", using: :btree
   end
 
   create_table "dayplanners", force: :cascade do |t|
@@ -127,6 +131,8 @@ ActiveRecord::Schema.define(version: 20160826133136) do
   add_foreign_key "activity_dayplanners", "dayplanners"
   add_foreign_key "activity_polterabends", "activities"
   add_foreign_key "activity_polterabends", "polterabends"
+  add_foreign_key "comments", "memberships"
+  add_foreign_key "comments", "polterabends"
   add_foreign_key "dayplanners", "polterabends"
   add_foreign_key "favourites", "activities"
   add_foreign_key "favourites", "users"

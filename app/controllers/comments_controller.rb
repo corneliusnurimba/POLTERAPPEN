@@ -1,9 +1,10 @@
+
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.find(params[:comment_id])
+    @polterabend = Polterabend.find(params[:polterabend_id])
     @comment = Comment.new(comment_params)
-    @commet.polterabend = @polterabend
+    @comment.polterabend = @polterabend
     if @comment.save
       redirect_to polterabend_path(@polterabend)
     else
