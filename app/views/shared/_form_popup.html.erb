@@ -5,6 +5,8 @@
       <%= simple_form_for Polterabend.new do |f| %>
         <%= f.error_notification %>
         <%= f.input :title %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
         <%= f.button :submit, class: 'btn btn-primary'%>
       <% end %>
     </div>

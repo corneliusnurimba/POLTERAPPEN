@@ -1,6 +1,7 @@
 class DayplannersController < ApplicationController
 
   def index
+    @activities = Activity.all
     @dayplanners = Dayplanner.all
   end
 
