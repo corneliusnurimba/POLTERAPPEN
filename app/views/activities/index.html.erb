@@ -2,8 +2,9 @@
 
 
 <div class="pa-acts-btn">
-  <%= submit_tag "Save", class: "btn btn-primary" %>
+  <%= submit_tag "Save the awesome activities you have chosen", class: "btn btn-primary" %>
 </div>
+
 
 
 <div class="container">
@@ -29,14 +30,14 @@
             </div><!-- deets-center end -->
 
             <div class="deets-rhs">
-            <% unless current_user.nil? %>
+            <%# unless current_user.nil? %>
               <div class="upvote-hand <%= activity.name %>">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
                 <div style="display:none !important;" class="activity_id">
                   <%= activity.id %>
                 </div>
               </div>
-            <% end %>
+            <%# end %>
             <div class="deets-lhs">
               <!-- <div class="card-duration"><%= activity.duration %></div> -->
               <div class="card-cost"><%= activity.cost %> DKK</div>
@@ -78,6 +79,8 @@
 
 <%= javascript_include_tag 'application' %>
 <script>
+  <% unless current_user.nil? %>
+
 $(".upvote-hand").on("click", function() {
   console.log($(this).attr("class"));
   if ($(this).hasClass('blue')){
@@ -86,10 +89,13 @@ $(".upvote-hand").on("click", function() {
     $(this).addClass('blue');
   }
 });
+<% end %>
 </script>
 
 <script>
+
  $(".pa-acts-btn").on("click", function() {
+   <% unless current_user.nil? %>
    var array = $(".upvote-hand.blue > .activity_id");
    var json_for_activities = {};
    json_for_activities.activity_ids = [];
@@ -104,15 +110,9 @@ $(".upvote-hand").on("click", function() {
           console.log("Response: " + data);
         }
       );
+     <% end %>
    });
+
 </script>
 
 
-<!--
-<script>
-
-  var = {}
-  $(".upvote-hand").each(function('.blue'))
-
-  JSON.parse()
-</script> -->

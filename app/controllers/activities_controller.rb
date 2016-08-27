@@ -15,10 +15,24 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
   end
 
+  def new
+    @activity = Activity.new
+  end
+
+  def create
+    @activity = Activity.new(activity_params)
+    if @activity.save
+      redirect_to activity_path(@activity)
+    else
+      @errors = @activity.errors.full_messages
+      render :new
+    end
+  end
+
   private
 
-  # def barber_params
-  #   params.require(:barber).permit(:name, :address, :email, :city, :phone_number, :photo, :photo_cache)
-  # end
-
+  def activity_params
+     params.require(:activity).permit(:name, :description, :duration)
+  end
 end
+

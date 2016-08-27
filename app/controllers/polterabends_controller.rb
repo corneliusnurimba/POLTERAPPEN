@@ -19,10 +19,7 @@ class PolterabendsController < ApplicationController
     @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
 
     @comment = Comment.new
-    # @barber = Barber.find(params[:id])
-    # @booking = @barber.bookings.build
-    # @alert_message = "You are viewing #{@barber.name}"
-    # @barber_coordinates = { lat: @barber.latitude, lng: @barber.longitude }
+
   end
 
   def new
