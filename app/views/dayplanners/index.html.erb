@@ -1,18 +1,39 @@
-<h1>This is the Dayplanner INDEX page</h1>
+<h3>This is the Dayplanner INDEX page</h3>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-xs-3">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <h1 class="panel-title">Favourites</h1>
         </div>
+
         <div id="container1" class="panel-body box-container">
           <% @activities.each do |activity| %>
             <div itemid="<%= "itm-" + "#{activity.id}" %>" id='test' class="btn btn-default box-item" ><%= activity.name %>
-<!--             <div itemid="<%#= "itm-" + "#{activity.id}" %>" id='test' class="<%#= "btn btn-default box-item-" + "#{activity.duration}" %>"><%#= activity.name %> -->
             </div>
           <% end %>
         </div>
+
       </div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
     </div>
@@ -52,7 +73,7 @@
     </div>
 
     <div class="col-xs-3">
-      <div class="panel panel-default">
+      <div class="panel panel-success">
         <div class="panel-heading">
           <h1 class="panel-title">Polterabend</h1>
         </div>
@@ -63,37 +84,3 @@
     </div>
 
   </div>
-
-
-<!-- test -->
-
-<div id="container">
-  <div id="boxA" class="box">
-    <h4>box A</h4>
-
-    <div id="A1" class="slot">
-      <div id="a1" class="dayplanner-item"></div>
-    </div>
-    <div id="A2" class="slot">
-      <div id="a2" class="dayplanner-item"></div>
-    </div>
-    <div id="A3" class="slot">
-      <div id="a3" class="dayplanner-item"></div>
-    </div>
-    <div id="A4" class="slot"></div>
-    <div id="A5" class="slot"></div>
-  </div>
-  <div id="boxB" class="box">
-    <h4>box B</h4>
-
-    <div id="B1" class="slot"></div>
-    <div id="B2" class="slot">
-      <div id="b2" class="dayplanner-item"></div>
-    </div>
-    <div id="B3" class="slot"></div>
-    <div id="B4" class="slot"></div>
-    <div id="B5" class="slot">
-      <div id="b5" class="dayplanner-item"></div>
-    </div>
-  </div>
-</div>
