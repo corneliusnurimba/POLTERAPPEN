@@ -1,27 +1,93 @@
-<h1>This is the Activity SHOW page</h1>
-<div class="card">
-  <img src="image/bubbleball.jpg" alt="Avatar" style="width:93%" >
 
-   <div class="container">
+<% if notice %>
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= notice %>
+    <div class ="alert alert-success" role="alert">
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+  </div>
 
-    <h2><b> Price DKK </b></h2>
+<% end %>
+  </div>
+
+
+
+
+
+
+<div class="pa-acts-btn">
+  <%= submit_tag "jkadSave the awesome activities you have chosen", class: "btn btn-primary"%>
+
+</div>
+
+<%= link_to 'Save the awesome activities you have chosen', activity_path(@activity), data: {confirm: "Your have saved awesome activities to your fab polterabend"}, class: "btn btn-primary" %>
+
 <div class="container">
-<div class="card-title" >
-   Tittle
-</div>
-<div class="card-category" >
-   Category
-</div>
-<div class="card-city" >
-   City
-</div>
+  <div class="activity-show-banner">
+    <div class="row">
+      <div class="col-xs-offset-4 col-xs-4">
+        <%= image_tag @activity.photo_url, class: 'img-responsive'%>
+      </div>
+       <div class="deets-rhs">
+            <% unless current_user.nil? %>
+              <div class="upvote-hand <%= @activity.name %> has-success">
+                <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
+                <div style="display:none !important;" class="activity_id">
+                  <%= @activity.id %>
+                </div>
+              </div>
+            <% end %>
+            <div class="deets-lhs">
 
-
-    <div class="fun">
-    <img src="image/peace.png" alt="Avatar" style="width:25px;%" >
- </div>
+              <div class="card-cost"><%= @activity.cost %> DKK</div>
+            </div>
+            </div>
+    </div>
+  </div>
+  <h1><%= @activity.name %></h1>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="">
+          <h3>Details:</h3>
+          <p></strong><%= @activity.description %></p>
+          <p><strong>Address: </strong><%= @activity.address %></p>
+          <p><strong>Duration: </strong><%= @activity.duration %></p>
+          <p></strong><%= @activity.cost %></p>
+        </div>
+      </div>
 
     </div>
   </div>
 
-</div>
+<%= javascript_include_tag 'application' %>
+<script>
+$(".upvote-hand").on("click", function() {
+  console.log($(this).attr("class"));
+  if ($(this).hasClass('blue')){
+    $(this).removeClass('blue');
+  } else {
+    $(this).addClass('blue');
+  }
+});
+</script>
+
+<script>
+ $(".pa-acts-btn").on("click", function() {
+   var array = $(".upvote-hand.blue > .activity_id");
+   var json_for_activities = {};
+   json_for_activities.activity_ids = [];
+   for (var i = 0; i < array.length; i++) {
+     json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+    }
+    json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+    $.post(
+        '<%= save_activities_path %>',
+        json_for_activities,
+        function(data) {
+          console.log("Response: " + data);
+        }
+      );
+   });
+</script>
+
+
