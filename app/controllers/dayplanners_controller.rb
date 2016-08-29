@@ -6,6 +6,7 @@ class DayplannersController < ApplicationController
   end
 
   def show
+    @activities = Activity.all
     @dayplanner = Dayplanner.find(params[:id])
     @polterabend = Polterabend.find_by_id(@dayplanner.polterabend_id)
     @plans = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
@@ -16,54 +17,48 @@ class DayplannersController < ApplicationController
     end
   end
 
-  def new
-   #  @booking = current_user.bookings.build
-   #  @barbers = Barber.all.map do |barber|
-   #    [barber.name, barber.id]
-   # end
-  end
+  # def new
+  #   @polterabend = Polterabend.find(params[:polterabend_id])
+  #   @dayplanner = Dayplanner.new
+  # end
 
-
-  def create
-    # @booking = current_user.bookings.build(booking_params)
-    # if @booking.save
-    #   BookingMailer.booking_creation(@booking, current_user)#.deliver_now
-    #   redirect_to profile_path(current_user)
-    # else
-    #   @barber = @booking.barber
-    #   @errors = @booking.errors.full_messages
-    #   render template: 'barbers/show'
-    # end
-  end
+  # def create
+  #   @polterabend = Polterabend.find(params[:polterabend_id])
+  #   @dayplanner = Dayplanner.new(dayplanner_params)
+  #   if @dayplanner.save
+  #     redirect_to polterabend_path(@polterabend)
+  #   else
+  #     @errors = @dayplanner.errors.full_messages
+  #     render :new
+  #   end
+  # end
 
   def edit
-    # @booking = Booking.find(params[:id])
-    # @barber = Barber.find(params[:barber_id])
+    @dayplanner = Dayplanner.find(params[:id])
   end
 
   def update
-    # @booking = Booking.find(params[:id])
-    # @booking.update(booking_params)
-    # if @booking.save
-    #   redirect_to profile_path(current_user)
-    # else
-    #   @errors = @booking.errors.full_messages
-    #   render :edit
-    # end
+    @dayplanner = Dayplanner.find(params[:id])
+    @dayplanner.update(dayplanner_params)
+    if @dayplanner.save
+      redirect_to dayplanner_path(@dayplanner)
+    else
+      @errors = @dayplanner.errors.full_messages
+      render :edit
+    end
   end
 
-
   def destroy
-    # @booking = Booking.find(params[:id])
-    # @booking.destroy
-    #   redirect_to profile_path(current_user)
+    @dayplanner = Dayplanner.find(params[:id])
+    @dayplanner.destroy
+    redirect_to dayplanners_path
   end
 
 
   private
 
-  # def booking_params
-  #   params.require(:booking).permit(:user_id, :barber_id, :date, :cancelled)
-  # end
+  def dayplanner_params
+    params.require(:dayplanner).permit(:datetime, :polterabend_id)
+  end
 
 end

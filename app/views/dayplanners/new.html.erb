@@ -1,0 +1,12 @@
+<div class="text-center margin">
+  <h1>Create a Dayplan</h1>
+</div>
+
+  <%= simple_form_for [@polterabend, @dayplanner] do |f|%>
+  <ul class="list-inline">
+    <%= f.input :polterabend_id, as: :hidden, value: @polterabend.id %>
+    <li> <%= f.input :datetime, as: :string, input_html: { class: 'datetimepicker' }%></li>
+    <li><%= f.button :submit, class: "btn btn-primary" %></li>
+    </ul>
+  <%end%>
+

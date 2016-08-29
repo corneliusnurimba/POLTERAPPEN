@@ -15,7 +15,9 @@
     </div>
 </div>
 
-
+<div class="acts-dayplanners-btn">
+  <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
+</div>
 
 
 
@@ -68,7 +70,29 @@
       </div>
     </div>
 
+    <%= link_to "Edit dayplanner", edit_polterabend_dayplanner_path(@dayplanner), class: 'link link_card'%>
+
   </div>
 
+<script>
 
+ $(".acts-dayplanners-btn").on("click", function() {
+   <% unless current_user.nil? %>
+   // var array = $(".upvote-hand.blue > .activity_id");
+   var json_for_activities = {};
+   json_for_activities.activity_ids = [];
+   for (var i = 0; i < array.length; i++) {
+     json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+    }
+    json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+    $.post(
+        '<%= save_activities_path %>',
+        json_for_activities,
+        function(data) {
+          console.log("Response: " + data);
+        }
+      );
+     <% end %>
+   });
 
+</script>
