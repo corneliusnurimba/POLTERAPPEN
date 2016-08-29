@@ -31,6 +31,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     if @activity.save
+      @activity.update(category: 'custom')
       redirect_to activity_path(@activity)
     else
       @errors = @activity.errors.full_messages

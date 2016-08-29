@@ -31,6 +31,7 @@ class PolterabendsController < ApplicationController
 
     if @polterabend.save
       @dayplanner = Dayplanner.new(polterabend_id: @polterabend.id).save
+      @membership = Membership.new(user_id: current_user.id, polterabend_id: @polterabend.id).save
       redirect_to polterabend_path(@polterabend)
     else
       @errors = @polterabend.errors.full_messages
