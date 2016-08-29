@@ -9,10 +9,19 @@ class ActivitiesController < ApplicationController
       marker.lng activity.longitude
       # marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: barber })
     end
+    @selected_activities = []
+    pa_id = current_user.membership.polterabend_id
+    ActivityPolterabend.where(polterabend_id: pa_id).each do |a_pa|
+      @selected_activities << a_pa.activity_id
+    end
   end
 
   def show
     @activity = Activity.find(params[:id])
+    pa_id = current_user.membership.polterabend_id
+    @selected = ActivityPolterabend.where(polterabend_id: pa_id).any? do |a_pa|
+      a_pa.activity_id == @activity.id
+    end
   end
 
   def new
