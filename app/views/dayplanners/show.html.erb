@@ -5,3 +5,103 @@
   <%= link_to plan_act[1].name,
               polterabend_activity_dayplanner_path(@polterabend.id, plan_act[0].id) %><br>
 <% end %>
+
+
+<h3>This is the Dayplanner INDEX page</h3>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="acts-dayplanners-btn">
+  <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
+</div>
+
+
+
+<div class="row">
+    <div class="col-xs-3">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h1 class="panel-title">Favourites</h1>
+        </div>
+
+        <div id="container1" class="panel-body box-container">
+          <% @activities.each do |activity| %>
+            <div itemid="<%= "itm-" + "#{activity.id}" %>" id='test' class="btn btn-default box-item" ><%= activity.name %>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
+    </div>
+
+    <div class="test col-xs-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Time</h1>
+        </div>
+
+        <div class="box-container">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= render 'timepicker'%>
+            </div>
+            <div class="col-xs-6">
+              <%= render 'timepicker'%>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-xs-3">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title">Polterabend</h1>
+        </div>
+        <div id="container2" class="box-container">
+
+        </div>
+      </div>
+    </div>
+
+    <%= link_to "Edit dayplanner", edit_polterabend_dayplanner_path(@dayplanner), class: 'link link_card'%>
+
+  </div>
+
+<script>
+
+ $(".acts-dayplanners-btn").on("click", function() {
+   <% unless current_user.nil? %>
+   // var array = $(".upvote-hand.blue > .activity_id");
+   var json_for_activities = {};
+   json_for_activities.activity_ids = [];
+   for (var i = 0; i < array.length; i++) {
+     json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+    }
+    json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+    $.post(
+        '<%= save_activities_path %>',
+        json_for_activities,
+        function(data) {
+          console.log("Response: " + data);
+        }
+      );
+     <% end %>
+   });
+
+</script>

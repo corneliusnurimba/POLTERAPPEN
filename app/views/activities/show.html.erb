@@ -1,26 +1,13 @@
-
-<% if notice %>
-  <div class="alert alert-info alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <%= notice %>
-    <div class ="alert alert-success" role="alert">
-    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+<% unless current_user.nil? %>
+  <div class="pa-acts-btn">
+    <%= link_to activity_path(@activity) do %>
+      <div class="btn btn-primary">
+        Save the awesome activities you have chosen
+      </div>
+    <% end %>
   </div>
-
 <% end %>
-  </div>
 
-
-
-
-
-
-<div class="pa-acts-btn">
-  <%= submit_tag "jkadSave the awesome activities you have chosen", class: "btn btn-primary"%>
-
-</div>
-
-<%= link_to 'Save the awesome activities you have chosen', activity_path(@activity), data: {confirm: "Your have saved awesome activities to your fab polterabend"}, class: "btn btn-primary" %>
 
 <div class="container">
   <div class="activity-show-banner">
@@ -28,16 +15,15 @@
       <div class="col-xs-offset-4 col-xs-4">
         <%= image_tag @activity.photo_url, class: 'img-responsive'%>
       </div>
-       <div class="deets-rhs">
-            <% unless current_user.nil? %>
-              <div class="upvote-hand <%= @activity.name %> has-success">
-                <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
-                <div style="display:none !important;" class="activity_id">
-                  <%= @activity.id %>
+      <div class="deets-rhs">
+              <% unless current_user.nil? %>
+                <div class="upvote-hand <%= @activity.name %> <% if @selected %> green <% end %>">
+                  <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
+                  <div style="display:none !important;" class="activity_id">
+                    <%= @activity.id %>
+                  </div>
                 </div>
-              </div>
-            <% end %>
-            <div class="deets-lhs">
+              <% end %>
 
               <div class="card-cost"><%= @activity.cost %> DKK</div>
             </div>
@@ -59,35 +45,43 @@
     </div>
   </div>
 
+  <div>
+    <%= link_to 'Back to activities', activities_path(@activities), class: 'btn btn-primary' %>
+  </div>
+
+
+
+
 <%= javascript_include_tag 'application' %>
 <script>
+// dont add blue to green hands wrapping whole if statement in a new if
 $(".upvote-hand").on("click", function() {
-  console.log($(this).attr("class"));
-  if ($(this).hasClass('blue')){
-    $(this).removeClass('blue');
-  } else {
-    $(this).addClass('blue');
+  if (!$(this).hasClass('green')){
+    if ($(this).hasClass('blue')){
+      $(this).removeClass('blue');
+    } else {
+      $(this).addClass('blue');
+    }
   }
+  console.log('has classes '+$(this).attr("class"));
 });
 </script>
 
 <script>
+
  $(".pa-acts-btn").on("click", function() {
-   var array = $(".upvote-hand.blue > .activity_id");
-   var json_for_activities = {};
-   json_for_activities.activity_ids = [];
-   for (var i = 0; i < array.length; i++) {
-     json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
-    }
-    json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
-    $.post(
-        '<%= save_activities_path %>',
-        json_for_activities,
-        function(data) {
-          console.log("Response: " + data);
-        }
-      );
-   });
+      var array = $(".upvote-hand.blue>.activity_id");
+      var json_for_activities = {};
+      json_for_activities.activity_ids = [];
+      for (var i = 0; i < array.length; i++) {
+        json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+      }
+      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+      $.post(
+          '<%= save_activities_path %>',
+          json_for_activities,
+          function() { alert('we are the champions my friend'); }
+          );
+  });
+
 </script>
-
-

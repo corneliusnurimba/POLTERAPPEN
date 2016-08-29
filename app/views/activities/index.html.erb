@@ -1,12 +1,17 @@
 <h1>This is the Activities INDEX page</h1>
 
+<% unless current_user.nil? %>
+  <div class="pa-acts-btn">
+    <%= link_to activities_path(@activities) do %>
+      <div class="btn btn-primary">
+        Save the awesome activities you have chosen
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
-<div class="pa-acts-btn">
-  <%= submit_tag "Save the awesome activities you have chosen", class: "btn btn-primary" %>
-</div>
 
-
-
+<%= @selected_activities %>
 <div class="container">
   <div class="row">
     <% @activities.each do |activity| %>
@@ -30,14 +35,14 @@
             </div><!-- deets-center end -->
 
             <div class="deets-rhs">
-            <%# unless current_user.nil? %>
-              <div class="upvote-hand <%= activity.name %>">
-                <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
-                <div style="display:none !important;" class="activity_id">
-                  <%= activity.id %>
+              <% unless current_user.nil? %>
+                <div class="upvote-hand <%= activity.name %> <% if @selected_activities.include? activity.id %> green <% end %>">
+                  <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
+                  <div style="display:none !important;" class="activity_id">
+                    <%= activity.id %>
+                  </div>
                 </div>
-              </div>
-            <%# end %>
+              <% end %>
             <div class="deets-lhs">
               <!-- <div class="card-duration"><%= activity.duration %></div> -->
               <div class="card-cost"><%= activity.cost %> DKK</div>
@@ -79,39 +84,35 @@
 
 <%= javascript_include_tag 'application' %>
 <script>
-  <% unless current_user.nil? %>
-
+// dont add blue to green hands wrapping whole if statement in a new if
 $(".upvote-hand").on("click", function() {
-  console.log($(this).attr("class"));
-  if ($(this).hasClass('blue')){
-    $(this).removeClass('blue');
-  } else {
-    $(this).addClass('blue');
+  if (!$(this).hasClass('green')){
+    if ($(this).hasClass('blue')){
+      $(this).removeClass('blue');
+    } else {
+      $(this).addClass('blue');
+    }
   }
+  console.log('has classes '+$(this).attr("class"));
 });
-<% end %>
 </script>
 
 <script>
 
  $(".pa-acts-btn").on("click", function() {
-   <% unless current_user.nil? %>
-   var array = $(".upvote-hand.blue > .activity_id");
-   var json_for_activities = {};
-   json_for_activities.activity_ids = [];
-   for (var i = 0; i < array.length; i++) {
-     json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
-    }
-    json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
-    $.post(
-        '<%= save_activities_path %>',
-        json_for_activities,
-        function(data) {
-          console.log("Response: " + data);
-        }
-      );
-     <% end %>
-   });
+      var array = $(".upvote-hand.blue>.activity_id");
+      var json_for_activities = {};
+      json_for_activities.activity_ids = [];
+      for (var i = 0; i < array.length; i++) {
+        json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+      }
+      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+      $.post(
+          '<%= save_activities_path %>',
+          json_for_activities,
+          function() { alert('we are the champions my friend'); }
+          );
+  });
 
 </script>
 

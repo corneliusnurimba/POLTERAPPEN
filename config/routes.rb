@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   end
 
   post '/save_activities', to: 'activity_polterabends#save_activities'
+  post '/save_dayplanners', to: 'activity_dayplanners#save_dayplanners'
 
 end
