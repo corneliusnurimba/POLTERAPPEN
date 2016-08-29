@@ -10,8 +10,13 @@
   </div>
 <% end %>
 
-
+<% cost_array = [] %>
 <%= @selected_activities %>
+<% @selected_activities.each do |activity_id|%>
+  <% cost_array.push(Activity.find(activity_id).cost)  %>
+<% end %>
+<p>Total Cost: <%= cost_array.sum %></p>
+
 <div class="container">
   <div class="row">
     <% @activities.each do |activity| %>

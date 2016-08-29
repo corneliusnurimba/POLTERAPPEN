@@ -9,5 +9,9 @@ class Polterabend < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  def photo_url
+    return photo.url(:standard) if photo.present?
+    'placeholder.jpg'
+  end
 
 end
