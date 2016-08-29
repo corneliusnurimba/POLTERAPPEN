@@ -7,12 +7,12 @@
 }
 
 .push {
-    height: 100px; /* .push must be the same height as .footer */
+    height: 50px; /* .push must be the same height as .footer */
 }
 
 .footer {
-  height: 100px;
-  font-size: 20px;
+  height: 50px;
+  font-size: 0.8em;;
   color: black;
   padding: 30px;
   left: 0px;
@@ -24,6 +24,16 @@
   opacity: 0.7;
 }
 
+.container-footer {
+
+
+
+
+
+}
+
+
+
 
 .icons-footer {
   color: black;
@@ -31,15 +41,7 @@
   font-size: 30px;
 }
 
-.scissor {
-  height: 100px;
-  opacity: 0.7;
-  position: absolute;
-}
 
-#scissor-div {
-  z-index: 2;
-  padding-bottom: 50px;
-  padding-left: 1100px;
-}
+
+
 

@@ -1,0 +1,32 @@
+.category-big {
+  height: 400px;
+  background-size: cover !important;
+  color: white;
+  padding-top: 10px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.category-big-details {
+  position: absolute;
+  bottom: 150px;
+  left: 30%;
+  text-align: center;
+}
+
+.category-middle-details {
+  position: absolute;
+  bottom: 150px;
+  left: 40%;
+  text-align: center;
+}
+
+
+.category {
+  padding-top: 100px;
+  height: 300px;
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  margin-bottom: 20px;
+}
