@@ -3,10 +3,16 @@
 
 $(document).ready(function() {
 
-$('.box-item').draggable({
-    cursor: 'move',
-    helper: "clone"
-});
+  $(function () {
+      $('#datetimepicker3').datetimepicker({
+          format: 'LT'
+      });
+  });
+
+  $('.box-item').draggable({
+      cursor: 'move',
+      helper: "clone"
+  });
 
 $("#container1").droppable({
   drop: function(event, ui) {

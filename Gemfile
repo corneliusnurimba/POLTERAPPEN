@@ -33,6 +33,7 @@ end
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'money-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 group :development, :test do
   gem 'binding_of_caller'
