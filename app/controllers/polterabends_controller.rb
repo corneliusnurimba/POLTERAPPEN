@@ -28,7 +28,9 @@ class PolterabendsController < ApplicationController
 
   def create
     @polterabend = Polterabend.new(polterabend_params)
+
     if @polterabend.save
+      @dayplanner = Dayplanner.new(polterabend_id: @polterabend.id).save
       redirect_to polterabend_path(@polterabend)
     else
       @errors = @polterabend.errors.full_messages
