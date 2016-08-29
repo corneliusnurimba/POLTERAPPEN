@@ -9,8 +9,6 @@ class ActivityPolterabendsController < ApplicationController
   end
 
   def save_activities
-
-    # activities = JSON.parse(params) # => converts json to ruby hash
     $stderr.puts('================================================')
     $stderr.puts('polterabend_id: '+params[:polterabend_id])
     $stderr.puts('activity_ids: '+params[:activity_ids].inspect)
