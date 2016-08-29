@@ -10,23 +10,25 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active banner" style="background-image: url(<%= image_path 'activity_sexy.jpg' %>);">
+    <div class="item active banner" style="background-image: url(<%= image_path 'home_pict1.jpg' %>);">
+      <div class="carousel-caption">
+      </div>
+    </div>
+    <div class="item banner" style="background-image: url(<%= image_path 'home_pict3.jpg' %>);">
       <div class="carousel-caption">
         Cornelius
       </div>
     </div>
-    <div class="item banner" style="background-image: url(<%= image_path 'activity_adventure.jpg' %>);">
-      <div class="carousel-caption">
-        Cornelius
-      </div>
-    </div>
-    <div class="item banner" style="background-image: url(<%= image_path 'activity_boring.jpg' %>);">
+    <div class="item banner" style="background-image: url(<%= image_path 'home_pict5.jpg' %>);">
       <div class="carousel-caption">
         Cornelius
       </div>
     </div>
     ...
   </div>
+
+
+
 
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -44,27 +46,42 @@
   <div class="container">
     <h2 class="text-center header" >How Polterappen works</h2>
     <div class="row">
-      <% @activities.sample(3).each do |activity|%>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
-          <%= link_to activity_path(activity) do %>
-          <%= image_tag activity.photo, class: 'card img-responsive' %>
-          <% end %>
-          <div class="card-category"></div>
-          <div class="card-description">
-            <h2 class=><%= activity.name %></h2>
-            <p><%= activity.cost %></p>
-            <p><%= activity.duration %></p>
-
-          </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-instructions">
+          <p class="icon-instructions"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></p>
+          <h2>Step 1</h2>
+          <p>Get inspired</p>
         </div>
       </div>
-      <% end %>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-instructions">
+        <p class="icon-instructions"><i class="fa fa-user-plus" aria-hidden="true"></i></p>
+          <h2>Step 2</h2>
+          <p>Sign up</p>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-instructions">
+        <p class="icon-instructions"><i class="fa fa-share" aria-hidden="true"></i></p>
+          <h2>Step 3</h2>
+          <p>Select and share</p>
+        </div>
+      </div>
+
+
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-instructions">
+          <h2>Step 4</h2>
+          <p>And now you are set for a great party</p>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
    <div class="col-md-4">
     <div class="card">
@@ -103,24 +120,33 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<h2 class="text-center header" >Explore, Enjoy, Relax</h2>
+<h2 class="text-center header" >Get inspired for your polterabend</h2>
+
+
 
 <div class="container">
   <div class="row">
-    <div class="category-big col-xs-12 col-sm-6 col-md-8">
-      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive' %>
-      <div class="category-big-details">
-        <h2>Haircut</h2>
-        <p>Old-school style makeover.</p>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="category text-center" style="background: linear-gradient(-150deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_geeky2.jpg' %>)">
+        <div class="category-details">
+          <h2>Activities for the geeky</h2>
+       </div>
       </div>
     </div>
-    <div class="category-big col-xs-12 col-sm-3 col-md-4">
-      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive width' %>
-      <div class="category-big-details">
-        <h2>Grooming</h2>
-        <p>Time to get groomed, dude.</p>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="category text-center" style="background: linear-gradient(-150deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_crazy_gokart.jpg' %>)">
+        <div class="category-middle-details">
+          <h2>Activities for the crazy</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="category text-center" style="background: linear-gradient(-150deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_fancy_home.jpg' %>)">
+        <div class="category-details">
+          <h2>Activities for the fancy</h2>
+        </div>
       </div>
     </div>
   </div>
@@ -128,46 +154,47 @@
 
 <div class="container">
   <div class="row">
-  <div class="category col-xs-12 col-sm-6 col-md-4">
-  <%= image_tag 'placeholder.jpg', class: 'category img-responsive' %>
-      <div class="category-details">
-        <h2>Rio de Janeiro</h2>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+    <div class="category-big" style="background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_girly_home.jpg' %>)">
+      <div class="category-big-details">
+        <h2>Activities for the girly</h2>
       </div>
     </div>
-    <div class="category col-xs-12 col-sm-6 col-md-4">
-    <%= image_tag 'placeholder.jpg', class: 'category img-responsive' %>
-      <div class="category-middle-details">
-        <h2>Perth</h2>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-8">
+    <div class="category-big" style="background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_adventure_home2.jpg' %>)">
+      <div class="category-big-details">
+        <h2>Activities for the adventurous</h2>
+      </div>
       </div>
     </div>
-    <div class="category col-xs-12 col-sm-6 col-md-4">
-    <%= image_tag 'placeholder.jpg', class: 'category img-responsive' %>
-      <div class="category-details">
-        <h2>Copenhagen</h2>
+
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card-testimonial text-center">
+        <p>
+          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card-testimonial text-center">
+        <p>
+          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card-testimonial text-center">
+        <p>
+          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.
+        </p>
       </div>
     </div>
   </div>
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="category-big col-xs-12 col-sm-3 col-md-4">
-      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive' %>
-      <div class="category-big-details">
-        <h2>Haircut</h2>
-        <p>You are gonna look great.</p>
-      </div>
-    </div>
-    <div class="category-big col-xs-12 col-sm-6 col-md-8">
-      <%= image_tag 'placeholder.jpg', class: 'category-big img-responsive width' %>
-      <div class="category-big-details">
-        <h2>Haircut</h2>
-        <p>Get the full barbershop experience.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 <div class="text-center padded" id="newsletter">
   <h2 class="header">Get news from us</h2>
