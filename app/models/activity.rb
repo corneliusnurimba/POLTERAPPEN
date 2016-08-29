@@ -8,6 +8,8 @@ class Activity < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  monetize :price_Øres
+
   def photo_url
     return photo if photo.present?
     'placeholder.jpg'
