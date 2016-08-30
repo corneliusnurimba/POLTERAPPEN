@@ -7,7 +7,6 @@ class ActivitiesController < ApplicationController
     @hash = Gmaps4rails.build_markers(activities) do |activity, marker|
       marker.lat activity.latitude
       marker.lng activity.longitude
-      # marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: barber })
     end
 
     unless current_user.nil? || current_user.membership.nil?
@@ -44,10 +43,21 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def filtered_activities
+     @params = params
+     categories = %w(girly sexy crazy gothic)
+     categories = categories.select { |category| params.has_key?(category) }
+     @filtered_activities = Activity.all.select do |activity|
+       categories.include?(activity.category)
+     end
+     render :index
+  end
+
   private
 
   def activity_params
-     params.require(:activity).permit(:name, :description, :duration)
+     params.require(:activity).permit(:category, :cost, :price_Øres, :name, :description, :duration)
   end
+
 end
 
