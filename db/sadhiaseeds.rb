@@ -1,4 +1,4 @@
-  Activity.create(
+Activity.create(
     category: 'gothic',
     name: 'Copenhagen ghost trail trip',
     description: 'Explore the spooky sites of Copenhagen',
@@ -6,10 +6,8 @@
     cost: '100 kr',
     duration: '2 hours',
     photo: 'activity_gothic1.jpg'
-  )
-end
-
-  Activity.create(
+)
+Activity.create(
    category: 'gothic',
     name: 'Picnic at Assistent Kirkegaard',
     description: 'Enjoy a refreshing picnic at the most historic cemetary in town',
@@ -18,9 +16,7 @@ end
     duration: '2 hours',
     photo: 'activity_gothic2.jpg'
 )
-end
-
-  Activity.create(
+Activity.create(
     category: 'gothic',
     name: 'Marilyn Manson Karaoke night',
     description: 'Sing your heart out to Marilyn Manson classics with friends and enemies',
@@ -29,9 +25,7 @@ end
     duration: '1 hour',
     photo: 'activity_gothic3.jpg'
 )
- end
-
-  Activity.create(
+Activity.create(
     category: 'gothic',
     name: 'Dark poetry recital competition',
     description: 'Who has the darkest soul of your friends? Battle it out in this competition',
@@ -40,8 +34,6 @@ end
     duration: '2 hours',
     photo: 'activity_gothic4.jpg'
 )
-  end
-
 Activity.create(
     category: 'gothic',
     name: 'Tribal bellydance workshop',
@@ -51,9 +43,6 @@ Activity.create(
     duration: '3 hours',
     photo: 'activity_gothic5.jpg'
 )
-  end
-
-
 Activity.create(
     category: 'gothic',
     name: 'Psycotic Janitor mystery game',
@@ -63,10 +52,6 @@ Activity.create(
     duration: '3 hours',
     photo: 'activity_gothic6.jpg'
 )
-  end
-
-
-
 Activity.create(
     category: 'geeky',
     name: 'Arcade Day',
@@ -77,9 +62,6 @@ Activity.create(
     photo: 'activity_geeky1.jpg'
 
 )
-end
-
-
 Activity.create(
     category: 'geeky',
     name: 'Trip to Expementariet',
@@ -90,8 +72,6 @@ Activity.create(
     photo: 'activity_geeky2.jpg'
 
 )
-end
-
 Activity.create(
     category: 'geeky',
     name: 'Shopping spree at Faraos Cigarer',
@@ -102,9 +82,6 @@ Activity.create(
     photo: 'activity_geeky4.jpg'
 
 )
-end
-
-
 Activity.create(
     category: 'geeky',
     name: 'Historic battles tour',
@@ -115,10 +92,6 @@ Activity.create(
     photo: 'activity_geeky3.jpg'
 
 )
-end
-
-
-
 Activity.create(
     category: 'geeky',
     name: 'Planetarium',
@@ -129,9 +102,6 @@ Activity.create(
     photo: 'activity_geeky5.jpg'
 
 )
-end
-
-
 Activity.create(
     category: 'geeky',
     name: 'Mystery Escape Room',
@@ -142,4 +112,3 @@ Activity.create(
     photo: 'activity_geeky6.jpg'
 
 )
-end

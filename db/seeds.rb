@@ -6,9 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'faker'
+require_relative 'crazy_seeds'
+require_relative 'girly_seeds'
+require_relative 'sadhiaseeds'
+require_relative 'sexy_seeds'
+require_relative 'vini_seeds'
 
 Activity.destroy_all
+
 
 # boring activities
 
@@ -94,40 +99,4 @@ Activity.create(
   photo: 'activity_cheap_4.jpg'
 )
 
-# old seed file
 
-5.times do
-  Activity.create(
-    category: 'sexy',
-    name: Faker::Name.title,
-    description: Faker::ChuckNorris.fact,
-    address: Faker::Address.street_address,
-    cost: Faker::Number.number(3),
-    duration: Faker::Number.number(1),
-    photo: 'activity_sexy.jpeg'
-  )
-end
-
-[ { first_name: Faker::Name.title,
-    last_name: Faker::Name.title,
-    password: '123456',
-    email: 'a@b.c',
-    admin: true
-    },
-  { first_name: Faker::Name.title,
-    last_name: Faker::Name.title,
-    password: '123456',
-    email: 'b@b.c'
-    },
-  { first_name: Faker::Name.title,
-    last_name: Faker::Name.title,
-    password: '123456',
-    email: 'c@b.c'
-    },
-  { first_name: Faker::Name.title,
-    last_name: Faker::Name.title,
-    password: '123456',
-    email: 'd@b.c'
-    }].each do |user|
-      User.create(user)
-end
