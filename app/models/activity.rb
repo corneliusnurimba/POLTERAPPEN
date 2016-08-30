@@ -1,4 +1,5 @@
 class Activity < ApplicationRecord
+  # include Filterable
 
   has_many :activity_dayplanners, :dependent => :destroy
   has_many :activity_polterabends, :dependent => :destroy

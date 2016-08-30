@@ -1,5 +1,21 @@
 <h1>This is the Activities INDEX page</h1>
 
+<!-- Cornelius Test Start -->
+
+<% categories = %w(sexy girly gothic crazy)%>
+
+<%= form_tag(filtered_activities_path, method: "get") do %>
+ <ul class="list-inline">
+   <% categories.each do |category|%>
+     <li><%= category %><%= check_box_tag category, name: category%></li>
+   <% end %>
+ </ul>
+ <%= submit_tag("Find Activities") %>
+<% end %>
+<!-- Test End -->
+
+
+
 <% unless current_user.nil? %>
   <div class="pa-acts-btn">
     <%= link_to activities_path(@activities) do %>
@@ -12,10 +28,12 @@
 
 <% cost_array = [] %>
 <%= @selected_activities %>
-<% @selected_activities.each do |activity_id|%>
-  <% cost_array.push(Activity.find(activity_id).cost)  %>
+<% unless @selected_activities.nil? %>
+  <% @selected_activities.each do |activity_id|%>
+    <% cost_array.push(Activity.find(activity_id).cost)  %>
+  <% end %>
+  <p>Total Cost: <%= cost_array.sum %></p>
 <% end %>
-<p>Total Cost: <%= cost_array.sum %></p>
 
 <div class="container">
   <div class="row">
