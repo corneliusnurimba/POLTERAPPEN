@@ -44,13 +44,17 @@ class ActivitiesController < ApplicationController
   end
 
   def filtered_activities
-     @params = params
-     categories = %w(girly sexy crazy gothic)
-     categories = categories.select { |category| params.has_key?(category) }
-     @filtered_activities = Activity.all.select do |activity|
-       categories.include?(activity.category)
-     end
-     render :index
+    @params = params
+    categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)
+    categories = categories.select { |category| params.has_key?(category) }
+    if categories.empty?
+     @filtered_activities = Activity.all
+    else
+      @filtered_activities = Activity.all.select do |activity|
+        categories.include?(activity.category)
+      end
+    end
+    render :index
   end
 
   private
