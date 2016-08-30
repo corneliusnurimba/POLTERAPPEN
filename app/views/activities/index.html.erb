@@ -1,8 +1,22 @@
 <h1>This is the Activities INDEX page</h1>
 
+<!-- Filtered Activities -->
+
+<% categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)%>
+
+<%= form_tag(filtered_activities_path, method: "get") do %>
+ <ul class="list-inline">
+   <% categories.each do |category|%>
+     <li><%= category %><%= check_box_tag category, name: category%></li>
+   <% end %>
+ </ul>
+ <%= submit_tag("Filter Activities") %>
+<% end %>
+<!-- End -->
+
 <% unless current_user.nil? %>
-  <div class="pa-acts-btn">
-    <%= link_to activities_path(@activities) do %>
+  <div id='fav-activities-button' class="pa-acts-btn">
+    <%= link_to activities_path do %>
       <div class="btn btn-primary">
         Save the awesome activities you have chosen
       </div>
@@ -10,16 +24,20 @@
   </div>
 <% end %>
 
+<!-- temporary -->
 <% cost_array = [] %>
 <%= @selected_activities %>
-<% @selected_activities.each do |activity_id|%>
-  <% cost_array.push(Activity.find(activity_id).cost)  %>
+<% unless @selected_activities.nil? %>
+  <% @selected_activities.each do |activity_id|%>
+    <% cost_array.push(Activity.find(activity_id).cost)  %>
+  <% end %>
+  <p>Total Cost: <%= cost_array.sum %></p>
 <% end %>
-<p>Total Cost: <%= cost_array.sum %></p>
+<!-- temporary -->
 
 <div class="container">
   <div class="row">
-    <% @activities.each do |activity| %>
+    <% @filtered_activities.each do |activity| %>
       <div class="col-xs-4">
         <div class="activity-card">
 
@@ -40,7 +58,7 @@
             </div><!-- deets-center end -->
 
             <div class="deets-rhs">
-              <% unless current_user.nil? %>
+              <% unless current_user.nil? || current_user.membership.nil?%>
                 <div class="upvote-hand <%= activity.name %> <% if @selected_activities.include? activity.id %> green <% end %>">
                   <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
                   <div style="display:none !important;" class="activity_id">
@@ -70,7 +88,7 @@
 <!-- google map api -->
 
 
-<%= javascript_include_tag 'application' %>
+<%= javascript_include_tag 'application' unless current_user.nil? %>
 <script>
 // dont add blue to green hands wrapping whole if statement in a new if
 $(".upvote-hand").on("click", function() {
@@ -94,7 +112,7 @@ $(".upvote-hand").on("click", function() {
       for (var i = 0; i < array.length; i++) {
         json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
       }
-      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? || current_user.membership.nil? %>;
       $.post(
           '<%= save_activities_path %>',
           json_for_activities,
