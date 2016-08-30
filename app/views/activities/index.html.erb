@@ -2,7 +2,7 @@
 
 <% unless current_user.nil? %>
   <div class="pa-acts-btn">
-    <%= link_to activities_path(@activities) do %>
+    <%= link_to activities_path do %>
       <div class="btn btn-primary">
         Save the awesome activities you have chosen
       </div>
@@ -10,12 +10,7 @@
   </div>
 <% end %>
 
-<% cost_array = [] %>
-<%= @selected_activities %>
-<% @selected_activities.each do |activity_id|%>
-  <% cost_array.push(Activity.find(activity_id).cost)  %>
-<% end %>
-<p>Total Cost: <%= cost_array.sum %></p>
+
 
 <div class="container">
   <div class="row">
@@ -70,7 +65,7 @@
 <!-- google map api -->
 
 
-<%= javascript_include_tag 'application' %>
+<%= javascript_include_tag 'application' unless current_user.nil? %>
 <script>
 // dont add blue to green hands wrapping whole if statement in a new if
 $(".upvote-hand").on("click", function() {
@@ -94,7 +89,7 @@ $(".upvote-hand").on("click", function() {
       for (var i = 0; i < array.length; i++) {
         json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
       }
-      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? %>;
       $.post(
           '<%= save_activities_path %>',
           json_for_activities,
