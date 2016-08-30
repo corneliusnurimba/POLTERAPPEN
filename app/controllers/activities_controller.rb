@@ -27,7 +27,35 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def integration_index
+    @activities = Activity.all
+
+    activities = Activity.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(activities) do |activity, marker|
+      marker.lat activity.latitude
+      marker.lng activity.longitude
+    end
+
+    unless current_user.nil? || current_user.membership.nil?
+      @selected_activities = []
+      pa_id = current_user.membership.polterabend_id
+      ActivityPolterabend.where(polterabend_id: pa_id).each do |a_pa|
+        @selected_activities << a_pa.activity_id
+      end
+    end
+  end
+
   def show
+    @activity = Activity.find(params[:id])
+    unless current_user.nil? || current_user.membership.nil?
+      pa_id = current_user.membership.polterabend_id
+      @selected = ActivityPolterabend.where(polterabend_id: pa_id).any? do |a_pa|
+        a_pa.activity_id == @activity.id
+      end
+    end
+  end
+
+  def show_copy
     @activity = Activity.find(params[:id])
     unless current_user.nil? || current_user.membership.nil?
       pa_id = current_user.membership.polterabend_id
