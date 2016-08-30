@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :activities, only: [:index, :show, :new, :create]
   get '/filtered_activities', to: 'activities#filtered_activities'
+  get '/integration-index', to: 'activities#integration_index'
+  get '/show_copy/:id', to: 'activities#show_copy'
   resources :profile, only: [:show]
 
   resources :polterabends do

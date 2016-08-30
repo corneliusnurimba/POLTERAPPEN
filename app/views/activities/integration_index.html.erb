@@ -1,0 +1,109 @@
+<h1>This is the Activities INDEX page</h1>
+
+<!-- Filtered Activities -->
+
+<% categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)%>
+
+<%= form_tag(filtered_activities_path, method: "get") do %>
+ <ul class="list-inline">
+   <% categories.each do |category|%>
+     <li><%= category %><%= check_box_tag category, name: category%></li>
+   <% end %>
+ </ul>
+ <%= submit_tag("Filter Activities") %>
+<% end %>
+<!-- End -->
+
+<% unless current_user.nil? %>
+  <div id='fav-activities-button' class="pa-acts-btn">
+    <%= link_to activities_path do %>
+      <div class="btn btn-primary">
+        Save the awesome activities you have chosen
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<!-- temporary -->
+<% cost_array = [] %>
+<%= @selected_activities %>
+<% unless @selected_activities.nil? %>
+  <% @selected_activities.each do |activity_id|%>
+    <% cost_array.push(Activity.find(activity_id).cost)  %>
+  <% end %>
+  <p>Total Cost: <%= cost_array.sum %></p>
+<% end %>
+<!-- temporary -->
+
+<div class="container">
+  <div class="row">
+    <% @activities.each do |activity| %>
+      <div class="col-xs-4">
+        <div class="card">
+          <div class="card-image" style="background-image: url(<%= image_path(activity.photo) %>);">
+            <div class="card-heart">
+              <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
+            </div>
+            <div class="card-price"><b> <%= activity.cost %> DKK </b></div>
+          </div>
+          <div class="card-title" >
+           <%= activity.name %>
+         </div>
+         <div class="card-category" >
+            <%= activity.category %>
+         </div>
+         <div class="card-city" >
+
+           <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <%= activity.address %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!-- google map api -->
+<div class="container">
+  <div id="map" style="width: 100%; height: 600px;"></div>
+</div>
+
+<!-- google map api -->
+
+
+<%= javascript_include_tag 'application' unless current_user.nil? %>
+<script>
+// dont add blue to green hands wrapping whole if statement in a new if
+$(".upvote-hand").on("click", function() {
+  if (!$(this).hasClass('green')){
+    if ($(this).hasClass('blue')){
+      $(this).removeClass('blue');
+    } else {
+      $(this).addClass('blue');
+    }
+  }
+  console.log('has classes '+$(this).attr("class"));
+});
+</script>
+
+<script>
+
+ $(".pa-acts-btn").on("click", function() {
+      var array = $(".upvote-hand.blue>.activity_id");
+      var json_for_activities = {};
+      json_for_activities.activity_ids = [];
+      for (var i = 0; i < array.length; i++) {
+        json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+      }
+      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? || current_user.membership.nil? %>;
+      $.post(
+          '<%= save_activities_path %>',
+          json_for_activities,
+          function() { alert('we are the champions my friend'); }
+          );
+  });
+
+</script>
+
+
