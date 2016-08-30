@@ -19,13 +19,19 @@ below is the code for the carousel
 }
 
 .banner-film {
-  background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.3));
+  background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.5));
   height: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.banner-text {
+  text-shadow: 0px 0 2px rgba(0, 0, 0, 0.6);
 }
 
 .banner h1 {
-  font-size: 50px;
+  font-size: 80px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
