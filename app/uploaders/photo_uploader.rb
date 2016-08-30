@@ -12,7 +12,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumbnail do
-    resize_to_fill 500, 500
+    resize_to_fill 200, 200
   end
 
   version :bright_face do

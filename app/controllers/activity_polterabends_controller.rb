@@ -9,10 +9,6 @@ class ActivityPolterabendsController < ApplicationController
   end
 
   def save_activities
-    $stderr.puts('================================================')
-    $stderr.puts('polterabend_id: '+params[:polterabend_id])
-    $stderr.puts('activity_ids: '+params[:activity_ids].inspect)
-    $stderr.puts('================================================')
     polterabend_id = params[:polterabend_id]
     params[:activity_ids].each do |activity_id|
       ActivityPolterabend.create( total_upvotes: 0,
