@@ -8,18 +8,23 @@ class ActivitiesController < ApplicationController
       marker.lat activity.latitude
       marker.lng activity.longitude
     end
-    @selected_activities = []
-    pa_id = current_user.membership.polterabend_id
-    ActivityPolterabend.where(polterabend_id: pa_id).each do |a_pa|
-      @selected_activities << a_pa.activity_id
+
+    unless current_user.nil? || current_user.membership.nil?
+      @selected_activities = []
+      pa_id = current_user.membership.polterabend_id
+      ActivityPolterabend.where(polterabend_id: pa_id).each do |a_pa|
+        @selected_activities << a_pa.activity_id
+      end
     end
   end
 
   def show
     @activity = Activity.find(params[:id])
-    pa_id = current_user.membership.polterabend_id
-    @selected = ActivityPolterabend.where(polterabend_id: pa_id).any? do |a_pa|
-      a_pa.activity_id == @activity.id
+    unless current_user.nil? || current_user.membership.nil?
+      pa_id = current_user.membership.polterabend_id
+      @selected = ActivityPolterabend.where(polterabend_id: pa_id).any? do |a_pa|
+        a_pa.activity_id == @activity.id
+      end
     end
   end
 

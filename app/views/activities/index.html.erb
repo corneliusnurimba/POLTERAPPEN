@@ -18,7 +18,7 @@
 
 <% unless current_user.nil? %>
   <div class="pa-acts-btn">
-    <%= link_to activities_path(@activities) do %>
+    <%= link_to activities_path do %>
       <div class="btn btn-primary">
         Save the awesome activities you have chosen
       </div>
@@ -26,6 +26,7 @@
   </div>
 <% end %>
 
+<!-- temporary -->
 <% cost_array = [] %>
 <%= @selected_activities %>
 <% unless @selected_activities.nil? %>
@@ -34,6 +35,7 @@
   <% end %>
   <p>Total Cost: <%= cost_array.sum %></p>
 <% end %>
+<!-- temporary -->
 
 <div class="container">
   <div class="row">
@@ -58,7 +60,7 @@
             </div><!-- deets-center end -->
 
             <div class="deets-rhs">
-              <% unless current_user.nil? %>
+              <% unless current_user.nil? || current_user.membership.nil?%>
                 <div class="upvote-hand <%= activity.name %> <% if @selected_activities.include? activity.id %> green <% end %>">
                   <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
                   <div style="display:none !important;" class="activity_id">
@@ -88,7 +90,7 @@
 <!-- google map api -->
 
 
-<%= javascript_include_tag 'application' %>
+<%= javascript_include_tag 'application' unless current_user.nil? %>
 <script>
 // dont add blue to green hands wrapping whole if statement in a new if
 $(".upvote-hand").on("click", function() {
@@ -112,7 +114,7 @@ $(".upvote-hand").on("click", function() {
       for (var i = 0; i < array.length; i++) {
         json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
       }
-      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? || current_user.membership.nil? %>;
       $.post(
           '<%= save_activities_path %>',
           json_for_activities,
