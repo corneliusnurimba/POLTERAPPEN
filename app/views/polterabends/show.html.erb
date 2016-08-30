@@ -5,17 +5,18 @@
   <%= cl_image_tag @polterabend.photo_url %>
 </div>
 
-
 <h3> polterabend activities </h3>
+
+
+
+<h3> polterabend total cost </h3>
 <% cost_array = [] %>
 <% @pacts_and_acts.each do |pact_act| %>
   <%= link_to pact_act[1].name,
               polterabend_activity_polterabend_path(@polterabend.id, pact_act[0].id) %><br>
-  <% cost_array.push(Activity.find(pact_act[0].id).cost) %>
+  <% cost_array.push(Activity.find(pact_act[0].activity_id).cost) %>
 <% end %>
 <p>Total Cost: <%= cost_array.sum %></p>
-
-<h2> Polterabend Total Cost </h2>
 
 <h3> motherfuckers who are coming </h3>
 <% @members.each do |member| %>
@@ -33,7 +34,7 @@
 <h2>
   <%= pluralize @polterabend.comments.size, "comment" %>
 </h2>
-<div id="comments">
+<div id="comments" class='wrapper'>
   <% if @polterabend.comments.blank? %>
     Be the first to leave a review for <%= @polterabend.title %>
   <% else %>

@@ -18,13 +18,8 @@ class ActivitiesController < ApplicationController
       marker.lng activity.longitude
     end
 
-    unless current_user.nil? || current_user.membership.nil?
-      @selected_activities = []
-      pa_id = current_user.membership.polterabend_id
-      ActivityPolterabend.where(polterabend_id: pa_id).each do |a_pa|
-        @selected_activities << a_pa.activity_id
-      end
-    end
+    @selected_activities = get_selected_activities
+
   end
 
   def integration_index
@@ -80,21 +75,33 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # def filtered_activities
-  #   @params = params
-  #   categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)
-  #   categories = categories.select { |category| params.has_key?(category) }
-  #   if categories.empty?
-  #    @filtered_activities = Activity.all
-  #   else
-  #     @filtered_activities = Activity.all.select do |activity|
-  #       categories.include?(activity.category)
-  #     end
-  #   end
-  #   render :index
-  # end
+  def filtered_activities
+    @params = params
+    categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)
+    categories = categories.select { |category| params.has_key?(category) }
+    if categories.empty?
+     @filtered_activities = Activity.all
+    else
+      @filtered_activities = Activity.all.select do |activity|
+        categories.include?(activity.category)
+      end
+    end
+    @selected_activities = get_selected_activities
+    render :index
+  end
 
   private
+
+  def get_selected_activities
+    tmp = []
+    unless current_user.nil? || current_user.membership.nil?
+      pa_id = current_user.membership.polterabend_id
+      ActivityPolterabend.where(polterabend_id: pa_id).each do |a_pa|
+        tmp << a_pa.activity_id
+      end
+    end
+    tmp
+  end
 
   def activity_params
      params.require(:activity).permit(:category, :cost, :price_Øres, :name, :description, :duration)
