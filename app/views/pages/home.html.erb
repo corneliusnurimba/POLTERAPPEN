@@ -10,19 +10,21 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active banner" style="background-image: url(<%= image_path 'home_pict1.jpg' %>);">
-      <div class="carousel-caption">
-      </div>
+    <div class="item active banner carousel-content" style="background-image: url(<%= image_path 'home_pict1.jpg' %>);">
+    <h1>Create a memorable polterabend</h1>
+      <!-- <div class="carousel-caption"> -->
+   <!--    </div> -->
     </div>
-    <div class="item banner" style="background-image: url(<%= image_path 'home_pict3.jpg' %>);">
-      <div class="carousel-caption">
+    <div class="item banner carousel-content" style="background-image: url(<%= image_path 'home_pict3.jpg' %>);">
+     <!--  <div class="carousel-caption">
         Cornelius
-      </div>
+      </div> -->
+      <h1>Create a memorable polterabend</h1>
     </div>
-    <div class="item banner" style="background-image: url(<%= image_path 'home_pict5.jpg' %>);">
-      <div class="carousel-caption">
+    <div class="item banner carousel-content" style="background-image: url(<%= image_path 'home_pict5.jpg' %>);">
+      <!-- <div class="carousel-caption">
         Cornelius
-      </div>
+      </div> -->
     </div>
     ...
   </div>
@@ -31,14 +33,14 @@
 
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+ <!--  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </a> -->
 </div>
 
 
@@ -46,37 +48,45 @@
   <div class="container">
     <h2 class="text-center header" >How Polterappen works</h2>
     <div class="row">
+      <div class="col-md-offset-1 col-md-10">
+    <div class="row">
       <div class="col-xs-12 col-sm-3">
         <div class="card-instructions">
-          <p class="icon-instructions"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></p>
+          <p class="icon-instructions">
+            <%= image_tag "inspiration.svg" %>
+          </p>
           <h2>Step 1</h2>
           <p>Get inspired</p>
         </div>
       </div>
       <div class="col-xs-12 col-sm-3">
         <div class="card-instructions">
-        <p class="icon-instructions"><i class="fa fa-user-plus" aria-hidden="true"></i></p>
+       <p class="icon-instructions">
+            <%= image_tag "create.svg" %>
           <h2>Step 2</h2>
-          <p>Sign up</p>
+          <p>Sign up and create a polterabend</p>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-3">
         <div class="card-instructions">
-        <p class="icon-instructions"><i class="fa fa-share" aria-hidden="true"></i></p>
+         <%= image_tag "invite.svg" %>
           <h2>Step 3</h2>
-          <p>Select and share</p>
+          <p>Invite your friends</p>
         </div>
       </div>
 
 
       <div class="col-xs-12 col-sm-3">
         <div class="card-instructions">
+         <%= image_tag "party.svg" %>
           <h2>Step 4</h2>
           <p>And now you are set for a great party</p>
         </div>
       </div>
       </div>
+      </div>
+    </div>
     </div>
   </div>
 </div>
