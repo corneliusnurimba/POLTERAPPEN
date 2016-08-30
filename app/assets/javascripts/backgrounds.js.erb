@@ -1,0 +1,27 @@
+
+$(function () {
+    var bg = $('.banner');
+    var backgrounds = [
+      <%= "\'url(#{asset_path 'home_pict1.jpg'})\'" %>,
+      <%= "\'url(#{asset_path 'home_pict2.jpg'})\'" %>,
+      <%= "\'url(#{asset_path 'home_pict3.jpg'})\'" %>,
+      <%= "\'url(#{asset_path 'home_pict4.jpg'})\'" %>,
+      <%= "\'url(#{asset_path 'home_pict5.jpg'})\'" %> ];
+
+    var current = 0;
+
+    function nextBackground() {
+        bg.fadeOut(1000)
+        bg
+       .delay(1)
+       .queue(function(){
+           $(this).css('background', backgrounds[current = ++current % backgrounds.length]);
+           $(this).dequeue();
+       });
+       bg.fadeIn(1000)
+        setTimeout(nextBackground, 7000);
+    }
+
+    setTimeout(nextBackground, 7000);
+    bg.css('background', backgrounds[0]);
+});
