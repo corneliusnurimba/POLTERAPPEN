@@ -6,6 +6,8 @@
 below is the code for the carousel
 --------------------*/
 .banner {
+  background-image: url('home_pict1.jpg');
+  background: -webkit-linear-gradient(180deg, rgba(75,49,106,0) 0%, rgba(75,49,106,0.5) 55%);
   color: white;
   text-align: center;
   height: calc(100vh - 70px);
@@ -15,6 +17,13 @@ below is the code for the carousel
   align-items: center;
   justify-content: center;
 }
+
+.banner-film {
+  background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.3));
+  height: 100%;
+  width: 100%;
+}
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
@@ -27,12 +36,10 @@ below is the code for the carousel
   margin-bottom: 20px;
 }
 
-
-
-.bg-gradient {
-  background-image: -webkit-linear-gradient(180deg, rgba(75,49,106,0) 0%, rgba(75,49,106,0.5) 55%);
-
-}
+// .bg-gradient {
+//     background-image: -webkit-linear-gradient(180deg, rgba(75,49,106,0) 0%, rgba(75,49,106,0.5) 55%);
+//     z-index: 1;
+// }
 
 .bg-filter {
   position: absolute;
@@ -47,6 +54,41 @@ below is the code for the carousel
   align-items: center;
 }
 
+// older css to be deleted
+
+// .card-user {
+//   position: absolute;
+//   right: 10px;
+//   top: 10px;
+// }
+
+// .card-description {
+//   position: absolute;
+//   bottom: 10px;
+//   left: 10px;
+// }
+// .card-description h2 {
+//   font-size: 24px;
+// }
+// .card-description p {
+//   font-size: 13px;
+//   }
+// .card-link {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   width: 100%;
+//   z-index:2;
+//   background: black;
+//   opacity: 0;
+// }
+// .card-link:hover{
+//   opacity: 0.1;
+// }
+
+// .width {
+//   width: 100%;
+// }
 
 // .banner p.call-to-action {
   //   font-weight: 700;
@@ -97,4 +139,48 @@ below is the code for the carousel
                   //  color: #0c5897;
                   // }
 
+// .fullscreen-search {
+// /*  background: image-url("activity_boring_1.jpg");*/
+//   background-image: url('home_pict5.jpg');
+//   color: white;
+//   text-align: center;
+//   height: calc(100vh - 70px);
+//   /* if you have a 70px navbar => height: calc(100vh - 70px); */
+//   background-size: cover !important;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
 
+// .home{
+//   background-color: black;
+//   .navbar-snowbnb{
+//     background: RGBA(5, 3, 6, 0);
+//   }
+// }
+
+// .fullscreen-film {
+//   background: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.3));
+//   height: 100%;
+//   width: 100%;
+//   margin-top: -100px;
+//   padding-bottom: 145px;
+//    h1 {
+//   color: white;
+//   padding-bottom: 20px;
+//   margin-top: 0px;
+//   text-transform: uppercase;
+//   letter-spacing: 10px;
+//   z-index: 1;
+//   }
+// }
+
+// #main-search{
+//   text-align: center;
+//   // padding-right: 300px;
+//   top: 250px;
+// }
+
+// .home-search{
+//   margin-right: 10px;
+// }
