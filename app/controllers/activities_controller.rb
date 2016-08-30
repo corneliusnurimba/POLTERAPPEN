@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
       # marker.infowindow render_to_string(partial: "/barbers/map_box", locals: { barber: barber })
     end
 
-    unless current_user.nil?
+    unless current_user.nil? || current_user.membership.nil?
       @selected_activities = []
       pa_id = current_user.membership.polterabend_id
       ActivityPolterabend.where(polterabend_id: pa_id).each do |a_pa|
@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    unless current_user.nil?
+    unless current_user.nil? || current_user.membership.nil?
       pa_id = current_user.membership.polterabend_id
       @selected = ActivityPolterabend.where(polterabend_id: pa_id).any? do |a_pa|
         a_pa.activity_id == @activity.id

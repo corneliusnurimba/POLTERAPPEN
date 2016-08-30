@@ -17,7 +17,7 @@
         <%= image_tag @activity.photo_url, class: 'img-responsive'%>
       </div>
       <div class="deets-rhs">
-              <% unless current_user.nil? %>
+              <% unless current_user.nil? || current_user.membership.nil? %>
                 <div class="upvote-hand <%= @activity.name %> <% if @selected %> green <% end %>">
                   <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
                   <div style="display:none !important;" class="activity_id">
@@ -53,7 +53,7 @@
 
 
 
-<%= javascript_include_tag 'application' unless current_user.nil? %>
+<%= javascript_include_tag 'application' %>
 <script>
 // dont add blue to green hands wrapping whole if statement in a new if
 $(".upvote-hand").on("click", function() {
@@ -77,7 +77,7 @@ $(".upvote-hand").on("click", function() {
       for (var i = 0; i < array.length; i++) {
         json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
       }
-      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? %>;
+      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? || current_user.membership.nil?%>;
       $.post(
           '<%= save_activities_path %>',
           json_for_activities,
