@@ -1,8 +1,8 @@
 <h1>This is the Activities INDEX page</h1>
 
-<!-- Cornelius Test Start -->
+<!-- Filtered Activities -->
 
-<% categories = %w(sexy girly gothic crazy)%>
+<% categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)%>
 
 <%= form_tag(filtered_activities_path, method: "get") do %>
  <ul class="list-inline">
@@ -10,14 +10,12 @@
      <li><%= category %><%= check_box_tag category, name: category%></li>
    <% end %>
  </ul>
- <%= submit_tag("Find Activities") %>
+ <%= submit_tag("Filter Activities") %>
 <% end %>
-<!-- Test End -->
-
-
+<!-- End -->
 
 <% unless current_user.nil? %>
-  <div class="pa-acts-btn">
+  <div id='fav-activities-button' class="pa-acts-btn">
     <%= link_to activities_path do %>
       <div class="btn btn-primary">
         Save the awesome activities you have chosen
@@ -39,7 +37,7 @@
 
 <div class="container">
   <div class="row">
-    <% @activities.each do |activity| %>
+    <% @filtered_activities.each do |activity| %>
       <div class="col-xs-4">
         <div class="activity-card">
 
