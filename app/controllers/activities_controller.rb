@@ -19,7 +19,6 @@ class ActivitiesController < ApplicationController
     end
 
     @selected_activities = get_selected_activities
-
   end
 
   def integration_index
@@ -48,6 +47,7 @@ class ActivitiesController < ApplicationController
         a_pa.activity_id == @activity.id
       end
     end
+    @polterabend = Polterabend.find(pa_id)
   end
 
   def show_copy

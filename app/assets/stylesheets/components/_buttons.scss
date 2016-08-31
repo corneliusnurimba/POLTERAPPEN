@@ -2,6 +2,7 @@
   font-family: Montserrat-Regular;
   font-size: 14px;
   background: #FFFFFF;
+  margin: 5px;
   color: $brand-green;
   letter-spacing: 0px;
   border: 1px solid;
@@ -9,6 +10,9 @@
   transition: background 300ms;
 }
 
+.btn-default:hover{
+  border-style: none;
+}
 
 .btn:hover {
   opacity: 1.5;
