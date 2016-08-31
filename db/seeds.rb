@@ -6,12 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require_relative 'crazy_seeds'
-require_relative 'girly_seeds'
-require_relative 'sadhiaseeds'
-require_relative 'sexy_seeds'
-require_relative 'vini_seeds'
-
 Activity.destroy_all
 
 
@@ -34,7 +28,7 @@ Activity.create(
   address: 'Frederiksborggade 21, 1360 København K',
   cost: 0,
   duration: 3,
-  photo: 'activity_boring_2.jpeg'
+  photo: 'activity_boring_2.jpg'
 )
 
 Activity.create(
@@ -76,7 +70,7 @@ Activity.create(
   address: 'Nørre Voldgade 1, 1358 København K',
   cost: 0,
   duration: 2,
-  photo: 'activity_cheap_2.jpg'
+  photo: 'activity_cheap_park.jpg'
 )
 
 Activity.create(
@@ -99,4 +93,400 @@ Activity.create(
   photo: 'activity_cheap_4.jpg'
 )
 
+Activity.create(
+    category: 'crazy',
+    name: 'Volvo-race',
+    description: 'The captain chooses 2 man to lie on the roof of the Volvo while Carl-Mar kicks it through the marsh.',
+    address: 'Avderødvej 45, 2980 Kokkedal',
+    cost: '300',
+    duration: '30 min',
+    photo: 'activity_crazy_volvorace.jpg'
+  )
+
+
+Activity.create(
+    category: 'crazy',
+    name: 'Crawl through a tube - for women',
+    description: 'The captain (bachelorette) kisses a giant dick of tree that has been poured with beer and shouts: Kussen er Gud (Vargina is God). She crawls through a 3-meter-long tunnel and is baptized in beer when she comes out.',
+    address: 'Avderødvej 45, 2980 Kokkedal',
+    cost: '100',
+    duration: '20 min',
+    photo: 'activity_crazy_dick.jpg'
+  )
+
+Activity.create(
+    category: 'crazy',
+    name: 'Giant fight',
+    description: 'Everyone are wearing a Sumo suit, a big boxing glove or foam rubber mallet. Time to fight, all against all.',
+    address: 'Avderødvej 45, 2980 Kokkedal',
+    cost: '500',
+    duration: '60 min',
+    photo: 'activity_crazy_fight.jpg'
+  )
+
+
+
+Activity.create(
+    category: 'crazy',
+    name: 'Devil carousel',
+    description: 'The captain sits on a deck and is rotated around 20 times. Then turn quickly and the captain flies off and lands on mattresses, afterwards the captian will have to run to a beer and drink it.',
+    address: 'Avderødvej 45, 2980 Kokkedal',
+    cost: '400',
+    duration: '30 min',
+    photo: 'activity_crazy_carousel.jpg'
+  )
+
+
+Activity.create(
+    category: 'crazy',
+    name: 'Gokart through mud and forest',
+    description: 'The captain drives through mud, forest - cross-country racing',
+    address: 'Artillerivej 100, 2300 København S',
+    cost: '300',
+    duration: '20 min',
+    photo: 'activity_crazy_gokart2.gif'
+  )
+
+Activity.create(
+    category: 'crazy',
+    name: 'Viking ball',
+    description: 'You sit inside an iron sphere with grid and you are rolled down a hill.',
+    address: 'Krogebjerg 113, 2720 Vanløse',
+    cost: '350',
+    duration: '30 min',
+    photo: 'activity_crazy_ball.jpg'
+  )
+
+Activity.create(
+    category: 'crazy',
+    name: 'Make a band',
+    description: 'Get the girls or boys together in a band and go nuts.',
+    address: 'Finsensvej 45, 2000 Frederiksberg',
+    cost: '500',
+    duration: '75 min',
+    photo: 'activity_crazy_band.jpg'
+  )
+
+
+Activity.create(
+    category: 'girly',
+    name: 'Cupcake making',
+    description: 'Make cute cupcakes with all the girls. Yum.',
+    address: 'Bentzonvej 7, 2000 Frederiksberg',
+    cost: 300,
+    duration: 90,
+    photo: 'activity_girly_cupcake.jpeg'
+  )
+
+Activity.create(
+    category: 'girly',
+    name: 'Pottery class',
+    description: 'Pottery class with the girls (or boys). Make lovely pottery for your new home.',
+    address: 'Kompagnistræde 23, 1208 København K',
+    cost: 300,
+    duration: 90,
+    photo: 'activity_girly_pottery.gif'
+  )
+
+Activity.create(
+    category: 'girly',
+    name: 'Model makeover',
+    description: 'Get ready to strike a pose ladies and take pleasure in being treated like a star for a day. It doesn’t get more glamorous than this.',
+    address: 'Købmagergade 17, 1150 København K',
+    cost: 250,
+    duration: 120,
+    photo: 'activity_girly_model.jpg'
+  )
+
+
+Activity.create(
+    category: 'girly',
+    name: 'Pedicure',
+    description: 'Get a nice pedicure - a nice way to spend the day with the girls',
+    address: 'Finsensvej 3, 2000 Frederiksberg',
+    cost: 150,
+    duration: 45,
+    photo: 'activity_girly_pedi.jpg'
+  )
+
+Activity.create(
+    category: 'girly',
+    name: 'Massage',
+    description: 'Let the bachelorette get a (cat) massage to really relax.',
+    address: 'Hellerupvej 4, 2900 Hellerup',
+    cost: 450,
+    duration: 30,
+    photo: 'activity_girly_massage.gif'
+  )
+
+Activity.create(
+    category: 'gothic',
+    name: 'Copenhagen ghost trail trip',
+    description: 'Explore the spooky sites of Copenhagen',
+    address: 'Pisserenden 1 1452 København K',
+    cost: 100,
+    duration: 120,
+    photo: 'activity_gothic1.jpg'
+)
+
+  Activity.create(
+    category: 'gothic',
+    name: 'Picnic at Assistent Kirkegaard',
+    description: 'Enjoy a refreshing picnic at the most historic cemetary in town',
+    address: 'Kapelvej 4, 2200 København N',
+    cost: 250,
+    duration: 160,
+    photo: 'activity_gothic2.jpg'
+)
+Activity.create(
+    category: 'gothic',
+    name: 'Marilyn Manson Karaoke night',
+    description: 'Sing your heart out to Marilyn Manson classics with friends and enemies',
+    address: 'Halmtorvet 9, 1700 København V',
+    cost: 150,
+    duration: 60,
+    photo: 'activity_gothic3.jpg'
+)
+Activity.create(
+    category: 'gothic',
+    name: 'Dark poetry recital competition',
+    description: 'Who has the darkest soul of your friends? Battle it out in this competition',
+    address: 'Dortheavej 61, 2400 København NV',
+    cost: 30,
+    duration: 120,
+    photo: 'activity_gothic4.jpg'
+)
+Activity.create(
+    category: 'gothic',
+    name: 'Tribal bellydance workshop',
+    description: 'Bellydance with a gothic twist and added swords, snakes and daggers',
+    address: 'Bispebjerg Torv 1, 2400 København NV',
+    cost: 100,
+    duration: 180,
+    photo: 'activity_gothic5.jpg'
+)
+Activity.create(
+    category: 'gothic',
+    name: 'Psycotic Janitor mystery game',
+    description: 'You are looked up in a room with a psycotic janitor, can you and your friends get out before it/s too late? Try this fun game',
+    address: 'Nørre Farimagsgade 7,1364 Kbh K',
+    cost: 100,
+    duration: 180,
+    photo: 'activity_gothic6.jpg'
+)
+Activity.create(
+    category: 'geeky',
+    name: 'Arcade Day',
+    description: 'Spend a day battling each other in classic arcade games',
+    address: 'Wesselsgade 4, 2200 København',
+    cost: 200,
+    duration: 120,
+    photo: 'activity_geeky1.jpg'
+
+)
+Activity.create(
+    category: 'geeky',
+    name: 'Trip to Expementariet',
+    description: 'Go science-crazy while doing cool experiments',
+    address: 'Tuborg Havnevej 7, 2900 Hellerup',
+    cost: 100,
+    duration: 120,
+    photo: 'activity_geeky2.jpg'
+
+)
+Activity.create(
+    category: 'geeky',
+    name: 'Shopping spree at Faraos Cigarer',
+    description: 'Shop cool games, comics with a gift certificate and play Dungeons and Dragons while you are there',
+    address: 'Skindergade 27, 1159 København K',
+    cost: 300,
+    duration: 120,
+    photo: 'activity_geeky4.jpg'
+
+)
+Activity.create(
+    category: 'geeky',
+    name: 'Historic battles tour',
+    description: 'See all the important places where historic took place in Copenhagen',
+    address: 'Skindergade 27, 1159 København K',
+    cost: 150,
+    duration: 120,
+    photo: 'activity_geeky3.jpg'
+
+)
+Activity.create(
+    category: 'geeky',
+    name: 'Planetarium',
+    description: 'Catch a star-studded show at Planetarium and see galaxies far away',
+    address: 'Gl. Kongevej 10, 1610 København V',
+    cost: 150,
+    duration: 120,
+    photo: 'activity_geeky5.jpg'
+
+)
+Activity.create(
+    category: 'geeky',
+    name: 'Mystery Escape Room',
+    description: 'You have to solve the Davinci mystery in order to escape the room',
+    address: 'Aldersrogade 6A, 2100 København Ø',
+    cost: 150,
+    duration: 60,
+    photo: 'activity_geeky6.jpg'
+
+)
+
+Activity.create(
+    category: 'sexy',
+    name: 'Stripper Daniel',
+    description: 'National Champion of male striptease 2016. Italian hot stuff in Denmark. Choose a theme and get it on.',
+    address: 'Wherever you need him',
+    cost: 2000,
+    duration: 15,
+    photo: 'activity_sexy_daniel.jpg'
+  )
+
+
+Activity.create(
+    category: 'sexy',
+    name: 'Madame Amour',
+    description: 'Strip club with lovely girls.',
+    address: 'Madame Amour, Istegade 28, (red light district), 1650 København',
+    cost: 700,
+    duration: 60,
+    photo: 'activity_sexy_club.jpg'
+  )
+
+
+
+Activity.create(
+    category: 'sexy',
+    name: 'Madame Amour',
+    description: 'Strip club - says it all.',
+    address: 'Istegade 28, (red light district), 1650 København',
+    cost: 700,
+    duration: 60,
+    photo: 'activity_sexy_strip.gif'
+  )
+
+
+Activity.create(
+    category: 'sexy',
+    name: 'Pole dance',
+    description: 'Pole dance for everyone, learn to dance sexy with a pole.',
+    address: 'Rolighedsvej 8G st., 1958 Frederiksberg C',
+    cost: 1000,
+    duration: 60,
+    photo: 'activity_sexy_pole.gif'
+  )
+
+
+Activity.create(
+    category: 'adventure',
+    name: 'Sleeping in the Wild',
+    description: 'Sleep outside, the Danish nature has some crazy animals...',
+    address: 'Artillerivej 361, 2300 København S',
+    cost: 500,
+    duration: 1440,
+    photo: 'activity_adventure_wild.jpg'
+  )
+
+  Activity.create(
+    category: 'adventure',
+    name: 'Windsurfing',
+    description: 'Be wild and go windsurfing - the Danish wind is crazy!',
+    address: 'Hammelstrupvej 50, 2450 København SV',
+    cost: 1000,
+    duration: 300,
+    photo: 'activity_adventure_windsurfing.jpg'
+  )
+
+
+Activity.create(
+    category: 'adventure',
+    name: 'Hiking like Vikings',
+    description: 'This is a 11.61 km Hike in Copenhagen. The Hike has a total ascent of 25.55 and has a maximum elevation of 11.41m - so you might throw up by that crazy altitude.',
+    address: 'Elmevænget 32, 2880 Bagsværd',
+    cost: 500,
+    duration: 30,
+    photo: 'activity_adventure_hike.jpeg'
+  )
+
+
+Activity.create(
+    category: 'adventure',
+    name: 'Treasure Hunts in the Danish wild life',
+    description: 'Geocaching is an outdoor, interactive treasure hunt where you use a GPS to search for a hidden treasure. Many people around the world take part in this sport and there are hundreds of treasures hidden around Denmark. Treasures tend to be small pots with a log book and small gifts in. If you succeed in finding the treasure.',
+    address: 'Dyrehavevej 62, 2930 Klampenborg',
+    cost: 800,
+    duration: 120,
+    photo: 'activity_adventure_treasure.jpg'
+  )
+
+Activity.create(
+    category: 'adventure',
+    name: 'Sail a Viking long Boat',
+    description: 'Set sail for a day on a Viking ship!',
+    address: 'Amager Strand Stien, 2300 København S',
+    cost: 800,
+    duration: 180,
+    photo: 'activity_adventure_ship.jpg'
+  )
+
+Activity.create(
+    category: 'adventure',
+    name: 'Dinner in the forest',
+    description: 'The Danish countryside is full of wild berries, nuts, mushrooms and other edible plants. You are welcome to gather these delicious wild treats in public areas.',
+    address: 'Vejlands Allé 4, 2300 København S',
+    cost: 100,
+    duration: 120,
+    photo: 'activity_adventure_eat.jpg'
+)
+
+Activity.create(
+    category: 'fancy',
+    name: 'Dinner at Höst',
+    description: 'Höst has won three international design awards, because they make good food.',
+    address: 'Nørre Farimagsgade 41, 1364 København K',
+    cost: 590,
+    duration: 120,
+    photo: 'activity_fancy_dinner.jpg'
+)
+Activity.create(
+    category: 'fancy',
+    name: 'Museum ARKEN',
+    description: 'ARKEN Museum of Modern Art is a monumental landmark surrounded by a manmade beachscape just south of Copenhagen.',
+    address: 'Skovvej 100, Ishøj',
+    cost: 120,
+    duration: 150,
+    photo: 'activity_fancy_arken.jpg'
+)
+
+Activity.create(
+    category: 'fancy',
+    name: 'Go watch something in the ballet',
+    description: 'Watching ballet is fancy!',
+    address: 'August Bournonvilles Passage 2-8, 1017 København K',
+    cost: 500,
+    duration: 140,
+    photo: 'activity_fancy_ballet.jpeg'
+)
+
+Activity.create(
+    category: 'fancy',
+    name: 'Ni’mat Massage and SPA',
+    description: 'The best spa in the city.',
+    address: 'Ellehammersvej 20, 2770 København',
+    cost: 700,
+    duration: 120,
+    photo: 'activity_fancy_spa.jpg'
+)
+Activity.create(
+    category: 'fancy',
+    name: 'Golf - The Danish Riviera ',
+    description: 'Golf with some stunning view.',
+    address: 'Bøtterupvej 2, 3100 Hornbæk',
+    cost: 1000,
+    duration: 200,
+    photo: 'activity_fancy_golf.jpeg'
+)
 
