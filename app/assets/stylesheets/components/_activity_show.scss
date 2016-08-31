@@ -4,6 +4,7 @@
   height: 400px;
   background: cover;
   position: relative;
+
 }
 
 .favorite-star {
@@ -28,6 +29,7 @@
 
 .activity-card-category {
   position: absolute;
+  border-radius: 2px;
   bottom: 30px;
   left: 20px;
   background-color: $brand-green;
@@ -40,7 +42,20 @@
 }
 
 .activity-card-title {
-  text-align: center;
+  position: absolute;
+  color: white;
+  margin-left: 30%;
+  p {
+    font-size: 40px;
+    color: white;
+    background-color: rgba(50,50,50, 0.5);
+  }
+}
+
+.activity-show-pic {
+  width: 100%;
+  border-radius: 2px;
+  margin-top: 10px;
 }
 
 
