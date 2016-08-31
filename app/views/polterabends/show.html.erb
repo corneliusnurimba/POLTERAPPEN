@@ -30,18 +30,22 @@
 <% end %>
 
 
-
-<h2>
-  <%= pluralize @polterabend.comments.size, "comment" %>
-</h2>
-<div id="comments" class='wrapper'>
-  <% if @polterabend.comments.blank? %>
-    Be the first to leave a review for <%= @polterabend.title %>
-  <% else %>
-    <% @polterabend.comments.each do |comment| %>
-      <%= render 'comments/show', comment: comment %>
-    <% end %>
-  <% end %>
+<div class="container">
+  <div class="row">
+   <div class="col-xs-12 col-sm-4 col-sm-offset-8">
+    <h2>
+      <%= pluralize @polterabend.comments.size, "comment" %>
+    </h2>
+    <div id="comments" class='wrapper'>
+      <% if @polterabend.comments.blank? %>
+        Be the first to leave a review for <%= @polterabend.title %>
+      <% else %>
+        <% @polterabend.comments.each do |comment| %>
+          <%= render 'comments/show', comment: comment %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= render 'comments/form', polterabend: @polterabend, comment: @comment %>
+    </div>
+  </div>
 </div>
-
-<%= render 'comments/form', polterabend: @polterabend, comment: @comment %>

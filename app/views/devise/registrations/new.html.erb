@@ -1,7 +1,12 @@
+<div class="text-center headline-margin">
+  <h2>Sign up</h2>
+  <h3>Sign up to plan a mind-blowing bachelor(ette) party with the one and only POLTERAPP</h3>
+</div>
 
 
-      <h2>Sign up</h2>
-
+<div class="container">
+  <div class="row">
+   <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
@@ -11,10 +16,14 @@
           <%= f.input :password_confirmation, required: true %>
         </div>
 
-        <div class="form-actions">
+        <div class="form-actions button-margin">
           <%= f.button :submit, "Sign up" %>
         </div>
       <% end %>
 
-      <%= render "devise/shared/links" %>
-
+      <div>
+        <%= render "devise/shared/links"%>
+      </div>
+    </div>
+  </div>
+</div>
