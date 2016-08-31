@@ -1,9 +1,11 @@
-<h1>This is the Activities INDEX page</h1>
+<div class="text-center"><h1>Choose awesome activities</h1>
+<div class="text-center"><h4>How's your friend like? Select activities based on his/her personality. Click save. It's that simple</h4>
 
 <!-- Filtered Activities -->
 
 <% categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)%>
-
+</div>
+</div>
 <%= form_tag(filtered_activities_path, method: "get") do %>
  <ul class="list-inline">
    <% categories.each do |category|%>
@@ -17,8 +19,8 @@
 <% unless current_user.nil? %>
   <div id='fav-activities-button' class="pa-acts-btn">
     <%= link_to activities_path do %>
-      <div class="btn btn-primary">
-        Save the awesome activities you have chosen
+      <div class="btn">
+        Save activities
       </div>
     <% end %>
   </div>
@@ -42,7 +44,9 @@
         <div class="activity-card">
 
           <div class="activity-pic">
-            <%= image_tag activity.photo_url, class: 'img-responsive'%>
+            <!-- <div class="crop crop-img"> -->
+              <%= image_tag activity.photo_url, class: 'img-responsive' %>
+            <!-- </div> -->
           </div><!-- activity-pic end -->
           <div class="activity-deets">
 
