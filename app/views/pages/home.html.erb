@@ -48,7 +48,9 @@
     <div class="container">
       <div class="row">
         <div class='col-xs-12' id='main-search'>
-          <h1 class="banner-text">Some Text Here</h1>
+          <h3 class="text">avoid embarrassing moments</h3> <br>
+         <h1 class="banner-text"> plan a mind-blowing polterabend with polterappen</h1>
+         <%= link_to 'Get inspired', activities_path(@activities), class: 'button-inspiration' %>
         </div>
       </div>
     </div>
@@ -56,50 +58,49 @@
 </div>
 
 
-
-<div class="wrapper-grey padded">
+<div class="wrapper-grey padded less-space">
   <div class="container">
-    <h2 class="text-center header" >How Polterappen works</h2>
+    <h2 class="text-center header">How Polterappen works</h2>
     <div class="row">
-      <div class="col-md-offset-1 col-md-10">
-    <div class="row">
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-          <p class="icon-instructions">
-            <%= image_tag "inspiration.svg" %>
-          </p>
-          <h2>Step 1</h2>
-          <p>Get inspired</p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-       <p class="icon-instructions">
-            <%= image_tag "create.svg" %>
-          <h2>Step 2</h2>
-          <p>Sign up and create a polterabend</p>
-        </div>
-      </div>
+       <div class="col-md-offset-1 col-md-10">
+          <div class="row">
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+                <p class="icon-instructions">
+                  <%= image_tag "inspiration.svg" %>
+                </p>
+                <h2>Step 1</h2>
+                <p>Get inspired</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+             <p class="icon-instructions">
+                  <%= image_tag "create.svg" %>
+                <h2>Step 2</h2>
+                <p>Sign up and create a polterabend</p>
+              </div>
+            </div>
 
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-         <%= image_tag "invite.svg" %>
-          <h2>Step 3</h2>
-          <p>Invite your friends</p>
-        </div>
-      </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+               <%= image_tag "invite.svg" %>
+                <h2>Step 3</h2>
+                <p>Invite your friends</p>
+              </div>
+            </div>
 
 
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-         <%= image_tag "party.svg" %>
-          <h2>Step 4</h2>
-          <p>And now you are set for a great party</p>
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+               <%= image_tag "party.svg" %>
+                <h2>Step 4</h2>
+                <p>And now you are set for a great party</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-      </div>
-    </div>
     </div>
   </div>
 </div>
@@ -145,9 +146,7 @@
   </div>
 </div> -->
 
-<h2 class="text-center header" >Get inspired for your polterabend</h2>
-
-
+<h2 class="text-center header space-margin space-margin3" >Get inspired for your polterabend</h2>
 
 
 <div class="container">
@@ -176,24 +175,29 @@
    </div>
 </div>
 
-
+<div>
 <div class="container">
   <div class="row">
     <div class="card-images-2 col-xs-12 col-sm-6 col-md-8">
-    <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'vintage_girly.gif' %>)">
-      <div class="card-description-images-2">
-        <p class="home-p">Activities for the girly</p>
+      <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'vintage_girly.gif' %>)">
+        <div class="card-description-images-2">
+         <p class="home-p">Activities for the girly</p>
+        </div>
       </div>
-    </div>
     </div>
     <div class="card-images-2 col-xs-12 col-sm-3 col-md-4">
       <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'activity_adventure_ship.jpg' %>)">
-      <div class="card-description-images-2">
+        <div class="card-description-images-2">
         <p class="home-p">Activities for the adventurous</p>
-      </div>
+        </div>
       </div>
     </div>
+</div>
 
+<div class="space-margin3">
+  <div class="space-margin">
+    <h2 class="text-center header" >What do people say about polterappen?</h2>
+  </div>
 
     <div class="col-xs-12 col-sm-4">
       <div class="card-testimonial text-center">
@@ -232,6 +236,8 @@
     </div>
  </div>
 </div>
+</div>
+
 
 <div class="text-center padded" id="newsletter">
   <h2 class="header">Get news from us</h2>
