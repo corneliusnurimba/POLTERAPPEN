@@ -1,5 +1,16 @@
 <h2> <%= @polterabend.title %> </h2>
+
+<!-- calculate the total cost -->
 <% cost_array = [] %>
+<% @pacts_and_acts %>
+<% unless @pacts_and_acts.nil? %>
+  <% @pacts_and_acts.each do |pact_act|%>
+    <% cost_array << pact_act[1].cost %>
+  <% end %>
+<% end %>
+<!-- calculate the total cost -->
+
+
 <div class='container polterabend-card'>
   <div class="row">
     <div class="col-xs-6">
@@ -12,12 +23,14 @@
         <% if member.membership.organiser %>
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           <%= member.first_name %> <%= member.last_name %> <%= member.email %>
+          <br>
         <% else %>
           <%= member.first_name %> <%= member.last_name %> <%= member.email %>
         <br>
         <% end %>
       <% end %>
       <h2>Total Cost: <%= cost_array.sum %> DKK</h2>
+      <h2>Cost Per Person: <%= cost_array.sum / @members.length %> DKK</h2>
       <h2> Polterabend Date </h2>
       <div class="form-group">
         <div class='input-group date' id='datetimepicker3'>
@@ -36,22 +49,26 @@
 
 <div class="container polterabend-card">
   <div class="row">
-    <div class="col-xs-3">
+
+    <div class="col-xs-5">
       <div class="panel panel-info">
         <div class="panel-heading">
           <h1 class="panel-title">Favourites</h1>
         </div>
-        <div id="container1" class="panel-body box-container">
+        <div id="container1" class="box-container">
           <% @pacts_and_acts.each do |pact_act| %>
-          <%#= raise %>
-            <div itemid="<%= "itm-" + "#{pact_act[1].id}" %>" id='test' class="btn btn-default box-item" ><%= pact_act[1].name %>
+            <div itemid="<%= "itm-" + "#{pact_act[1].id}" %>" id='test' class="activity-item box-item" >
+              <%= pact_act[1].name %>
+              (Duration: <%= pact_act[1].duration %>
+              Cost: <%= pact_act[1].cost %> DKK)
             </div>
           <% end %>
         </div>
       </div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
     </div>
-    <div class="test col-xs-2">
+
+    <div class="col-xs-2">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h1 class="panel-title">Time</h1>
@@ -68,7 +85,8 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-3">
+
+    <div class="col-xs-5">
       <div class="panel panel-success">
         <div class="panel-heading">
           <h1 class="panel-title">Polterabend</h1>

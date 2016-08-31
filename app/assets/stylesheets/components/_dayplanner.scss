@@ -1,10 +1,22 @@
 .box-container {
-    height: 100%;
-    min-height: 50px;
+  height: 100%;
+  min-height: 300px;
 }
 
-#container2 {
-  background-color: rgba(0,0,0,0.5);
+.activity-item {
+  background-color: red;
+  color: #757575;
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1.5px;
+  border-radius: 4px;
+  margin: 2px 0px;
+}
+
+.activity-item:hover {
+  cursor: pointer;
+  background-color: yellow;
 }
 
 .test {
@@ -21,13 +33,19 @@
 // box items duration
 
 .box-item {
-    width: 100%;
-    z-index: 1000;
-    font-size: 10px;
+  width: 100%;
+  z-index: 1000;
+  font-size: 10px;
 }
 
 .box-item-time {
     width: 100%;
     z-index: 1000;
     font-size: 10px;
+}
+
+.time-picker {
+  font-size: 10px;
+  width: 50%;
+  background-color: red;
 }
