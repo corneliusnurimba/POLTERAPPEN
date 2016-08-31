@@ -149,74 +149,88 @@
 
 
 
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="category text-center" style="background: linear-gradient(-150deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_geeky2.jpg' %>)">
-        <div class="category-details">
-          <h2>Activities for the geeky</h2>
+      <div class="card-images img-responsive" style="background-image: url(<%= image_path 'activity_geeky4.jpg' %>)">
+        <div class="card-description-images">
+          <p class="home-p">Activities for the geeky</p>
        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="category text-center" style="background: linear-gradient(-150deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'jim_carrey.gif' %>)">
-        <div class="category-middle-details">
-          <h2>Activities for the crazy</h2>
+      <div class="card-images img-responsive" style="background-image: url(<%= image_path 'cheap2.jpg' %>)">
+        <div class="card-description-images-3">
+          <p class="home-p">Activities for the cheap asses</p>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="category text-center" style="background: linear-gradient(-150deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_fancy_home.jpg' %>)">
-        <div class="category-details">
-          <h2>Activities for the fancy</h2>
+       <div class="col-xs-12 col-sm-6 col-md-4">
+         <div class="card-images img-responsive" style="background-image: url(<%= image_path 'jim_carrey.gif' %>)">
+          <div class="card-description-images">
+            <p class="home-p">Activities for the crazy</p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
+
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-3 col-md-4">
-    <div class="category-big" style="background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_girly_home.jpg' %>)">
-      <div class="category-big-details">
-        <h2>Activities for the girly</h2>
+    <div class="card-images-2 col-xs-12 col-sm-6 col-md-8">
+    <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'vintage_girly.gif' %>)">
+      <div class="card-description-images-2">
+        <p class="home-p">Activities for the girly</p>
       </div>
     </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-8">
-    <div class="category-big" style="background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(<%= image_path 'activity_adventure_home2.jpg' %>)">
-      <div class="category-big-details">
-        <h2>Activities for the adventurous</h2>
+    <div class="card-images-2 col-xs-12 col-sm-3 col-md-4">
+      <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'activity_adventure_ship.jpg' %>)">
+      <div class="card-description-images-2">
+        <p class="home-p">Activities for the adventurous</p>
       </div>
       </div>
     </div>
 
-
-    <div class="col-xs-12 col-sm-4">
-      <div class="card-testimonial text-center">
-        <p>
-          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.
-        </p>
-      </div>
-    </div>
 
     <div class="col-xs-12 col-sm-4">
       <div class="card-testimonial text-center">
         <p>
-          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.
+          We went out to have a look at the grass grow and went to the local museum. The bachelor loved it!<br>
+          <strong>Love from Asser</strong>
         </p>
+      </div>
+      <div class="text-center">
+        <%= image_tag 'asser.jpeg', class: 'avatar-extra-large' %>
       </div>
     </div>
 
     <div class="col-xs-12 col-sm-4">
       <div class="card-testimonial text-center">
         <p>
-          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.
+          We got so wasted and ran around naked in the woods! Thank you POLTERAPPEN!!<br>
+          <strong>Thanks from all the bros</strong>
         </p>
       </div>
+        <div class="text-center">
+        <%= image_tag 'drunk.jpg', class: 'avatar-extra-large' %>
+      </div>
     </div>
-  </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div class="card-testimonial text-center">
+        <p>
+          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.<br>
+          <strong>KISSES Fernanda</strong>
+        </p>
+      </div>
+      <div class="text-center">
+        <%= image_tag 'fernanda.jpeg', class: 'avatar-extra-large' %>
+      </div>
+    </div>
+ </div>
 </div>
 
 <div class="text-center padded" id="newsletter">

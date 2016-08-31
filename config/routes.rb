@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/filtered_activities', to: 'activities#filtered_activities'
   get '/integration-index', to: 'activities#integration_index'
   get '/show_copy/:id', to: 'activities#show_copy'
+
   resources :profile, only: [:show]
 
   resources :polterabends do
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   post '/save_activities', to: 'activity_polterabends#save_activities'
+  post '/save_activity', to: 'activity_polterabends#save_activity'
   post '/save_dayplanners', to: 'activity_dayplanners#save_dayplanners'
 
 end

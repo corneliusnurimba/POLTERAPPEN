@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
     categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)
     categories = categories.select { |category| params.has_key?(category) }
     if categories.empty?
-     @filtered_activities = Activity.all
+     @filtered_activities = Activity.all.shuffle
     else
       @filtered_activities = Activity.all.select do |activity|
         categories.include?(activity.category)
@@ -13,7 +13,6 @@ class ActivitiesController < ApplicationController
     end
 
     @selected_activities = get_selected_activities
-
   end
 
   def integration_index
@@ -42,6 +41,7 @@ class ActivitiesController < ApplicationController
         a_pa.activity_id == @activity.id
       end
     end
+    @polterabend = Polterabend.find(pa_id)
   end
 
   def show_copy

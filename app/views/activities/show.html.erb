@@ -1,59 +1,32 @@
-
-<% unless current_user.nil? %>
-  <div class="pa-acts-btn">
-    <%= link_to activity_path(@activity) do %>
-      <div class="btn btn-primary">
-        Save the awesome activities you have chosen
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
-
-<div class="container">
-  <div class="activity-show-banner" style="background-image: url(<%= image_path(@activity.photo)%>)">
-    <div class="activity-card-title">
-      <h1><%=@activity.name %></h1>
-    </div>
-      <div class="favorite-star">
-              <% unless current_user.nil? || current_user.membership.nil? %>
-                <div class="upvote-hand <%= @activity.name %> <% if @selected %> green <% end %>">
-                  <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
-                  <div style="display:none !important;" class="activity_id">
-                    <%= @activity.id %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-      <span class="activity-card-cost"><p><%= @activity.cost %> DKK</p></span>
-      <span class="activity-card-category"><p><%= @activity.category.upcase %></p></span>
-    </div>
-  </div>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-8">
-          <div class="activity-card-description">
-            <h3>Details:</h3>
-            <p></strong><%= @activity.description %></p>
-            <p><strong>Address: </strong><%= @activity.address %></p>
-            <p><strong>Duration: </strong><%= @activity.duration %></p>
-            <p></strong><%= @activity.cost %></p>
-          </div>
+      <div class="col-xs-12 col-md-6">
+        <h1><%=@activity.name %></h1>
+        <p><%= @activity.cost %> DKK</p>
+        <p><%= @activity.category.upcase %></p>
+        <h3>Details:</h3>
+        <p></strong><%= @activity.description %></p>
+        <p><strong>Address: </strong><%= @activity.address %></p>
+        <p><strong>Duration: </strong><%= @activity.duration %></p>
+       <!--  <p></strong><%#=@activity.cost %></p> -->
+        <% unless current_user.nil? %>
+          <%= simple_form_for :save_activity, :url => save_activity_path, :method => :post do |f| %>
+            <%= f.hidden_field :activity_id, value: @activity.id %>
+            <%= f.hidden_field :polterabend_id, value: @polterabend.id %>
+            <%= f.button :submit, value: "Save Activity to Polterabend",
+                         class: 'btn' %>
+        <% end %>
+        <% end %>
       </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="activity-card-details">
-          <h3>Hours</h3>
-          <h3>Address</h3>
-          <button>Add Event</button>
-        </div>
+      <div class="col-xs-12 col-md-6">
+        <%= image_tag @activity.photo, class: "activity-show-pic" %>
       </div>
     </div>
   </div>
-
 
 
   <div>
-    <%= link_to 'Back to activities', activities_path(@activities), class: 'btn btn-primary' %>
+    <%= link_to 'Back to activities', activities_path(@activities), class: 'btn' %>
   </div>
 
 

@@ -17,31 +17,13 @@
 
     <% if user_signed_in? && current_user.membership.nil? %>
 
-
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to polterabend_path(current_user) do %>
-                <i class="fa fa-user"></i> <%= t(".polterabend", default: "Polterabend") %>
-              <% end if user_signed_in?%>
-            </li>
-            <li>
-              <%= link_to root_path do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
+      <div class="btn">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= t(".sign_out", default: "Log out") %>
+            <% end %>
       </div>
+
+
 
 
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Create a Polterabend</button>
@@ -52,33 +34,15 @@
 
     <% elsif user_signed_in? %>
 
-        <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to polterabend_path(current_user) do %>
-                <i class="fa fa-user"></i> <%= t(".polterabend", default: "Polterabend") %>
-              <% end if user_signed_in?%>
-            </li>
-            <li>
-              <%= link_to root_path do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+      <div class="btn">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+                  <%= t(".sign_out", default: "Log out") %>
               <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
       </div>
 
 
-    <%= link_to t(".polterabend", default: "My spectacular polterabend"), polterabend_path(current_user.membership.polterabend_id), class: "btn btn-primary" %>
 
+    <%= link_to t(".polterabend", default: "My spectacular polterabend"), polterabend_path(current_user.membership.polterabend_id), class: "btn" %>
 
 
     <% else %>
