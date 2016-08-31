@@ -5,6 +5,16 @@ class DayplannersController < ApplicationController
     @dayplanners = Dayplanner.all
   end
 
+  def save_pa_acts
+    dayplanner_id = params[:dayplanner_id]
+    params[:activity_ids].each do |activity_id|
+      ActivityDayplanner.create(dayplanner_id: dayplanner_id,
+                                activity_id: activity_id
+                                ).save
+    end
+    render :json => params
+  end
+
   def show
     @activities = Activity.all
     @dayplanner = Dayplanner.find(params[:id])

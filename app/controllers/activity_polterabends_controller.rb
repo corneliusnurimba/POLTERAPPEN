@@ -1,6 +1,3 @@
-
-require 'json'
-
 class ActivityPolterabendsController < ApplicationController
 
   def show
@@ -18,17 +15,12 @@ class ActivityPolterabendsController < ApplicationController
   def save_activities
     polterabend_id = params[:polterabend_id]
     params[:activity_ids].each do |activity_id|
-      ActivityPolterabend.create( total_upvotes: 0,
-                                  polterabend_id: polterabend_id,
-                                  activity_id: activity_id
-                                  ).save
+      ActivityPolterabend.create(total_upvotes: 0,
+                                 polterabend_id: polterabend_id,
+                                 activity_id: activity_id
+                                ).save
     end
     render :json => params
-
-
-    # activities[:polterabend_id].each do |activity_id|
-    #   activity_polterabends.build(polterabend_id: polterabend_id, activity_id: activity_id)
-    # end
   end
 
   private

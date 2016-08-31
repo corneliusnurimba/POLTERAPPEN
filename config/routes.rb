@@ -18,12 +18,11 @@ Rails.application.routes.draw do
     resources :dayplanners
     resources :activity_dayplanners
     resources :comments, only: :create
-
-
   end
 
   post '/save_activities', to: 'activity_polterabends#save_activities'
   post '/save_activity', to: 'activity_polterabends#save_activity'
+  post '/save_pa_acts', to: 'dayplanners#save_pa_acts'
   post '/save_dayplanners', to: 'activity_dayplanners#save_dayplanners'
 
 end

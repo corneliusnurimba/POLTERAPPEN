@@ -1,10 +1,14 @@
 <h2>This is the dayplanner awesomeness page</h2>
 
 <h3> polterabend activities </h3>
-<% @plans_and_acts.each do |plan_act| %>
-  <%= link_to plan_act[1].name,
-              polterabend_activity_dayplanner_path(@polterabend.id, plan_act[0].id) %><br>
-<% end %>
+<div class="pa-acts-btn">
+  <%= link_to save_pa_acts_path do %>
+    <div class="btn btn-primary">
+      Save the awesome activities you have chosen
+    </div>
+  <% end %>
+</div>
+
 
 
 <div class="container">
@@ -26,80 +30,74 @@
   <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
 </div>
 
-
-
 <div class="row">
-    <div class="col-xs-3">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h1 class="panel-title">Favourites</h1>
-        </div>
-
-        <div id="container1" class="panel-body box-container">
-          <% @activities.each do |activity| %>
-            <div itemid="<%= "itm-" + "#{activity.id}" %>" id='test' class="btn btn-default box-item" ><%= activity.name %>
-            </div>
-          <% end %>
-        </div>
-
+  <div class="col-xs-3">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h1 class="panel-title">Favourites</h1>
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
+      <div id="container1" class="panel-body box-container">
+        <% @activities.each do |activity| %>
+          <div itemid="<%= "itm-" + "#{activity.id}" %>" id='test' 
+               class="btn btn-default box-item">
+            <%= activity.name %>
+            <div class="pa-act hidden"><% activity.id %></div>
+          </div>
+        <% end %>
+      </div>
     </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" 
+            data-target=".bs-example-modal-sm">Add Custom Activity</button>
+  </div>
 
-    <div class="test col-xs-2">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h1 class="panel-title">Time</h1>
-        </div>
+  <div class="test col-xs-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Begins - Ends</h1>
+      </div>
 
+      <% 12.times do |i| %>
         <div class="box-container">
           <div class="row">
+          <div class="time-field-<%= i %> hidden">
             <div class="col-xs-6">
-              <%= render 'timepicker'%>
-            </div>
-            <div class="col-xs-6">
-              <%= render 'timepicker'%>
+                <%= render 'timepicker'%>
+              </div>
+              <div class="col-xs-6">
+                <%= render 'timepicker'%>
+              </div>
             </div>
           </div>
         </div>
-
-      </div>
+      <% end %>
     </div>
-
-    <div class="col-xs-3">
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h1 class="panel-title">Polterabend</h1>
-        </div>
-        <div id="container2" class="box-container">
-
-        </div>
-      </div>
-    </div>
-
-    <%= link_to "Edit dayplanner", edit_polterabend_dayplanner_path(@dayplanner), class: 'link link_card'%>
-
   </div>
+  <div class="col-xs-3">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h1 class="panel-title">Polterabend</h1>
+      </div>
+      <div id="container2" class="box-container">
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
-
- $(".acts-dayplanners-btn").on("click", function() {
-   <% unless current_user.nil? %>
-   // var array = $(".upvote-hand.blue > .activity_id");
-   var json_for_activities = {};
-   json_for_activities.activity_ids = [];
+  $(".acts-dayplanners-btn").on("click", function() {
+   var array = $(".container2>.pa-act");
+   var json_for_pa_acts = {};
+   json_for_pa_acts.activity_ids = [];
    for (var i = 0; i < array.length; i++) {
-     json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+     json_for_pa_acts.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
     }
-    json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id %>;
+    json_for_pa_acts.dayplanner_id = <%= params[:id] %>;
     $.post(
-        '<%= save_activities_path %>',
-        json_for_activities,
+        '<%= save_pa_acts_path %>',
+        json_for_pa_acts,
         function(data) {
-          console.log("Response: " + data);
+          alert('Saved your awesome dayplan');
         }
       );
-     <% end %>
    });
-
 </script>
