@@ -20,6 +20,13 @@ class PolterabendsController < ApplicationController
 
     @comment = Comment.new
 
+    # activities = Activity.where.not(latitude: nil, longitude: nil)
+    activities = @pacts_and_acts
+    @hash = Gmaps4rails.build_markers(activities) do |activity_polterabend, marker|
+      marker.lat activity_polterabend[1].latitude
+      marker.lng activity_polterabend[1].longitude
+    end
+
   end
 
   def new
@@ -31,7 +38,7 @@ class PolterabendsController < ApplicationController
 
     if @polterabend.save
       @dayplanner = Dayplanner.new(polterabend_id: @polterabend.id).save
-      @membership = Membership.new(user_id: current_user.id, polterabend_id: @polterabend.id).save
+      @membership = Membership.new(user_id: current_user.id, polterabend_id: @polterabend.id, organiser: true).save
       redirect_to polterabend_path(@polterabend)
     else
       @errors = @polterabend.errors.full_messages
@@ -67,3 +74,5 @@ class PolterabendsController < ApplicationController
   end
 
 end
+
+

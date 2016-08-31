@@ -12,12 +12,6 @@ class ActivitiesController < ApplicationController
       end
     end
 
-    activities = Activity.where.not(latitude: nil, longitude: nil)
-    @hash = Gmaps4rails.build_markers(activities) do |activity, marker|
-      marker.lat activity.latitude
-      marker.lng activity.longitude
-    end
-
     @selected_activities = get_selected_activities
   end
 

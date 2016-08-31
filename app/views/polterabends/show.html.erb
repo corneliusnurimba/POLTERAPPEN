@@ -1,51 +1,145 @@
-
 <h2> <%= @polterabend.title %> </h2>
 
-<div class='container'>
-  <%= cl_image_tag @polterabend.photo_url %>
+<!-- calculate the total cost -->
+<% cost_array = [] %>
+<% @pacts_and_acts %>
+<% unless @pacts_and_acts.nil? %>
+  <% @pacts_and_acts.each do |pact_act|%>
+    <% cost_array << pact_act[1].cost %>
+  <% end %>
+<% end %>
+<!-- calculate the total cost -->
+
+
+<div class='container polterabend-card'>
+  <div class="row">
+    <div class="col-xs-6">
+      <h2> The Polter </h2>
+      <%= cl_image_tag @polterabend.photo_url %>
+    </div>
+    <div class="col-xs-6">
+      <h2> Who's Coming </h2>
+      <% @members.each do |member| %>
+        <% if member.membership.organiser %>
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          <%= member.first_name %> <%= member.last_name %> <%= member.email %>
+          <br>
+        <% else %>
+          <%= member.first_name %> <%= member.last_name %> <%= member.email %>
+        <br>
+        <% end %>
+      <% end %>
+      <h2>Total Cost: <%= cost_array.sum %> DKK</h2>
+      <h2>Cost Per Person: <%= cost_array.sum / @members.length %> DKK</h2>
+      <h2> Polterabend Date </h2>
+      <div class="form-group">
+        <div class='input-group date' id='datetimepicker3'>
+          <input type='text' class="form-control"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h3> polterabend activities </h3>
 
+<!-- ************ dayplanner ************ -->
 
+<div class="container polterabend-card">
+  <div class="row">
 
-<h3> polterabend total cost </h3>
-<% cost_array = [] %>
-<% @pacts_and_acts.each do |pact_act| %>
-  <%= link_to pact_act[1].name,
-              polterabend_activity_polterabend_path(@polterabend.id, pact_act[0].id) %><br>
-  <% cost_array.push(Activity.find(pact_act[0].activity_id).cost) %>
-<% end %>
-<p>Total Cost: <%= cost_array.sum %></p>
+    <div class="col-xs-5">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h1 class="panel-title">Favourites</h1>
+        </div>
+        <div id="container1" class="box-container">
+          <% @pacts_and_acts.each do |pact_act| %>
+            <div itemid="<%= "itm-" + "#{pact_act[1].id}" %>" id='test' class="activity-item box-item" >
+              <%= pact_act[1].name %>
+              (Duration: <%= pact_act[1].duration %>
+              Cost: <%= pact_act[1].cost %> DKK)
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
+    </div>
 
-<h3> motherfuckers who are coming </h3>
-<% @members.each do |member| %>
-  <%= member.first_name %> <%= member.last_name %> <%= member.email %>
-  <br>
-<% end %>
+    <div class="col-xs-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">Time</h1>
+        </div>
+        <div class="box-container">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= render 'dayplanners/timepicker'%>
+            </div>
+            <div class="col-xs-6">
+              <%= render 'dayplanners/timepicker'%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="col-xs-5">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1 class="panel-title">Polterabend</h1>
+        </div>
+        <div id="container2" class="box-container">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- temporary -->
 <% if @dayplanner %>
   <h3> crappy dayplanner </h3>
   <%= link_to 'dayplanner', polterabend_dayplanner_path(@polterabend.id, @dayplanner.id)%>
 <% end %>
+<!-- temporary -->
 
-
-<div class="container">
-  <div class="row">
-   <div class="col-xs-12 col-sm-4 col-sm-offset-8">
-    <h2>
-      <%= pluralize @polterabend.comments.size, "comment" %>
-    </h2>
-    <div id="comments" class='wrapper'>
-      <% if @polterabend.comments.blank? %>
-        Be the first to leave a review for <%= @polterabend.title %>
-      <% else %>
-        <% @polterabend.comments.each do |comment| %>
-          <%= render 'comments/show', comment: comment %>
-        <% end %>
+<div id="comments" class='wrapper'>
+  <div class="container polterabend-card">
+    <h2><%= pluralize @polterabend.comments.size, "comment" %></h2>
+    <% if @polterabend.comments.blank? %>
+      Be the first to leave a comment for <%= @polterabend.title %>
+    <% else %>
+      <% @polterabend.comments.each do |comment| %>
+        <%= render 'comments/show', comment: comment %>
       <% end %>
-    </div>
+    <% end %>
     <%= render 'comments/form', polterabend: @polterabend, comment: @comment %>
-    </div>
   </div>
 </div>
+
+<!-- ************** google map api and javascript ************** -->
+
+<div class="container polterabend-card">
+  <div id="map" style="width: 100%; height: 600px;"></div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
