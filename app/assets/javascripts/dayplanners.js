@@ -29,7 +29,7 @@ $(document).ready(function() {
         }
       });
       window.decrement_items();
-      $('.time-field-'+item_number).addClass('hidden');
+      $('.time-field-'+window.item_number).addClass('hidden');
     }
   });
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
           $(this).appendTo("#container2"); 
         }
       });
-      $('.time-field-'+item_number).removeClass('hidden');
+      $('.time-field-'+window.item_number).removeClass('hidden');
       window.increment_items();
     }
   });
