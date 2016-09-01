@@ -1,7 +1,7 @@
 .btn {
   font-size: 14px;
   background: #FFFFFF;
-  margin: 5px;
+  // margin: 5px;
   color: $brand-green;
   letter-spacing: 0px;
   border: 1px solid;
@@ -41,7 +41,7 @@ color: white;
   opacity: 1.5;
   color: white;
   background: $brand-green;
-
+border: 1px solid $brand-green;
 }
 
 .btn-pink {
