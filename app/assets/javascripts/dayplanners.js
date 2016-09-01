@@ -2,7 +2,13 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
-  var item_number = 0;
+  window.item_number = 0;
+  window.increment_items = function (){ 
+    window.item_number = window.item_number+1;
+  }
+  window.decrement_items = function (){
+    window.item_number = window.item_number-1; 
+  }
   $(function () {
       $('#datetimepicker3').datetimepicker({
           format: 'L'
@@ -22,8 +28,8 @@ $(document).ready(function() {
           $(this).appendTo("#container1");
         }
       });
+      window.decrement_items();
       $('.time-field-'+item_number).addClass('hidden');
-      item_number = item_number-1;
     }
   });
 
@@ -36,7 +42,7 @@ $(document).ready(function() {
         }
       });
       $('.time-field-'+item_number).removeClass('hidden');
-      item_number = item_number+1;
+      window.increment_items();
     }
   });
 });
