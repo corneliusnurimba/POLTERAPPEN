@@ -19,8 +19,6 @@
   <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
 </div>
 
-
-
 <div class="row">
     <div class="col-xs-3">
       <div class="panel panel-info">
@@ -30,13 +28,17 @@
 
         <div id="container1" class="panel-body box-container">
           <% @activities.each do |activity| %>
-            <div itemid="<%= "itm-" + "#{activity.id}" %>" id='test' class="btn btn-default box-item" ><%= activity.name %>
+            <div itemid="<%= "itm-" + "#{activity.id}" %>" id='test' 
+                 class="btn btn-default box-item" ><%= activity.name %>
             </div>
           <% end %>
         </div>
 
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" 
+              data-target=".bs-example-modal-sm">
+        Add Custom Activity
+      </button>
     </div>
 
     <div class="test col-xs-2">
@@ -45,17 +47,19 @@
           <h1 class="panel-title">Time</h1>
         </div>
 
-        <div class="box-container">
-          <div class="row">
-            <div class="col-xs-6">
-              <%= render 'timepicker'%>
-            </div>
-            <div class="col-xs-6">
-              <%= render 'timepicker'%>
+        <% 12.times do %>
+          <div class="box-container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="hidden time-fields">
+                  <%= render 'timepicker'%>
+                  <%= render 'timepicker'%>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
+        <% end %>
+        
       </div>
     </div>
 
