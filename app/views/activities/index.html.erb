@@ -1,42 +1,73 @@
-<div class="text-center"><h1>Choose awesome activities</h1>
-<div class="text-center"><h4>How's your friend like? Select activities based on his/her personality. Click save. It's that simple</h4>
-
-<!-- Filtered Activities -->
-
 <% categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)%>
+<div class="text-center"><h1>Choose awesome activities</h1>
+  <div class="text-center"><h4>How's your friend like? Select activities based on his/her personality. Click save. It's that simple</h4>
+    <!-- Filtered Activities -->
+  </div>
 </div>
-</div>
-<%= form_tag(filtered_activities_path, method: "get") do %>
- <ul class="list-inline">
-   <% categories.each do |category|%>
-     <li><%= category %><%= check_box_tag category, name: category%></li>
-   <% end %>
- </ul>
- <%= submit_tag("Filter Activities") %>
-<% end %>
-<!-- End -->
 
+
+<%= form_tag(filtered_activities_path, method: "get") do %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12"><h3 class="filter-h3"> Category</h3></div>
+  </div>
+  <div class="row">
+    <% categories.each do |category|%>
+      <div class="col-md-3">
+        <div class="form-group">
+          <div class="activities-checkbox" >
+            <%= check_box_tag category, name: category %> <%= category %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-xs-6"><h3 class="filter-h3">Cost</h3></div>
+    <div class="col-xs-6"><h3 class="filter-h3">Search</h3></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group-box">
+        <select class="form-control input-lg activities-cost form-control-cost ">
+          <option>Min Cost</option>
+          <option>DKK200</option>
+          <option>DKK400</option>
+          <option>DKK600</option>
+          <option>DKK800</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group-box">
+        <select class="form-control input-lg activities-cost form-control-cost">
+          <option>Max Cost</option>
+          <option>DKK1000</option>
+          <option>DKK2000</option>
+          <option>DKK3000</option>
+          <option>DKK10000</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <%= submit_tag("Filter Activities", class:'filter-activities') %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<!-- save activities button -->
 <% unless current_user.nil? %>
   <div id='fav-activities-button' class="pa-acts-btn">
     <%= link_to activities_path do %>
-      <div class="btn">
-        Save activities
-      </div>
+      <div class="btn">Save activities</div>
     <% end %>
   </div>
 <% end %>
 
-<!-- temporary -->
-<% cost_array = [] %>
-<%= @selected_activities %>
-<% unless @selected_activities.nil? %>
-  <% @selected_activities.each do |activity_id|%>
-    <% cost_array.push(Activity.find(activity_id).cost)  %>
-  <% end %>
-  <p>Total Cost: <%= cost_array.sum %></p>
-<% end %>
-<!-- temporary -->
 
+<!-- CARDS BEGIN -->
 <div class="container">
   <div class="row">
     <% @filtered_activities.each do |activity| %>
@@ -70,15 +101,14 @@
                   </div>
                 </div>
               <% end %>
+            </div>
             <div class="deets-lhs">
-              <!-- <div class="card-duration"><%= activity.duration %></div> -->
-              <div class="card-cost"><%= activity.cost %> DKK</div>
+              <div class="card-price"><%= activity.cost %> DKK</div>
             </div><!-- deets-rhs end -->
-            </div><!-- deets-rhs -->
-
-          </div><!-- activity-deets end -->
-        </div>
+          </div><!-- deets-rhs -->
+        </div><!-- activity-deets end -->
       </div>
+    </div>
     <% end %>
   </div>
 </div>
@@ -86,36 +116,70 @@
 
 <%= javascript_include_tag 'application' unless current_user.nil? %>
 <script>
-// dont add blue to green hands wrapping whole if statement in a new if
-$(".upvote-hand").on("click", function() {
-  if (!$(this).hasClass('green')){
-    if ($(this).hasClass('blue')){
-      $(this).removeClass('blue');
-    } else {
-      $(this).addClass('blue');
+  $(".upvote-hand").on("click", function() {
+    if (!$(this).hasClass('green')){
+      if ($(this).hasClass('blue')){
+        $(this).removeClass('blue');
+      } else {
+        $(this).addClass('blue');
+      }
     }
-  }
-  console.log('has classes '+$(this).attr("class"));
-});
+    console.log('has classes '+$(this).attr("class"));
+  });
 </script>
 
 <script>
-
- $(".pa-acts-btn").on("click", function() {
-      var array = $(".upvote-hand.blue>.activity_id");
-      var json_for_activities = {};
-      json_for_activities.activity_ids = [];
-      for (var i = 0; i < array.length; i++) {
-        json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
-      }
-      json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? || current_user.membership.nil? %>;
-      $.post(
-          '<%= save_activities_path %>',
-          json_for_activities,
-          function() { alert('we are the champions my friend'); }
-          );
+  $(".pa-acts-btn").on("click", function() {
+    var array = $(".upvote-hand.blue>.activity_id");
+    var json_for_activities = {};
+    json_for_activities.activity_ids = [];
+    for (var i = 0; i < array.length; i++) {
+      json_for_activities.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+    }
+    json_for_activities.polterabend_id = <%= current_user.membership.polterabend_id unless current_user.nil? || current_user.membership.nil? %>;
+    $.post(
+      '<%= save_activities_path %>',
+      json_for_activities,
+      function() { alert('we are the champions my friend'); }
+      );
   });
-
 </script>
 
 
+<q></q>
+
+<!-- BACKUP CARDS - STYLE REFERENCE - SEE ACTIVITIES.SCSS_BAK MAKE SURE YOU UNCOMMENT EVERYFUCKING THING
+<div class="container">
+  <div class="row">
+    <%# @filtered_activities.each do |activity| %>
+      <div class="col-xs-4">
+        <div class="activity-card">
+          <div class="activity-pic">
+            <%#= image_tag activity.photo_url, class: 'img-responsive' %>
+          </div><!-- activity-pic end --><!--
+          <div class="activity-deets">
+            <div class="deets-center">
+              <h4><%#= link_to activity.name, activity_path(activity) %></h4>
+              <div class="card-category"><%#= activity.category %></div>
+              <div class="card-city sm-text"><%#= activity.address %></div>
+            </div><!-- deets-center end --><!--
+            <div class="deets-rhs">
+              <%# unless current_user.nil? || current_user.membership.nil? %>
+                <div class="upvote-hand <%#= activity.name %> <%# if @selected_activities.include? activity.id %> green <%# end %>">
+                  <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
+                  <div style="display:none !important;" class="activity_id">
+                    <%#= activity.id %>
+                  </div>
+                </div>
+              <#% end %>
+              <div class="deets-lhs">
+                <div class="card-cost"><%#= activity.cost %> DKK</div>
+              </div><!-- deets-rhs end --><!--
+            </div><!-- deets-rhs --><!--
+          </div><!-- activity-deets end --><!--
+        </div>
+      </div>
+    <%# end %>
+  </div>
+</div>
+-->

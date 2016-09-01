@@ -9,14 +9,12 @@ Your footer style
   .push {
     height: 50px; /* .push must be the same height as .footer */
   }
-
   .footer{
     border-top: 1px solid #e8e8e8 ;
     font-size: 0.9em;;
     padding: 20px 0 4px 0;
     margin-left: 20px;
     margin-right: 20px;
-
   }
   .footer ul li a{
     color: gray;
@@ -48,6 +46,16 @@ Your footer style
 //   opacity: 1.5;
 //   font-size: 30px;
 // }
+=======
+}
+
+
+.icons-footer {
+  color: black;
+  opacity: 1.5;
+  font-size: 30px;
+}
+>>>>>>> filters style complete
 
 
 
