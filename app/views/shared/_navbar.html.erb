@@ -2,7 +2,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "polterappen-logo-1.svg" %>
+    <%= image_tag "logo.svg" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -10,15 +10,15 @@
 
 
   <div class= "navbar-wagon-activities">
-    <%= link_to 'Activities', activities_path, class: 'navbar-wagon-link' %>
+    <%= link_to 'Activities', activities_path, class: 'navbar-wagon-link navbar-wagon-item' %>
   </div>
     <!-- Different navigation if login or not -->
 
 
     <% if user_signed_in? && current_user.membership.nil? %>
 
-      <div class="btn">
-        <%= link_to destroy_user_session_path, method: :delete do %>
+      <div class="navbar-wagon-activities">
+        <%= link_to destroy_user_session_path, class: 'navbar-wagon-link navbar-wagon-item', method: :delete do %>
                 <%= t(".sign_out", default: "Log out") %>
             <% end %>
       </div>
@@ -34,15 +34,15 @@
 
     <% elsif user_signed_in? %>
 
-      <div class="btn">
-        <%= link_to destroy_user_session_path, method: :delete do %>
+
+        <%= link_to destroy_user_session_path, class: 'navbar-wagon-link navbar-wagon-item', method: :delete do %>
                   <%= t(".sign_out", default: "Log out") %>
               <% end %>
-      </div>
 
 
 
-    <%= link_to t(".polterabend", default: "My spectacular polterabend"), polterabend_path(current_user.membership.polterabend_id), class: "btn" %>
+
+    <%= link_to t(".polterabend", default: "My polterabend"), polterabend_path(current_user.membership.polterabend_id), class: "btn" %>
 
 
     <% else %>
@@ -52,7 +52,7 @@
 
 
 
-     <%= link_to t(".sign_up", default: "Sign up & Create a polterabend"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+     <%= link_to t(".sign_up", default: "Create Polterabend"), new_user_registration_path, class: "btn" %>
 
     <% end %>
 
