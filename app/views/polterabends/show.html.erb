@@ -7,9 +7,9 @@
 <% cost_array = [] %>
 <% @pacts_and_acts %>
 <% unless @pacts_and_acts.nil? %>
-  <% @pacts_and_acts.each do |pact_act|%>
-    <% cost_array << pact_act[1].cost %>
-  <% end %>
+<% @pacts_and_acts.each do |pact_act|%>
+<% cost_array << pact_act[1].cost %>
+<% end %>
 <% end %>
 <!-- calculate the total cost -->
 
@@ -23,21 +23,21 @@
     <div class="col-xs-6">
       <h3> Who's Coming </h3>
       <% @members.each do |member| %>
-        <% if member.membership.organiser %>
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-          <%= member.first_name %> <%= member.last_name %> <%= member.email %>
-          <br>
-        <% else %>
-          <%= member.first_name %> <%= member.last_name %> <%= member.email %>
-        <br>
-        <% end %>
+      <% if member.membership.organiser %>
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= member.first_name %> <%= member.last_name %> <%= member.email %>
+      <br>
+      <% else %>
+      <%= member.first_name %> <%= member.last_name %> <%= member.email %>
+      <br>
+      <% end %>
       <% end %>
 
       <h3>Total Cost</h3>
-       <%= cost_array.sum %> DKK
+      <%= cost_array.sum %> DKK
 
       <h3>Cost Per Person</h3>
-       <%= cost_array.sum / @members.length %>DKK
+      <%= cost_array.sum / @members.length %>DKK
 
       <h3> Polterabend Date </h3>
         <%= @polterabend.datetime %>
@@ -50,33 +50,32 @@
 <%# raise %>
 <!-- ************ dayplanner ************ -->
 
-<div class="wrapper polterabend-card">
+<div class="wrapper polterabend-card polterabend-card-grey">
   <div class="row">
 
     <div class="col-xs-5">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h1 class="panel-title">Favourites</h1>
+      <div class="">
+        <div class="">
+          <h2 class="">Activities</h2>
+          <div class="text-sm">Drag and drop the activities to the day planner</div>
+          <br>
         </div>
         <div id="container1" class="box-container">
           <% @pacts_and_acts.each do |pact_act| %>
-            <div itemid="<%= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" >
-              <%#= content_tag(:div, nil, itemid: "itm-" + pact_act[1].id.to_s, class: "activity-item box-item", data: {duration: "#{pact_act[1].duration}"}) do %>
-                <div class="pa-act hidden">
-                  <%= pact_act[1].id %>
-                </div>
-                <div class="row">
-                  <div class="col-xs-10">
-                    <%= pact_act[1].name %>
-                  <%#= pact_act[1].address %>
-                  </div>
-                  <div class="col-xs-2 cost-box text-center">
-                    <%= pact_act[1].cost %> DKK
-                    <%= pact_act[1].duration %> min
-                  </div>
-                </div>
-              <%# end %>
+          <%= content_tag(:div, nil, itemid: "itm-" + pact_act[1].id.to_s, class: "activity-item box-item", data: {duration: "#{pact_act[1].duration}"}) do %>
+          <div class="activity-item-content">
+            <div>
+              <%= pact_act[1].name %>
+              <div class="activity-item-text">
+              <%= pact_act[1].cost %> DKK
+              </div>
             </div>
+            <%#= pact_act[1].address %>
+            <div class="activity-item-text">
+              <%= pact_act[1].duration %> min
+            </div>
+          </div>
+          <% end %>
           <% end %>
         </div>
       </div>
@@ -102,10 +101,10 @@
     </div> -->
 
     <div class="col-xs-7">
-      <div class="panel panel-success">
-        <div class="panel-heading">
+      <div class="dayplanner-container">
+        <!-- <div class="panel-heading">
           <h1 class="panel-title">Polterabend</h1>
-        </div>
+        </div> -->
         <div class="row">
          <div class="col-xs-2">
           <ul class="list-unstyled">
@@ -165,27 +164,34 @@
             <% end %>
           <% end %>
         </div>
-        <!-- marks code -->
         <div class="acts-dayplanners-btn">
-          <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
+          <%= submit_tag "Save dayplan", class: "btn btn-primary" %>
         </div>
-        <!-- marks code -->
       </div>
     </div>
+
+
+    <!-- marks code -->
   </div>
+  <br>
+  <div class="acts-dayplanners-btn text-right">
+      <%= submit_tag "Save dayplan", class: "btn btn-green" %>
+    </div>
 </div>
+</div>
+
 
 <div id="comments" class='wrapper polterabend-card'>
   <!-- <div class="container polterabend-card"> -->
-    <h2><%= pluralize @polterabend.comments.size, "comment" %></h2>
-    <% if @polterabend.comments.blank? %>
-      Be the first to leave a comment for <%= @polterabend.title %>
-    <% else %>
-      <% @polterabend.comments.each do |comment| %>
-        <%= render 'comments/show', comment: comment %>
-      <% end %>
-    <% end %>
-    <%= render 'comments/form', polterabend: @polterabend, comment: @comment %>
+  <h2><%= pluralize @polterabend.comments.size, "comment" %></h2>
+  <% if @polterabend.comments.blank? %>
+  Be the first to leave a comment for <%= @polterabend.title %>
+  <% else %>
+  <% @polterabend.comments.each do |comment| %>
+  <%= render 'comments/show', comment: comment %>
+  <% end %>
+  <% end %>
+  <%= render 'comments/form', polterabend: @polterabend, comment: @comment %>
   <!-- </div> -->
 </div>
 
@@ -196,21 +202,21 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: { id: 'map' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
+});
+});
+<% end %>
 <% end %>
 
 <script>
@@ -239,10 +245,10 @@
     json_for_pa_acts.dayplanner_id = <%= params[:id] %>;
     console.log(json_for_pa_acts);
     $.post(
-        '<%= save_pa_acts_path %>',
-        json_for_pa_acts,
-        function(data) {
-          alert('Saved your awesome dayplan');
-    });
+      '<%= save_pa_acts_path %>',
+      json_for_pa_acts,
+      function(data) {
+        alert('Saved your awesome dayplan');
+      });
   });
 </script>
