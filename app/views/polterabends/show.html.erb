@@ -60,18 +60,22 @@
         </div>
         <div id="container1" class="box-container">
           <% @pacts_and_acts.each do |pact_act| %>
-            <!-- <div itemid="<%#= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" > -->
-              <%= content_tag(:div, nil, itemid: "itm-" + pact_act[1].id.to_s, class: "activity-item box-item", data: {duration: "#{pact_act[1].duration}"}) do %>
-              <div class="row">
-                <div class="col-xs-10">
-                  <%= pact_act[1].name %>
+            <div itemid="<%= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" >
+              <%#= content_tag(:div, nil, itemid: "itm-" + pact_act[1].id.to_s, class: "activity-item box-item", data: {duration: "#{pact_act[1].duration}"}) do %>
+                <div class="pa-act hidden">
+                  <%= pact_act[1].id %>
+                </div>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <%= pact_act[1].name %>
                   <%#= pact_act[1].address %>
+                  </div>
+                  <div class="col-xs-2 cost-box text-center">
+                    <%= pact_act[1].cost %> DKK
+                    <%= pact_act[1].duration %> min
+                  </div>
                 </div>
-                <div class="col-xs-2 cost-box text-center">
-                  <%= pact_act[1].cost %> DKK
-                  <%= pact_act[1].duration %> min
-                </div>
-              <% end %>
+              <%# end %>
             </div>
           <% end %>
         </div>
@@ -140,28 +144,29 @@
           </ul>
          </div>
          <div id="container2" class="col-xs-10 box-container">
-         <% unless @plans.empty? %><% @plans.each do |plan| %>
-          <div itemid="<%= "itm-" + "#{plan.id}" %>" id='test' class="activity-item box-item">
-            <%= plan.name %>
-            <div class="pa-act hidden">
-              <%= plan.id %>
-            </div>
-          </div>
-        <% end %>
-        <% end %>
-        </div>
+          <% unless @plans.empty? %>
+            <% @plans.each do |plan| %>
+              <%= content_tag(:div, nil, itemid: "itm-" + plan.id.to_s, class: "activity-item box-item", data: {duration: "#{plan.duration}"}) do %>
+                <div class="pa-act hidden">
+                  <%= plan.id %>
+                </div>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <%= plan.name %>
+                  </div>
+                  <div class="col-xs-2 cost-box text-center">
+                    <%= plan.cost %> DKK
+                    <%= plan.duration %> min
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
         <!-- marks code -->
-          <div class="acts-dayplanners-btn">
-            <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
-          </div>
-          <div class="pa-acts-btn">
-            <%= link_to save_pa_acts_path do %>
-              <div class="btn btn-primary">
-                Save the awesome activities you have chosen
-              </div>
-            <% end %>
-          </div>
+        <div class="acts-dayplanners-btn">
+          <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
+        </div>
         <!-- marks code -->
       </div>
     </div>
@@ -230,12 +235,14 @@
     var array = $("#container2>.activity-item>.pa-act");
     var json_for_pa_acts = {};
     json_for_pa_acts.activity_ids = [];
+    console.log($("#container2>.activity-item>.pa-act"));
 
     for (var i = 0; i < array.length; i++) {
       json_for_pa_acts.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+      console.log(array[i].innerHTML);
     }
     json_for_pa_acts.dayplanner_id = <%= params[:id] %>;
-    console.log(json_for_pa_acts)
+    console.log(json_for_pa_acts);
     $.post(
         '<%= save_pa_acts_path %>',
         json_for_pa_acts,

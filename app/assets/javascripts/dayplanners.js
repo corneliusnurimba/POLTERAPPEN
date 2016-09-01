@@ -5,7 +5,6 @@ $(document).ready(function() {
 
   $(".activity-item").each(function(){
     var duration = $(this).data("duration");
-    console.log(duration)
     if (duration > 20) {
 
     $(this).css({
