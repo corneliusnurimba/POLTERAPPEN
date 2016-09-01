@@ -40,8 +40,8 @@ class ActivitiesController < ApplicationController
       @selected = ActivityPolterabend.where(polterabend_id: pa_id).any? do |a_pa|
         a_pa.activity_id == @activity.id
       end
+      @polterabend = Polterabend.find(pa_id)
     end
-    @polterabend = Polterabend.find(pa_id)
   end
 
   def show_copy

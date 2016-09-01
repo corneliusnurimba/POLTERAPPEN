@@ -4,7 +4,7 @@
         <h1><%=@activity.name %></h1>
         <p><%= @activity.cost %> DKK</p>
         <p><%= @activity.category.upcase %></p>
-        <h3>Details:</h3>
+        <h2>Details</h2>
         <p></strong><%= @activity.description %></p>
         <p><strong>Address: </strong><%= @activity.address %></p>
         <p><strong>Duration: </strong><%= @activity.duration %></p>
@@ -13,8 +13,7 @@
           <%= simple_form_for :save_activity, :url => save_activity_path, :method => :post do |f| %>
             <%= f.hidden_field :activity_id, value: @activity.id %>
             <%= f.hidden_field :polterabend_id, value: @polterabend.id %>
-            <%= f.button :submit, value: "Save Activity to Polterabend",
-                         class: 'btn' %>
+            <%= f.button :submit, value: "Save Activity to Polterabend", class: 'btn' %>
         <% end %>
         <% end %>
       </div>
