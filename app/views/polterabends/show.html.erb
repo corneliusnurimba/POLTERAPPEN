@@ -60,26 +60,19 @@
         </div>
         <div id="container1" class="box-container">
           <% @pacts_and_acts.each do |pact_act| %>
-            <div id="duration" data-dur="<%= pact_act[1].duration %>" itemid="<%= "itm-" + "#{pact_act[1].id}" %>" data-id="<%= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" >
-              <div class="col-xs-10">
-                <%= pact_act[1].name %>
-                <%#= pact_act[1].address %>
-              </div>
-              <div class="col-xs-2 cost-box text-center">
-                <%= pact_act[1].cost %> DKK
-                <%= pact_act[1].duration %> min
-              </div>
+            <!-- <div itemid="<%#= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" > -->
+              <%= content_tag(:div, nil, itemid: "itm-" + pact_act[1].id.to_s, class: "activity-item box-item", data: {duration: "#{pact_act[1].duration}"}) do %>
+              <div class="row">
+                <div class="col-xs-10">
+                  <%= pact_act[1].name %>
+                  <%#= pact_act[1].address %>
+                </div>
+                <div class="col-xs-2 cost-box text-center">
+                  <%= pact_act[1].cost %> DKK
+                  <%= pact_act[1].duration %> min
+                </div>
+              <% end %>
             </div>
-            <script type="text/javascript">
-              // var dur = $("#duration").data("dur");
-              // var id = $("#duration").data("id");
-              // $('#duration').each(function() {
-              //   if ($(this).attr("itemid") === itemid) {
-              //     $(this).css({"height": '100'});
-              //   }
-              // });
-              $(".activity-item").css({"height": '100'});
-            </script>
           <% end %>
         </div>
       </div>
@@ -112,17 +105,17 @@
         <div class="row">
          <div class="col-xs-2">
           <ul class="list-unstyled">
-            <li class="activity-item" >06:00</li>
-            <li>07:00</li>
-            <li>08:00</li>
-            <li>09:00</li>
-            <li>10:00</li>
-            <li>11:00</li>
-            <li>12:00</li>
-            <li>13:00</li>
-            <li>14:00</li>
-            <li>15:00</li>
-            <li>16:00</li>
+            <li class="time-slot-hour" >06:00</li>
+            <li class="time-slot-hour" >07:00</li>
+            <li class="time-slot-hour" >08:00</li>
+            <li class="time-slot-hour" >09:00</li>
+            <li class="time-slot-hour" >10:00</li>
+            <li class="time-slot-hour" >11:00</li>
+            <li class="time-slot-hour" >12:00</li>
+            <li class="time-slot-hour" >13:00</li>
+            <li class="time-slot-hour" >14:00</li>
+            <li class="time-slot-hour" >15:00</li>
+            <li class="time-slot-hour" >16:00</li>
           </ul>
          </div>
          <div id="container2" class="col-xs-10 box-container">

@@ -3,6 +3,19 @@
 
 $(document).ready(function() {
 
+  $(".activity-item").each(function(){
+    var duration = $(this).data("duration");
+    console.log(duration)
+    if (duration > 20) {
+
+    $(this).css({
+      'height' : duration + 'px'
+    }, 100);
+    }
+    // $(this).parent().parent().find("h3").delay(650).fadeIn(650);
+  });
+
+
   $(function () {
       $('#datetimepicker3').datetimepicker({
           format: 'L'
