@@ -1,0 +1,55 @@
+activity-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.30);
+  border-radius: 4px;
+  align-items: center;
+  height: 400px;
+  width: 380px;
+  margin: 20px;
+}
+
+.activity-pic{
+  height: 276px ;
+}
+.activity-pic>img{
+  // margin:10px;
+  height: 276px;
+}
+.activity-deets{
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.deets-rhs, .deets-center, .deets-lhs{
+  display: flex;
+  flex-direction: column;
+}
+.deets-lhs{
+  align-self: flex-start;
+  padding: 5px;
+}
+.deets-center{
+  align-self: center;
+  padding: 5px;
+}
+.deets-rhs{
+  align-self: flex-start;
+}
+
+.card-title
+{
+  font-size:22px;
+  color: green;
+}
+
+.card-category
+{
+  color: #757575;
+}
+
+.card-city
+{
+  color: #757575;
+}

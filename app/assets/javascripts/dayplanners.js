@@ -3,11 +3,11 @@
 
 $(document).ready(function() {
   window.item_number = 0;
-  window.increment_items = function (){ 
+  window.increment_items = function (){
     window.item_number = window.item_number+1;
   }
   window.decrement_items = function (){
-    window.item_number = window.item_number-1; 
+    window.item_number = window.item_number-1;
   }
   $(function () {
       $('#datetimepicker3').datetimepicker({
@@ -35,10 +35,10 @@ $(document).ready(function() {
 
   $("#container2").droppable({
     drop: function(event, ui) {
-      var itemid = $(event.originalEvent.toElement).`attr("itemid");
+      var itemid = $(event.originalEvent.toElement).  attr("itemid");
       $('.box-item').each(function() {
         if ($(this).attr("itemid") === itemid) {
-          $(this).appendTo("#container2"); 
+          $(this).appendTo("#container2");
         }
       });
       $('.time-field-'+window.item_number).removeClass('hidden');

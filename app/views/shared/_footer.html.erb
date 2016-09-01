@@ -15,43 +15,15 @@
   </ul>
 </div>
 
-
-
-
-
-
-
-
-
-
-<!-- <div class="footer" >
-   <div class="row">
-    <div class="col-xs-4">
-      <ul class="list-inline">
-          <li><a href=""><i class="fa fa-instagram icons-footer"></i></a></li>
-          <li><a href=""><i class="fa fa-facebook icons-footer"></i></a></li>
-          <li><a href=""><i class="fa fa-twitter icons-footer"></i></a></li>
-        </ul>
-      </div>
-      <div class="col-xs-7 text-right">
-        <h3>Just some text</h3>
-      </div>
-
-  </div>
-</div> -->
-
-
 <!-- javascript to keep the navbar at the bottom of webpage -->
 <script>
+  $(document).ready(function() {
+    var docHeight = $(window).height();
+    var footerHeight = $('#footer').height();
+    var footerTop = $('#footer').position().top + footerHeight;
 
-$(document).ready(function() {
-
- var docHeight = $(window).height();
- var footerHeight = $('#footer').height();
- var footerTop = $('#footer').position().top + footerHeight;
-
- if (footerTop < docHeight) {
-  $('#footer').css('margin-top', 10+ (docHeight - footerTop) + 'px');
- }
-});
+    if (footerTop < docHeight) {
+      $('#footer').css('margin-top', 10+ (docHeight - footerTop) + 'px');
+    }
+  });
 </script>

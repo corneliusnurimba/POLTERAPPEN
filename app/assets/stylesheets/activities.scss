@@ -1,16 +1,164 @@
-// Place all the styles related to the activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .blue {
   color: #469AE0;
 }
-
+.filter-h3{
+  margin-top:0;
+  background-size: 10px;
+  font-size: 22px;
+}
 .green {
   color: #32B796 !important;
 }
 
 .favourite-icon-size {
   font-size: 30px;
+  color: #FDB631;
+  display: flex;
+  justify-content: space-between;
 }
 
 
+.activity-category {
+  font-size: 20px;
+}
+
+.activity-price {
+ background-color: #03cea4;
+ border: 1px solid white;
+  height: 40px;
+  padding: 10px;
+}
+
+.activities-checkbox {
+  background-color: white ;
+  border-radius: 1px;
+  border: 1px solid #FF2055;
+  color: black;
+  border-radius: 10px;
+}
+
+.activity-title {
+  font-size:30px;
+  color: white;
+}
+
+.activity-box {
+  padding: 25px;
+  background-color: #f9f9f9;
+  border: 1px solid #e8e8e8;
+  background-size: 30px;
+  padding: 40px;
+}
+
+.form-control {
+  background-size: 1px;
+  padding: 20px;
+  border: 1px solid white;
+  height: 10px;
+  background-color: white ;
+  font-size: 15px;
+  border-bottom: 5px;
+}
+
+.form-group-box {
+  background-color: transparent;
+  border-radius: 1px;
+  color: black;
+}
+
+.form-control-cost {
+  height: 40px !important;
+  margin-bottom: 30px;
+}
+
+.hours {
+  margin-bottom: 20px ;
+}
+
+.address {
+   margin-bottom: 20px ;
+}
+
+.favourite {
+ background-color: #DB2465;
+  padding-bottom: 20px;
+  padding: 15px;
+  color: white;
+}
+
+
+.filter-activities {
+  background: #32B796;
+  font-size: 17px;
+  border-bottom: 2px;
+  border: none ;
+  border-radius: 4px;
+  padding: 7px 18px;
+  color: white;
+  height: 40px;
+}
+
+.footer{
+border-top: 1px solid #e8e8e8;
+padding-top: 20px;
+margin-top: 20px;
+}
+
+// BELOW HERE IS PASTED CODE BEWARE!
+
+.activity-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.30);
+  border-radius: 4px;
+  align-items: center;
+  height: 400px;
+  width: 380px;
+  margin: 20px;
+}
+
+.activity-pic{
+  height: 276px ;
+}
+.activity-pic>img{
+  height: 276px;
+}
+.activity-deets{
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.deets-rhs, .deets-center, .deets-lhs{
+  display: flex;
+  flex-direction: column;
+}
+.deets-lhs{
+  align-self: flex-start;
+  padding: 5px;
+}
+.deets-center{
+  align-self: center;
+  padding: 5px;
+}
+.deets-rhs{
+  align-self: flex-start;
+}
+
+.card-title
+{
+  font-size:22px;
+  color: green;
+}
+
+.card-category
+{
+  color: #757575;
+}
+
+.card-city
+{
+  color: #757575;
+}

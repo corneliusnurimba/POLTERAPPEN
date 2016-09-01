@@ -70,9 +70,9 @@ class ActivitiesController < ApplicationController
   end
 
   def filtered_activities
-    @params = params
-    categories = %w(adventure fancy cheap boring gothic geeky crazy sexy girly)
-    categories = categories.select { |category| params.has_key?(category) }
+    categories = %w(adventure fancy cheap boring geeky crazy sexy girly)
+    categories.select! { |category| params.has_key?(category) }
+    params.each{|k| $stderr.puts "#{k}" }
     if categories.empty?
      @filtered_activities = Activity.all
     else
