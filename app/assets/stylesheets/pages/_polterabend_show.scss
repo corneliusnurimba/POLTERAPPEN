@@ -1,9 +1,9 @@
 .polterabend-card {
   // background-color: #24CCB8;
-  padding: 50px;
   margin: 50px;
   box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.30);
   border-radius: 4px;
+      padding: 30px 50px;
 }
 
 .cost-box {
@@ -17,3 +17,9 @@
   vertical-align: center;
 }
 
+
+.polterabend-card-text {
+  font-family: Montserrat;
+  font-size: 40px;
+  font-weight: 400;
+  }

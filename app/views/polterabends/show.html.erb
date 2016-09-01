@@ -17,11 +17,11 @@
 <div class='wrapper polterabend-card'>
   <div class="row">
     <div class="col-xs-6">
-      <h2> The Polter </h2>
+      <h2>The Polter</h2>
       <%= cl_image_tag @polterabend.photo_url %>
     </div>
     <div class="col-xs-6">
-      <h2> Who's Coming </h2>
+      <h3> Who's Coming </h3>
       <% @members.each do |member| %>
         <% if member.membership.organiser %>
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -32,9 +32,14 @@
         <br>
         <% end %>
       <% end %>
-      <h2>Total Cost: <%= cost_array.sum %> DKK</h2>
-      <h2>Cost Per Person: <%= cost_array.sum / @members.length %> DKK</h2>
-      <h2> Polterabend Date </h2>
+
+      <h3>Total Cost</h3>
+       <%= cost_array.sum %> DKK
+
+      <h3>Cost Per Person</h3>
+       <%= cost_array.sum / @members.length %>DKK
+
+      <h3> Polterabend Date </h3>
       <div class="form-group">
         <div class='input-group date' id='datetimepicker3'>
           <input type='text' class="form-control"/>

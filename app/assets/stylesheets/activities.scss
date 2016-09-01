@@ -52,13 +52,7 @@
 }
 
 .form-control {
-  background-size: 1px;
-  padding: 20px;
-  border: 1px solid white;
-  height: 10px;
-  background-color: white ;
-  font-size: 15px;
-  border-bottom: 5px;
+
 }
 
 .form-group-box {
@@ -70,6 +64,13 @@
 .form-control-cost {
   height: 40px !important;
   margin-bottom: 30px;
+  background-size: 1px;
+  padding: 20px;
+  border: 1px solid white;
+  height: 10px;
+  background-color: white ;
+  font-size: 15px;
+  // border-bottom: 5px;
 }
 
 .hours {
