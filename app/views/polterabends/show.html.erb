@@ -106,20 +106,63 @@
          <div class="col-xs-2">
           <ul class="list-unstyled">
             <li class="time-slot-hour" >09:00</li>
+            <li class="time-slot-half-hour" ></li>
             <li class="time-slot-hour" >10:00</li>
+            <li class="time-slot-half-hour" ></li>
             <li class="time-slot-hour" >11:00</li>
+            <li class="time-slot-half-hour" ></li>
             <li class="time-slot-hour" >12:00</li>
+            <li class="time-slot-half-hour" ></li>
             <li class="time-slot-hour" >13:00</li>
+            <li class="time-slot-half-hour" ></li>
             <li class="time-slot-hour" >14:00</li>
+            <li class="time-slot-half-hour" ></li>
             <li class="time-slot-hour" >15:00</li>
+            <li class="time-slot-half-hour" ></li>
             <li class="time-slot-hour" >16:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >17:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >18:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >19:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >20:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >21:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >22:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >23:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >24:00</li>
+            <li class="time-slot-half-hour" ></li>
           </ul>
          </div>
          <div id="container2" class="col-xs-10 box-container">
-
+         <% unless @plans.empty? %><% @plans.each do |plan| %>
+          <div itemid="<%= "itm-" + "#{plan.id}" %>" id='test' class="activity-item box-item">
+            <%= plan.name %>
+            <div class="pa-act hidden">
+              <%= plan.id %>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
         </div>
         </div>
-
+        <!-- marks code -->
+          <div class="acts-dayplanners-btn">
+            <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
+          </div>
+          <div class="pa-acts-btn">
+            <%= link_to save_pa_acts_path do %>
+              <div class="btn btn-primary">
+                Save the awesome activities you have chosen
+              </div>
+            <% end %>
+          </div>
+        <!-- marks code -->
       </div>
     </div>
   </div>
@@ -170,3 +213,34 @@
   <% end %>
 <% end %>
 
+<script>
+  $(document).ready(() => {
+    var loop_max;
+    if (<%= @plans.empty? %>){
+      loop_max = 0;
+    } else {
+      loop_max = <%=  @plans.length %>;
+    }
+    for (var i = 0; i < loop_max; i++){
+      $('.time-field-'+i).removeClass('hidden');
+      window.increment_items();
+    }
+  });
+  $(".acts-dayplanners-btn").on("click", function() {
+    var array = $("#container2>.activity-item>.pa-act");
+    var json_for_pa_acts = {};
+    json_for_pa_acts.activity_ids = [];
+
+    for (var i = 0; i < array.length; i++) {
+      json_for_pa_acts.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+    }
+    json_for_pa_acts.dayplanner_id = <%= params[:id] %>;
+    console.log(json_for_pa_acts)
+    $.post(
+        '<%= save_pa_acts_path %>',
+        json_for_pa_acts,
+        function(data) {
+          alert('Saved your awesome dayplan');
+    });
+  });
+</script>
