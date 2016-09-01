@@ -8,8 +8,6 @@
   background-size: 10px;
   font-size: 22px;
 }
-.activity-top{
-
 .green {
   color: #32B796 !important;
 }
@@ -24,7 +22,6 @@
 
 .activity-category {
   font-size: 20px;
-
 }
 
 .activity-price {
@@ -32,7 +29,6 @@
  border: 1px solid white;
   height: 40px;
   padding: 10px;
-
 }
 
 .activities-checkbox {
@@ -41,8 +37,6 @@
   border: 1px solid #FF2055;
   color: black;
   border-radius: 10px;
-
-
 }
 
 .activity-title {
@@ -56,7 +50,6 @@
   border: 1px solid #e8e8e8;
   background-size: 30px;
   padding: 40px;
-
 }
 
 .form-control {
@@ -67,16 +60,12 @@
   background-color: white ;
   font-size: 15px;
   border-bottom: 5px;
-
 }
 
 .form-group-box {
-  background-color: transparent; ;
+  background-color: transparent;
   border-radius: 1px;
-
   color: black;
-
-
 }
 
 .form-control-cost {
@@ -86,7 +75,6 @@
 
 .hours {
   margin-bottom: 20px ;
-
 }
 
 .address {
@@ -98,19 +86,18 @@
   padding-bottom: 20px;
   padding: 15px;
   color: white;
-
 }
 
 
 .filter-activities {
-  background: #32B796 ;
+  background: #32B796;
   font-size: 17px;
   border-bottom: 2px;
   border: none ;
-    border-radius: 4px;
-    padding: 7px 18px;
-    color: white;
-    height: 40px;
+  border-radius: 4px;
+  padding: 7px 18px;
+  color: white;
+  height: 40px;
 }
 
 .footer{
@@ -119,4 +106,59 @@ padding-top: 20px;
 margin-top: 20px;
 }
 
+// BELOW HERE IS PASTED CODE BEWARE!
 
+.activity-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.30);
+  border-radius: 4px;
+  align-items: center;
+  height: 400px;
+  width: 380px;
+  margin: 20px;
+}
+
+.activity-pic{
+  height: 276px ;
+}
+.activity-pic>img{
+  height: 276px;
+}
+.activity-deets{
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.deets-rhs, .deets-center, .deets-lhs{
+  display: flex;
+  flex-direction: column;
+}
+.deets-lhs{
+  align-self: flex-start;
+  padding: 5px;
+}
+.deets-center{
+  align-self: center;
+  padding: 5px;
+}
+.deets-rhs{
+  align-self: flex-start;
+}
+
+.card-title
+{
+  font-size:22px;
+  color: green;
+}
+
+.card-category
+{
+  color: #757575;
+}
+
+.card-city
+{
+  color: #757575;
+}

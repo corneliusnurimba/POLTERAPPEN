@@ -10,15 +10,7 @@ activity-card{
   margin: 20px;
 }
 
-
-// .upvote-hand{
-//   z-index:1000;
-// }
 .activity-pic{
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // max-width: 90%;
   height: 276px ;
 }
 .activity-pic>img{
