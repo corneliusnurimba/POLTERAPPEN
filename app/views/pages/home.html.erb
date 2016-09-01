@@ -1,5 +1,3 @@
-
-
 <!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> -->
   <!-- Indicators -->
 <!--   <ol class="carousel-indicators">
@@ -48,7 +46,11 @@
     <div class="container">
       <div class="row">
         <div class='col-xs-12' id='main-search'>
-          <h1 class="banner-text">Some Text Here</h1>
+
+          <h3 class="banner-subtitle">Avoid embarrassing moments</h3>
+         <h1 class="banner-text"> Plan a mind-blowing polterabend with polterappen</h1>
+
+                 <%= link_to 'Get inspired', activities_path(@activities), class: 'button-inspiration' %>
         </div>
       </div>
     </div>
@@ -56,50 +58,49 @@
 </div>
 
 
-
-<div class="wrapper-grey padded">
+<div class="wrapper-grey padded less-space">
   <div class="container">
-    <h2 class="text-center header" >How Polterappen works</h2>
+    <h2 class="text-center header home-page-title">How Polterappen works</h2>
     <div class="row">
-      <div class="col-md-offset-1 col-md-10">
-    <div class="row">
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-          <p class="icon-instructions">
-            <%= image_tag "inspiration.svg" %>
-          </p>
-          <h2>Step 1</h2>
-          <p>Get inspired</p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-       <p class="icon-instructions">
-            <%= image_tag "create.svg" %>
-          <h2>Step 2</h2>
-          <p>Sign up and create a polterabend</p>
-        </div>
-      </div>
+       <div class="col-md-offset-1 col-md-10">
+          <div class="row">
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+                <p class="icon-instructions">
+                  <%= image_tag "inspiration.svg" %>
+                </p>
+                <h2>Step 1</h2>
+                <p class="home-text">Get inspired</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+             <p class="icon-instructions">
+                  <%= image_tag "create.svg" %>
+                <h2>Step 2</h2>
+                <p class="home-text">Sign up and create a polterabend</p>
+              </div>
+            </div>
 
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-         <%= image_tag "invite.svg" %>
-          <h2>Step 3</h2>
-          <p>Invite your friends</p>
-        </div>
-      </div>
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+               <%= image_tag "invite.svg" %>
+                <h2>Step 3</h2>
+                <p class="home-text">Invite your friends</p>
+              </div>
+            </div>
 
 
-      <div class="col-xs-12 col-sm-3">
-        <div class="card-instructions">
-         <%= image_tag "party.svg" %>
-          <h2>Step 4</h2>
-          <p>And now you are set for a great party</p>
+            <div class="col-xs-12 col-sm-3">
+              <div class="card-instructions">
+               <%= image_tag "party.svg" %>
+                <h2>Step 4</h2>
+                <p class="home-text">And now you are set for a great party</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-      </div>
-    </div>
     </div>
   </div>
 </div>
@@ -145,72 +146,67 @@
   </div>
 </div> -->
 
-<h2 class="text-center header" >Get inspired for your polterabend</h2>
 
-
+<h2 class="text-center header space-margin space-margin3" >Get inspired</h2>
 
 
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card-images img-responsive" style="background-image: url(<%= image_path 'activity_geeky4.jpg' %>)">
-        <div class="card-description-images">
-          <p class="home-p">Activities for the geeky</p>
-       </div>
+      <div class="card-images img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'activity_geeky4.jpg' %>)">
+          <h3>Activities for the geeky</h3>
+
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card-images img-responsive" style="background-image: url(<%= image_path 'cheap2.jpg' %>)">
-        <div class="card-description-images-3">
-          <p class="home-p">Activities for the cheap asses</p>
-        </div>
+      <div class="card-images img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'cheap2.jpg' %>)">
+          <h3>Activities for the cheap asses</h3>
       </div>
     </div>
        <div class="col-xs-12 col-sm-6 col-md-4">
-         <div class="card-images img-responsive" style="background-image: url(<%= image_path 'jim_carrey.gif' %>)">
-          <div class="card-description-images">
-            <p class="home-p">Activities for the crazy</p>
-          </div>
+         <div class="card-images img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'jim_carrey.gif' %>)">
+            <h3>Activities for the crazy</h3>
         </div>
       </div>
    </div>
 </div>
 
-
+<div>
 <div class="container">
   <div class="row">
-    <div class="card-images-2 col-xs-12 col-sm-6 col-md-8">
-    <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'vintage_girly.gif' %>)">
-      <div class="card-description-images-2">
-        <p class="home-p">Activities for the girly</p>
+    <div class="col-xs-12 col-sm-6 col-md-8">
+      <div class="card-images-2 img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'vintage_girly.gif' %>)">
+         <h3>Activities for the girly</h3>
       </div>
     </div>
-    </div>
-    <div class="card-images-2 col-xs-12 col-sm-3 col-md-4">
-      <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'activity_adventure_ship.jpg' %>)">
-      <div class="card-description-images-2">
-        <p class="home-p">Activities for the adventurous</p>
-      </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card-images-2 img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'activity_adventure_ship.jpg' %>)">
+        <h3>Activities for the adventurous</h3>
       </div>
     </div>
+</div>
 
+<div class="space-margin3">
+  <div class="space-margin">
+    <h2 class="text-center header home-page-title" >What do people say about polterappen?</h2>
+  </div>
 
     <div class="col-xs-12 col-sm-4">
       <div class="card-testimonial text-center">
-        <p>
-          We went out to have a look at the grass grow and went to the local museum. The bachelor loved it!<br>
+        <p class="home-text">
+          "We went out to have a look at the grass grow and went to the local museum. The bachelor loved it!"<br>
           <strong>Love from Asser</strong>
         </p>
       </div>
       <div class="text-center">
-        <%= image_tag 'asser.jpeg', class: 'avatar-extra-large' %>
+        <%= image_tag 'asser.jpg', class: 'avatar-extra-large' %>
       </div>
     </div>
 
     <div class="col-xs-12 col-sm-4">
       <div class="card-testimonial text-center">
-        <p>
-          We got so wasted and ran around naked in the woods! Thank you POLTERAPPEN!!<br>
+        <p class="home-text">
+          "We got so wasted and ran around naked in the woods! Thank you POLTERAPPEN!!"<br>
           <strong>Thanks from all the bros</strong>
         </p>
       </div>
@@ -221,17 +217,19 @@
 
     <div class="col-xs-12 col-sm-4">
       <div class="card-testimonial text-center">
-        <p>
-          I arranged the coolest polterabend for my best friend. The app made the planning so much fun.<br>
+        <p class="home-text">
+          "I arranged the coolest polterabend for my best friend. The app made the planning so much fun."<br>
           <strong>KISSES Fernanda</strong>
         </p>
       </div>
       <div class="text-center">
-        <%= image_tag 'fernanda.jpeg', class: 'avatar-extra-large' %>
+        <%= image_tag 'fernanda.jpg', class: 'avatar-extra-large' %>
       </div>
     </div>
  </div>
 </div>
+</div>
+
 
 <div class="text-center padded" id="newsletter">
   <h2 class="header">Get news from us</h2>

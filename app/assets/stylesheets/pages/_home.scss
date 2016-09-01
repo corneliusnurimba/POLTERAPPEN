@@ -1,3 +1,4 @@
+
 /* -------------------------------------
  * CSS code specific to home page
  * (margin/padding adjustments)
@@ -27,13 +28,36 @@ below is the code for the carousel
 }
 
 .banner-text {
+  font-size: 72px;
   text-shadow: 0px 0 2px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  color: white;
+
+}
+
+
+.banner-subtitle {
+ font-size: 20px;
+ font-family: Montserrat;
+ font-weight: 400;
+}
+
+.text {
+ font-size: 32px;
+ letter-spacing: 1px;
+ color: white;
+ font-family: Montserrat;
+ font-weight: 400;
+ margin-bottom: 0;
 }
 
 .banner h1 {
-  font-size: 80px;
+  font-size: 50px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+  margin-bottom: 46px;
 }
 .banner p {
   font-size: 20px;
@@ -46,6 +70,15 @@ below is the code for the carousel
 //     background-image: -webkit-linear-gradient(180deg, rgba(75,49,106,0) 0%, rgba(75,49,106,0.5) 55%);
 //     z-index: 1;
 // }
+
+
+.home-text {
+  font-size: 18px;
+}
+
+.home-page-title {
+  font-size: 58px;
+}
 
 .bg-filter {
   position: absolute;
@@ -66,12 +99,16 @@ below is the code for the carousel
   color: white;
   position: relative;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 
 .card-description-images {
-  position: absolute;
   bottom: 150px;
+  padding-top: 30%;
   left: 30%;
   text-align: center;
 }
@@ -83,25 +120,48 @@ below is the code for the carousel
   padding-top: 10px;
   position: relative;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-description-images-2 {
-  position: absolute;
   bottom: 150px;
+  padding-top: 65%;
   left: 30%;
   text-align: center;
 }
 
 .card-description-images-3 {
-  position: absolute;
   bottom: 150px;
-  left: 40%;
+  padding-top: 50%;
+  left: 90%;
   text-align: center;
 }
 
+
 .home-p {
-  font-size: 16px;
+  color: white;
 }
+
+
+.space-margin {
+  margin-bottom: 50px;
+}
+
+
+.space-margin2 {
+  margin-bottom: 80px;
+}
+
+.space-margin3 {
+  margin-top: 70px;
+}
+
+.less-space {
+  margin-bottom: -100px;
+}
+
 
 // older css to be deleted
 

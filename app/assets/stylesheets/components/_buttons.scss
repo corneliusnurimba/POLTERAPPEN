@@ -1,5 +1,4 @@
 .btn {
-  font-family: Montserrat-Regular;
   font-size: 14px;
   background: #FFFFFF;
   margin: 5px;
@@ -10,8 +9,32 @@
   transition: background 300ms;
 }
 
+
+
 .btn-default:hover{
   border-style: none;
+}
+
+.button-inspiration {
+ margin: 5px;
+ transition: background 300ms;
+ font-size: 22px;
+ padding: 16px 28px;
+ border-radius: 4px;
+ background-color: #03cea4;
+ color: white;
+ border: none;
+ }
+
+.button-inspiration:hover{
+text-decoration: none;
+color: white;
+background-color: #03a785;
+}
+
+.button-inspiration:focus{
+text-decoration: none;
+color: white;
 }
 
 .btn:hover {
@@ -27,7 +50,6 @@
   padding: 15px 20px;
   opacity: 1;
   margin: 2em 0 3em 0;
-  font-family: Montserrat-Regular;
   font-size: 14px;
   color: #FFFFFF;
   letter-spacing: 1px;
@@ -43,7 +65,6 @@
   background: $brand-pink;
   border-radius: 3px;
   padding: 6px 12px;
-  font-family: Montserrat-Regular;
   font-size: 14px;
   color: #FFFFFF;
   letter-spacing: 1px;
