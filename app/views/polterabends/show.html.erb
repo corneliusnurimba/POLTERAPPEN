@@ -1,4 +1,7 @@
-<h2> <%= @polterabend.title %> </h2>
+<div class="wrapper text-center">
+  <h2> <%= @polterabend.title %> </h2>
+</div>
+
 
 <!-- calculate the total cost -->
 <% cost_array = [] %>
@@ -11,7 +14,7 @@
 <!-- calculate the total cost -->
 
 
-<div class='container polterabend-card'>
+<div class='wrapper polterabend-card'>
   <div class="row">
     <div class="col-xs-6">
       <h2> The Polter </h2>
@@ -47,7 +50,7 @@
 
 <!-- ************ dayplanner ************ -->
 
-<div class="container polterabend-card">
+<div class="wrapper polterabend-card">
   <div class="row">
 
     <div class="col-xs-5">
@@ -57,18 +60,33 @@
         </div>
         <div id="container1" class="box-container">
           <% @pacts_and_acts.each do |pact_act| %>
-            <div itemid="<%= "itm-" + "#{pact_act[1].id}" %>" id='test' class="activity-item box-item" >
-              <%= pact_act[1].name %>
-              (Duration: <%= pact_act[1].duration %>
-              Cost: <%= pact_act[1].cost %> DKK)
+            <div id="duration" data-dur="<%= pact_act[1].duration %>" itemid="<%= "itm-" + "#{pact_act[1].id}" %>" data-id="<%= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" >
+              <div class="col-xs-10">
+                <%= pact_act[1].name %>
+                <%#= pact_act[1].address %>
+              </div>
+              <div class="col-xs-2 cost-box text-center">
+                <%= pact_act[1].cost %> DKK
+                <%= pact_act[1].duration %> min
+              </div>
             </div>
+            <script type="text/javascript">
+              // var dur = $("#duration").data("dur");
+              // var id = $("#duration").data("id");
+              // $('#duration').each(function() {
+              //   if ($(this).attr("itemid") === itemid) {
+              //     $(this).css({"height": '100'});
+              //   }
+              // });
+              $(".activity-item").css({"height": '100'});
+            </script>
           <% end %>
         </div>
       </div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
     </div>
 
-    <div class="col-xs-2">
+<!--     <div class="col-xs-2">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h1 class="panel-title">Time</h1>
@@ -76,24 +94,42 @@
         <div class="box-container">
           <div class="row">
             <div class="col-xs-6">
-              <%= render 'dayplanners/timepicker'%>
+              <%#= render 'dayplanners/timepicker'%>
             </div>
             <div class="col-xs-6">
-              <%= render 'dayplanners/timepicker'%>
+              <%#= render 'dayplanners/timepicker'%>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="col-xs-5">
+    <div class="col-xs-7">
       <div class="panel panel-success">
         <div class="panel-heading">
           <h1 class="panel-title">Polterabend</h1>
         </div>
-        <div id="container2" class="box-container">
+        <div class="row">
+         <div class="col-xs-2">
+          <ul class="list-unstyled">
+            <li class="activity-item" >06:00</li>
+            <li>07:00</li>
+            <li>08:00</li>
+            <li>09:00</li>
+            <li>10:00</li>
+            <li>11:00</li>
+            <li>12:00</li>
+            <li>13:00</li>
+            <li>14:00</li>
+            <li>15:00</li>
+            <li>16:00</li>
+          </ul>
+         </div>
+         <div id="container2" class="col-xs-10 box-container">
 
         </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -106,8 +142,8 @@
 <% end %>
 <!-- temporary -->
 
-<div id="comments" class='wrapper'>
-  <div class="container polterabend-card">
+<div id="comments" class='wrapper polterabend-card'>
+  <!-- <div class="container polterabend-card"> -->
     <h2><%= pluralize @polterabend.comments.size, "comment" %></h2>
     <% if @polterabend.comments.blank? %>
       Be the first to leave a comment for <%= @polterabend.title %>
@@ -117,13 +153,13 @@
       <% end %>
     <% end %>
     <%= render 'comments/form', polterabend: @polterabend, comment: @comment %>
-  </div>
+  <!-- </div> -->
 </div>
 
 <!-- ************** google map api and javascript ************** -->
 
-<div class="container polterabend-card">
-  <div id="map" style="width: 100%; height: 600px;"></div>
+<div class="wrapper">
+  <div id="map" style="width: 100%; height: 400px;"></div>
 </div>
 
 <% content_for(:after_js) do %>
@@ -143,3 +179,4 @@
     });
   <% end %>
 <% end %>
+
