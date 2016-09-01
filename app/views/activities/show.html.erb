@@ -13,14 +13,14 @@
 
       </div>
       <div class="col-xs-12 col-md-6">
-      <div class="picture-container">
-        <%= image_tag @activity.photo, class: "activity-show-pic" %>
-        <div class="category-place">
-          <%= @activity.category.upcase %>
-        </div>
-        <div class="cost-box">
-          <%= @activity.cost %> DKK
-        </div>
+        <div class="picture-container">
+          <%= image_tag @activity.photo, class: "activity-show-pic" %>
+          <div class="category-place">
+            <%= @activity.category.upcase %>
+          </div>
+          <div class="cost-boxes">
+            <%= @activity.cost %> DKK
+          </div>
         </div>
         <div class="text-right">
         <% unless current_user.nil? %>

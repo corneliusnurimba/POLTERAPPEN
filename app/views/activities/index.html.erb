@@ -1,6 +1,6 @@
 <% categories = %w(adventure fancy cheap boring geeky crazy sexy girly)%>
 <div class="text-center"><h1>Choose awesome activities</h1>
-  <div class="text-center"><h4>How's your friend like? Select activities based on his/her personality. Click save. It's that simple</h4>
+  <div class="text-center"><h4>What's your friend like? Select activities based on his/her personality. Click save. It's that simple</h4>
     <!-- Filtered Activities -->
   </div>
 </div>
@@ -9,7 +9,7 @@
 <%= form_tag(filtered_activities_path, method: "get") do %>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12"><h3 class="filter-h3"> Category</h3></div>
+      <div class="col-xs-12"><h2 class="filter-h3"> Category</h2></div>
     </div>
     <div class="row">
       <% categories.each do |category| %>
@@ -23,8 +23,8 @@
       <% end %>
     </div>
     <div class="row">
-      <div class="col-xs-6"><h3 class="filter-h3">Cost</h3></div>
-      <div class="col-xs-6"><h3 class="filter-h3">Search</h3></div>
+      <div class="col-xs-6"><h2 class="filter-h3">Cost</h2></div>
+      <div class="col-xs-6"><h2 class="filter-h3">Search</h2></div>
     </div>
     <div class="row">
       <div class="col-md-3">
@@ -61,44 +61,52 @@
 <% unless current_user.nil? %>
   <div id='fav-activities-button' class="pa-acts-btn">
     <%= link_to activities_path do %>
-      <div class="btn">Save activities</div>
+      <div class="save-act">Save activities</div>
     <% end %>
   </div>
 <% end %>
 
 
-<!-- CARDS BEGIN -->
+
+
+
 <div class="container">
   <div class="row">
+    <div class="activities-container-cards">
     <% @filtered_activities.each do |activity| %>
-      <div class="col-xs-4">
-        <div class="activity-card">
-          <div class="activity-pic">
-            <%= image_tag activity.photo_url, class: 'img-responsive' %>
-          </div><!-- activity-pic end -->
-          <div class="activity-deets">
-            <div class="deets-center">
-              <h4><%= link_to activity.name, activity_path(activity) %></h4>
-              <div class="card-category"><%= activity.category %></div>
-              <div class="card-city sm-text"><%= activity.address %></div>
-            </div><!-- deets-center end -->
-            <div class="deets-rhs">
-              <% unless current_user.nil? || current_user.membership.nil? %>
-                <div class="upvote-hand <%= activity.name %> <% if @selected_activities.include? activity.id %> green <% end %>">
-                  <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
+      <div class="col-xs-12 col-md-4">
+        <div class="activity-card-2">
+          <div class="picture-box">
+        <%= image_tag activity.photo_url, class: 'img-responsive img' %>
+
+            <div class="cost-boxing">
+              <div class="card-cost">
+                  <%= activity.cost %> DKK
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+           <div class="col-xs-12 col-md-12">
+            <div class="activity-card-3">
+                <h4><%= link_to activity.name, activity_path(activity) %></h4>
+                <p class="card-category"><%= activity.category %></p>
+                <p class="card-city sm-text"><%= activity.address %></p>
+              </div>
+               </div>
+          </div>
+            <div class="favourite-boxing">
+              <div class="upvote-hand <%= activity.name %> <% if @selected_activities.include? activity.id %> green <% end %>">
+                <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
                   <div style="display:none !important;" class="activity_id">
-                    <%= activity.id %>
-                  </div>
-                </div>
-              <% end %>
-              <div class="deets-lhs">
-                <div class="card-cost"><%= activity.cost %> DKK</div>
-              </div><!-- deets-rhs end -->
-            </div><!-- deets-rhs -->
-          </div><!-- activity-deets end -->
+                      <%= activity.id %>
+               </div>
+              </div>
+            </div>
         </div>
       </div>
-    <% end %>
+     <% end %>
+    </div>
   </div>
 </div>
 

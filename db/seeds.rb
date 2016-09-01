@@ -409,7 +409,7 @@ Activity.create(
 
 Activity.create(
     category: 'fancy',
-    name: 'Go watch something in the ballet',
+    name: 'Go watch some ballet',
     description: 'Watching ballet is fancy!',
     address: 'August Bournonvilles Passage 2-8, 1017 København K',
     cost: 500,
