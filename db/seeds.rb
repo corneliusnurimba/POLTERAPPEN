@@ -175,7 +175,7 @@ Activity.create(
     address: 'Bentzonvej 7, 2000 Frederiksberg',
     cost: 300,
     duration: 90,
-    photo: 'activity_girly_cupcake.jpeg'
+    photo: 'activity_girly_cupcake.jpg'
   )
 
 Activity.create(
@@ -219,61 +219,7 @@ Activity.create(
     photo: 'activity_girly_massage.gif'
   )
 
-Activity.create(
-    category: 'gothic',
-    name: 'Copenhagen ghost trail trip',
-    description: 'Explore the spooky sites of Copenhagen',
-    address: 'Pisserenden 1 1452 København K',
-    cost: 100,
-    duration: 120,
-    photo: 'activity_gothic1.jpg'
-)
 
-  Activity.create(
-    category: 'gothic',
-    name: 'Picnic at Assistent Kirkegaard',
-    description: 'Enjoy a refreshing picnic at the most historic cemetary in town',
-    address: 'Kapelvej 4, 2200 København N',
-    cost: 250,
-    duration: 160,
-    photo: 'activity_gothic2.jpg'
-)
-Activity.create(
-    category: 'gothic',
-    name: 'Marilyn Manson Karaoke night',
-    description: 'Sing your heart out to Marilyn Manson classics with friends and enemies',
-    address: 'Halmtorvet 9, 1700 København V',
-    cost: 150,
-    duration: 60,
-    photo: 'activity_gothic3.jpg'
-)
-Activity.create(
-    category: 'gothic',
-    name: 'Dark poetry recital competition',
-    description: 'Who has the darkest soul of your friends? Battle it out in this competition',
-    address: 'Dortheavej 61, 2400 København NV',
-    cost: 30,
-    duration: 120,
-    photo: 'activity_gothic4.jpg'
-)
-Activity.create(
-    category: 'gothic',
-    name: 'Tribal bellydance workshop',
-    description: 'Bellydance with a gothic twist and added swords, snakes and daggers',
-    address: 'Bispebjerg Torv 1, 2400 København NV',
-    cost: 100,
-    duration: 180,
-    photo: 'activity_gothic5.jpg'
-)
-Activity.create(
-    category: 'gothic',
-    name: 'Psycotic Janitor mystery game',
-    description: 'You are looked up in a room with a psycotic janitor, can you and your friends get out before it/s too late? Try this fun game',
-    address: 'Nørre Farimagsgade 7,1364 Kbh K',
-    cost: 100,
-    duration: 180,
-    photo: 'activity_gothic6.jpg'
-)
 Activity.create(
     category: 'geeky',
     name: 'Arcade Day',
@@ -408,7 +354,7 @@ Activity.create(
     address: 'Elmevænget 32, 2880 Bagsværd',
     cost: 500,
     duration: 30,
-    photo: 'activity_adventure_hike.jpeg'
+    photo: 'activity_adventure_hike.jpg'
   )
 
 
@@ -468,7 +414,7 @@ Activity.create(
     address: 'August Bournonvilles Passage 2-8, 1017 København K',
     cost: 500,
     duration: 140,
-    photo: 'activity_fancy_ballet.jpeg'
+    photo: 'activity_fancy_ballet.jpg'
 )
 
 Activity.create(
@@ -487,6 +433,6 @@ Activity.create(
     address: 'Bøtterupvej 2, 3100 Hornbæk',
     cost: 1000,
     duration: 200,
-    photo: 'activity_fancy_golf.jpeg'
+    photo: 'activity_fancy_golf.jpg'
 )
 
