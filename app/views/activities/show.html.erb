@@ -2,32 +2,40 @@
     <div class="row">
       <div class="col-xs-12 col-md-6">
         <h1><%=@activity.name %></h1>
-        <p><%= @activity.cost %> DKK</p>
-        <p><%= @activity.category.upcase %></p>
-        <h2>Details</h2>
-        <p></strong><%= @activity.description %></p>
-        <p><strong>Address: </strong><%= @activity.address %></p>
-        <p><strong>Duration: </strong><%= @activity.duration %></p>
+        <h2 class="details-color">Details</h2>
+        <p class="description-text"><%= @activity.description %></p>
+        <p class="text-size"><strong class="color-text">Address: </strong><%= @activity.address %></p>
+        <p class="text-size space"><strong class="color-text">Duration: </strong><%= @activity.duration %> min</p>
        <!--  <p></strong><%#=@activity.cost %></p> -->
+            <div>
+              <%= link_to 'Back to activities', activities_path(@activities), class: 'btn' %>
+            </div>
+
+      </div>
+      <div class="col-xs-12 col-md-6">
+      <div class="picture-container">
+        <%= image_tag @activity.photo, class: "activity-show-pic" %>
+        <div class="category-place">
+          <%= @activity.category.upcase %>
+        </div>
+        <div class="cost-box">
+          <%= @activity.cost %> DKK
+        </div>
+        </div>
+        <div class="text-right">
         <% unless current_user.nil? %>
           <%= simple_form_for :save_activity, :url => save_activity_path, :method => :post do |f| %>
             <%= f.hidden_field :activity_id, value: @activity.id %>
             <%= f.hidden_field :polterabend_id, value: @polterabend.id %>
-            <%= f.button :submit, value: "Save Activity to Polterabend", class: 'btn' %>
+              <div class="save-button">
+                <%= f.button :submit, value: "Save Activity to Polterabend", class: 'btn' %>
+              </div>
+            <% end %>
         <% end %>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <%= image_tag @activity.photo, class: "activity-show-pic" %>
+        </div>
       </div>
     </div>
   </div>
-
-
-  <div>
-    <%= link_to 'Back to activities', activities_path(@activities), class: 'btn' %>
-  </div>
-
 
 
 
