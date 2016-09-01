@@ -1,6 +1,6 @@
 .box-container {
   height: 100%;
-  min-height: 300px;
+  min-height: 600px;
 }
 
 .activity-item {
@@ -26,15 +26,23 @@
 .time-slot-hour {
   // background-color: #24CCB8;
   font-size: 14px !important;
-  height: 50px;
+  height: 25px;
   color: black;
-  padding: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 1.5px;
-  border-radius: 4px;
-  margin: 2px 0px;
-  padding-right: 0;
+  padding: 5px;
+  vertical-align: middle;
+  border-bottom: solid #CECFC7;
+  border-width: 1px;
+}
+
+.time-slot-half-hour {
+  // background-color: #24CCB8;
+  font-size: 14px !important;
+  height: 25px;
+  color: black;
+  padding: 5px;
+  vertical-align: middle;
+  border-bottom: solid #CECFC7;
+  border-width: 2px;
 }
 
 .no-margin {
