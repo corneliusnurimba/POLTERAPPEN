@@ -15,6 +15,28 @@
   border-style: none;
 }
 
+.button-inspiration {
+ margin: 5px;
+ transition: background 300ms;
+ font-size: 22px;
+ padding: 16px 28px;
+ border-radius: 4px;
+ background-color: #03cea4;
+ color: white;
+ border: none;
+ }
+
+.button-inspiration:hover{
+text-decoration: none;
+color: white;
+background-color: #03a785;
+}
+
+.button-inspiration:focus{
+text-decoration: none;
+color: white;
+}
+
 .btn:hover {
   opacity: 1.5;
   color: white;

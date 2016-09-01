@@ -46,9 +46,11 @@
     <div class="container">
       <div class="row">
         <div class='col-xs-12' id='main-search'>
-          <h3 class="text">avoid embarrassing moments</h3> <br>
-         <h3 class="banner-text"> plan a mind-blowing polterabend with polterappen</h3>
-         <%= link_to 'Get inspired', activities_path(@activities), class: 'button-inspiration' %>
+
+          <h3 class="banner-subtitle">Avoid embarrassing moments</h3>
+         <h1 class="banner-text"> Plan a mind-blowing polterabend with polterappen</h1>
+
+                 <%= link_to 'Get inspired', activities_path(@activities), class: 'button-inspiration' %>
         </div>
       </div>
     </div>
@@ -144,30 +146,26 @@
   </div>
 </div> -->
 
-<h2 class="text-center header space-margin space-margin3 home-page-title" >Get inspired for your polterabend</h2>
+
+<h2 class="text-center header space-margin space-margin3" >Get inspired</h2>
 
 
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card-images img-responsive" style="background-image: url(<%= image_path 'activity_geeky4.jpg' %>)">
-        <div class="card-description-images-3">
-          <p class="home-p">Activities for the geeky</p>
-       </div>
+      <div class="card-images img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'activity_geeky4.jpg' %>)">
+          <h3>Activities for the geeky</h3>
+
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card-images img-responsive" style="background-image: url(<%= image_path 'cheap2.jpg' %>)">
-        <div class="card-description-images-3">
-          <p class="home-p">Activities for the cheap asses</p>
-        </div>
+      <div class="card-images img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'cheap2.jpg' %>)">
+          <h3>Activities for the cheap asses</h3>
       </div>
     </div>
        <div class="col-xs-12 col-sm-6 col-md-4">
-         <div class="card-images img-responsive" style="background-image: url(<%= image_path 'jim_carrey.gif' %>)">
-          <div class="card-description-images-3">
-            <p class="home-p">Activities for the crazy</p>
-          </div>
+         <div class="card-images img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'jim_carrey.gif' %>)">
+            <h3>Activities for the crazy</h3>
         </div>
       </div>
    </div>
@@ -177,17 +175,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-8">
-      <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'vintage_girly.gif' %>)">
-        <div class="card-description-images">
-         <p class="home-p">Activities for the girly</p>
-        </div>
+      <div class="card-images-2 img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'vintage_girly.gif' %>)">
+         <h3>Activities for the girly</h3>
       </div>
     </div>
     <div class="col-xs-12 col-sm-3 col-md-4">
-      <div class="card-images-2 img-responsive" style="background-image: url(<%= image_path 'activity_adventure_ship.jpg' %>)">
-        <div class="card-description-images-2">
-        <p class="home-p">Activities for the adventurous</p>
-        </div>
+      <div class="card-images-2 img-responsive" style="background: linear-gradient(rgba(0,0,0,0.2) 26%, rgba(0,0,0,0.2) 26%), url(<%= image_path 'activity_adventure_ship.jpg' %>)">
+        <h3>Activities for the adventurous</h3>
       </div>
     </div>
 </div>
