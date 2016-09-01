@@ -84,8 +84,8 @@
             </div><!-- deets-center end -->
             <div class="deets-rhs">
               <% unless current_user.nil? || current_user.membership.nil? %>
-                <div class="upvote-hand <%= activity.name %> <% if @selected_activities.include? activity.id %> green <% end %>">
-                  <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
+                <div class="<%= activity.name %>">
+                  <i class="fa fa-star favourite-icon-size upvote-hand <% if @selected_activities.include? activity.id %> green <% end %>" aria-hidden="true"></i>
                   <div style="display:none !important;" class="activity_id">
                     <%= activity.id %>
                   </div>

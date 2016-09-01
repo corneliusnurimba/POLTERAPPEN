@@ -17,31 +17,43 @@ class PolterabendsController < ApplicationController
     render :show
   end
 
-  def show
+  def make_show_attributes
+    @polterabend = Polterabend.find(
+      params[:polterabend_id] ? params[:polterabend_id] : params[:id]
+      )
+    @dayplanner = Dayplanner.find(@polterabend.id)
+    planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
+    if planned_activities.empty?
+      @plans = []
+    else
+      @plans = planned_activities.map do |p|
+        Activity.find(p.activity_id) if p.activity_id
+      end
+    end
+    @activities = Activity.all - @plans
+  end
 
-    @polterabend = Polterabend.find_by_id(params[:id])
-    @pacts = ActivityPolterabend.where(polterabend_id: @polterabend.id)
-    @pacts_and_acts = []
-    @pacts.each do |p|
-      @pacts_and_acts << [p, Activity.find(p.activity_id)]
+  def show
+    make_show_attributes
+    pacts = ActivityPolterabend.where(polterabend_id: @polterabend.id)
+    @pacts_and_acts = pacts.map {|p| [p, Activity.find(p.activity_id)]}
+    @pacts_and_acts.delete_if do |p_a|
+      @plans.any?{|p| p_a[1].id == p.id }
     end
     @membership = Membership.where(polterabend_id: @polterabend.id)
     @members = []
     @membership.each do |m|
       @members << User.find(m.user_id)
     end
-    @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
+
 
     @comment = Comment.new
-
     # activities = Activity.where.not(latitude: nil, longitude: nil)
     activities = @pacts_and_acts
     @hash = Gmaps4rails.build_markers(activities) do |activity_polterabend, marker|
       marker.lat activity_polterabend[1].latitude
       marker.lng activity_polterabend[1].longitude
     end
-
-    make_show_attributes
   end
 
   def new
@@ -94,26 +106,6 @@ class PolterabendsController < ApplicationController
     end
   end
 
-  def make_show_attributes
-    @dayplanner = Dayplanner.find(params[:id] ? params[:id] : params[:dayplanner_id])
-    @polterabend = Polterabend.find_by_id(@dayplanner.polterabend_id)
-    @planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
-    if @planned_activities.empty?
-      @plans = []
-    else
-      @plans = @planned_activities.map do |p|
-        Activity.find(p.activity_id) if p.activity_id
-        # todo: when the begin and end times are added to the
-        # ActivityDayplanner model, add these to the list:
-        #   [Activity.find(p.activity_id), begins, ends]
-        # order @plans according to the start time:
-        #   @plans[i][3] is the element to use
-        # and access them in the view to assign the time slots.
-        # It's not a huge job to do but it does require some thought.
-      end
-    end
-    @activities = Activity.all - @plans
-  end
 
 end
 
