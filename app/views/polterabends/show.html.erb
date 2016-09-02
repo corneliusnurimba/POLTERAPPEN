@@ -46,7 +46,7 @@
     </div>
   </div>
 </div>
-
+<%# raise %>
 <!-- ************ dayplanner ************ -->
 <div class="wrapper polterabend-card polterabend-card-grey">
   <div class="dp-wrapper">
@@ -83,37 +83,38 @@
     <div class="dayplanner-container">
       <div class="event-times">
         <ul class="list-unstyled">
-          <li class="time-slot-hour" >09:00</li>
+          <% hours_day = %w(00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23) %>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >10:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 1] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >11:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 2] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >12:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 3] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >13:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 4] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >14:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 5] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >15:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 6] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >16:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 7] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >17:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 8] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >18:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 9] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >19:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 10] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >20:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 11] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >21:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 12] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >22:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 13] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >23:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 14] %>:00</li>
           <li class="time-slot-half-hour" ></li>
-          <li class="time-slot-hour" >24:00</li>
+          <li class="time-slot-hour" ><%= hours_day[@polterabend.datetime.hour + 15] %>:00</li>
           <li class="time-slot-half-hour" ></li>
         </ul>
       </div>
