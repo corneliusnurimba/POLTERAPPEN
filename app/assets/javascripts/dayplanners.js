@@ -23,11 +23,6 @@ $(document).ready(function() {
     window.item_number = window.item_number-1;
   }
 
-  $(function () {
-      $('#datetimepicker3').datetimepicker({
-          // format: 'LT'
-      });
-  });
 
   $('.box-item').draggable({
       cursor: 'move',

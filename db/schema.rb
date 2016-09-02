@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829074806) do
+ActiveRecord::Schema.define(version: 20160902081343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20160829074806) do
     t.index ["polterabend_id"], name: "index_dayplanners_on_polterabend_id", using: :btree
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "favourites", force: :cascade do |t|
     t.integer  "activity_id"
     t.integer  "user_id"
@@ -91,14 +100,15 @@ ActiveRecord::Schema.define(version: 20160829074806) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "photo"
+    t.datetime "datetime"
   end
 
   create_table "upvotes", force: :cascade do |t|
-    t.integer  "activity_polterabend_id"
+    t.integer  "activity_polterabends_id"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.index ["activity_polterabend_id"], name: "index_upvotes_on_activity_polterabend_id", using: :btree
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["activity_polterabends_id"], name: "index_upvotes_on_activity_polterabends_id", using: :btree
     t.index ["user_id"], name: "index_upvotes_on_user_id", using: :btree
   end
 
@@ -139,6 +149,6 @@ ActiveRecord::Schema.define(version: 20160829074806) do
   add_foreign_key "favourites", "users"
   add_foreign_key "memberships", "polterabends"
   add_foreign_key "memberships", "users"
-  add_foreign_key "upvotes", "activity_polterabends"
+  add_foreign_key "upvotes", "activity_polterabends", column: "activity_polterabends_id"
   add_foreign_key "upvotes", "users"
 end
