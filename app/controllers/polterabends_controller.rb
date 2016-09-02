@@ -107,8 +107,7 @@ class PolterabendsController < ApplicationController
     end
   end
 
-<<<<<<< 50e530dbd637efb65dc67bde0bcfb72350fa85f4
-=======
+
   def make_show_attributes
     @polterabend = Polterabend.find(
       params[:polterabend_id] ? params[:polterabend_id] : params[:id]
@@ -131,8 +130,6 @@ class PolterabendsController < ApplicationController
     end
     @activities = Activity.all - @plans
   end
->>>>>>> beautiful dashboard
-
 end
 
 
