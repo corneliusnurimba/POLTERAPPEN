@@ -21,7 +21,7 @@ class PolterabendsController < ApplicationController
     @polterabend = Polterabend.find(
       params[:polterabend_id] ? params[:polterabend_id] : params[:id]
       )
-    @dayplanner = Dayplanner.find(@polterabend.id)
+    @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id)
     planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
     if planned_activities.empty?
       @plans = []
