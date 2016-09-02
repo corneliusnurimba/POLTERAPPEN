@@ -4,16 +4,15 @@ class PolterabendsController < ApplicationController
   end
 
   def save_pa_acts
-    dayplanner_id = params[:dayplanner_id]
+    make_show_attributes
     clear_plans dayplanner_id
     params[:activity_ids].each do |activity_id|
-      ActivityDayplanner.create(dayplanner_id: dayplanner_id,
+      ActivityDayplanner.create(dayplanner_id: @dayplanner.id,
                                 activity_id: activity_id
                                 ).save
       # todo: need to add begin and end to ActivityDayplanner model
       #       pulled from the time fields on the show page
     end if params[:activity_ids]
-    make_show_attributes
     render :show
   end
 
