@@ -4,7 +4,7 @@ class PolterabendsController < ApplicationController
   end
 
   def save_pa_acts
-    make_show_attributes
+    find_polterabend
     clear_plans @dayplanner.id
     params[:activity_ids].each do |activity_id|
       ActivityDayplanner.create(dayplanner_id: @dayplanner.id,
@@ -13,18 +13,17 @@ class PolterabendsController < ApplicationController
       # todo: need to add begin and end to ActivityDayplanner model
       #       pulled from the time fields on the show page
     end if params[:activity_ids]
+    make_polterabend
     render :show
   end
 
-  def make_show_attributes
-    $stderr.puts('============================================================')
-    $stderr.puts("params: #{params}")
-    params.each {|k,v| $stderr.puts("#{k}: #{k}")}
-    $stderr.puts('============================================================')
-    @polterabend = Polterabend.find(
-      params[:polterabend_id] ? params[:polterabend_id] : params[:id]
-      )
-    @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id)
+  def find_polterabend
+    @polterabend = Polterabend.find(params[:id])
+    @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
+  end
+
+  def make_polterabend
+    # build plans and activities
     planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
     if planned_activities.empty?
       @plans = []
@@ -34,30 +33,29 @@ class PolterabendsController < ApplicationController
       end
     end
     @activities = Activity.all - @plans
-  end
 
-  def show
-    @polterabend = Polterabend.find(params[:id])
-    make_show_attributes
     pacts = ActivityPolterabend.where(polterabend_id: @polterabend.id)
     @pacts_and_acts = pacts.map {|p| [p, Activity.find(p.activity_id)]}
     @pacts_and_acts.delete_if do |p_a|
       @plans.any?{|p| p_a[1].id == p.id }
     end
+    # get memberships
     @membership = Membership.where(polterabend_id: @polterabend.id)
     @members = []
     @membership.each do |m|
       @members << User.find(m.user_id)
     end
-
-
+    # get comments
     @comment = Comment.new
-    # activities = Activity.where.not(latitude: nil, longitude: nil)
-    activities = @plans
-    @hash = Gmaps4rails.build_markers(activities) do |activity_dayplanner, marker|
+    @hash = Gmaps4rails.build_markers(@plans) do |activity_dayplanner, marker|
       marker.lat activity_dayplanner.latitude
       marker.lng activity_dayplanner.longitude
     end
+  end
+
+  def show
+    find_polterabend
+    make_polterabend
   end
 
   def new
@@ -112,9 +110,7 @@ class PolterabendsController < ApplicationController
 
 
   def make_show_attributes
-    @polterabend = Polterabend.find(
-      params[:polterabend_id] ? params[:polterabend_id] : params[:id]
-      )
+    @polterabend = Polterabend.find(params[:id])
     @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
     @planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
     if @planned_activities.empty?
