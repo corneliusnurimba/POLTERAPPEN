@@ -34,6 +34,7 @@ class PolterabendsController < ApplicationController
   end
 
   def show
+    @polterabend = Polterabend.find(params[:id])
     make_show_attributes
     pacts = ActivityPolterabend.where(polterabend_id: @polterabend.id)
     @pacts_and_acts = pacts.map {|p| [p, Activity.find(p.activity_id)]}
@@ -97,7 +98,7 @@ class PolterabendsController < ApplicationController
   private
 
   def polterabend_params
-    params.require(:polterabend).permit(:title, :photo, :photo_cache)
+    params.require(:polterabend).permit(:title, :datetime, :photo, :photo_cache)
   end
 
   def clear_plans dayplan_id
