@@ -27,7 +27,7 @@ Activity.create(
   description: 'Who says Chess is boring ...? Everyone.',
   address: 'Frederiksborggade 21, 1360 København K',
   cost: 0,
-  duration: 3,
+  duration: 60,
   photo: 'activity_boring_2.jpg'
 )
 
@@ -37,7 +37,7 @@ Activity.create(
   description: 'Take the bachelor(ette) to your museum and bore them to death.',
   address: 'Vesterbrogade 59, 1620 København V',
   cost: 0,
-  duration: 2,
+  duration: 90,
   photo: 'activity_boring_3.jpg'
 )
 
@@ -47,7 +47,7 @@ Activity.create(
   description: 'Ignore the bachelor(ette) by taking photos of yourself',
   address: 'Hans Tavsens Gade, 2200 København N',
   cost: 0,
-  duration: 1,
+  duration: 30,
   photo: 'activity_boring_4.jpg'
 )
 
@@ -59,7 +59,7 @@ Activity.create(
   description: 'Dust off the chips, fill the fridge with beverages, order a few pizzas, and settle in for poker night.',
   address: 'Your house',
   cost: 0,
-  duration: 3,
+  duration: 90,
   photo: 'activity_cheap_1.jpg'
 )
 
@@ -69,7 +69,7 @@ Activity.create(
   description: 'Get your friends together in the local park and embarrass the bachelor(ette) in public.',
   address: 'Nørre Voldgade 1, 1358 København K',
   cost: 0,
-  duration: 2,
+  duration: 60,
   photo: 'activity_cheap_park.jpg'
 )
 
@@ -79,7 +79,7 @@ Activity.create(
   description: 'Pick a local brewery, book a tour, and let the beer flow freely.',
   address: 'Halmtorvet 29C, 1700 København v',
   cost: 100,
-  duration: 2,
+  duration: 120,
   photo: 'activity_cheap_3.jpg'
 )
 
@@ -89,7 +89,7 @@ Activity.create(
   description: 'Pick the bachelor(ettes) favourite team and enjoy a day at the sports park.',
   address: 'Per Henrik Lings Allé 2, 2100 København',
   cost: 200,
-  duration: 2,
+  duration: 120,
   photo: 'activity_cheap_4.jpg'
 )
 
@@ -98,8 +98,8 @@ Activity.create(
     name: 'Volvo-race',
     description: 'The captain chooses 2 man to lie on the roof of the Volvo while Carl-Mar kicks it through the marsh.',
     address: 'Avderødvej 45, 2980 Kokkedal',
-    cost: '300',
-    duration: '30 min',
+    cost: 300,
+    duration: 30,
     photo: 'activity_crazy_volvorace.jpg'
   )
 
@@ -109,8 +109,8 @@ Activity.create(
     name: 'Crawl through a tube - for women',
     description: 'The captain (bachelorette) kisses a giant dick of tree that has been poured with beer and shouts: Kussen er Gud (Vargina is God). She crawls through a 3-meter-long tunnel and is baptized in beer when she comes out.',
     address: 'Avderødvej 45, 2980 Kokkedal',
-    cost: '100',
-    duration: '20 min',
+    cost: 100,
+    duration: 20,
     photo: 'activity_crazy_dick.jpg'
   )
 
@@ -119,8 +119,8 @@ Activity.create(
     name: 'Giant fight',
     description: 'Everyone are wearing a Sumo suit, a big boxing glove or foam rubber mallet. Time to fight, all against all.',
     address: 'Avderødvej 45, 2980 Kokkedal',
-    cost: '500',
-    duration: '60 min',
+    cost: 500,
+    duration: 60,
     photo: 'activity_crazy_fight.jpg'
   )
 
@@ -131,8 +131,8 @@ Activity.create(
     name: 'Devil carousel',
     description: 'The captain sits on a deck and is rotated around 20 times. Then turn quickly and the captain flies off and lands on mattresses, afterwards the captian will have to run to a beer and drink it.',
     address: 'Avderødvej 45, 2980 Kokkedal',
-    cost: '400',
-    duration: '30 min',
+    cost: 400,
+    duration: 30,
     photo: 'activity_crazy_carousel.jpg'
   )
 
@@ -142,8 +142,8 @@ Activity.create(
     name: 'Gokart through mud and forest',
     description: 'The captain drives through mud, forest - cross-country racing',
     address: 'Artillerivej 100, 2300 København S',
-    cost: '300',
-    duration: '20 min',
+    cost: 300,
+    duration: 20,
     photo: 'activity_crazy_gokart2.gif'
   )
 
@@ -152,8 +152,8 @@ Activity.create(
     name: 'Viking ball',
     description: 'You sit inside an iron sphere with grid and you are rolled down a hill.',
     address: 'Krogebjerg 113, 2720 Vanløse',
-    cost: '350',
-    duration: '30 min',
+    cost: 350,
+    duration: 30,
     photo: 'activity_crazy_ball.jpg'
   )
 
@@ -162,8 +162,8 @@ Activity.create(
     name: 'Make a band',
     description: 'Get the girls or boys together in a band and go nuts.',
     address: 'Finsensvej 45, 2000 Frederiksberg',
-    cost: '500',
-    duration: '75 min',
+    cost: 500,
+    duration: 75,
     photo: 'activity_crazy_band.jpg'
   )
 
@@ -232,7 +232,7 @@ Activity.create(
 )
 Activity.create(
     category: 'geeky',
-    name: 'Trip to Expementariet',
+    name: 'Trip to Expementarium',
     description: 'Go science-crazy while doing cool experiments',
     address: 'Tuborg Havnevej 7, 2900 Hellerup',
     cost: 100,
@@ -292,21 +292,10 @@ Activity.create(
   )
 
 
-Activity.create(
-    category: 'sexy',
-    name: 'Madame Amour',
-    description: 'Strip club with lovely girls.',
-    address: 'Madame Amour, Istegade 28, (red light district), 1650 København',
-    cost: 700,
-    duration: 60,
-    photo: 'activity_sexy_club.jpg'
-  )
-
-
 
 Activity.create(
     category: 'sexy',
-    name: 'Madame Amour',
+    name: 'Madame Amour - Strip club',
     description: 'Strip club - says it all.',
     address: 'Istegade 28, (red light district), 1650 København',
     cost: 700,
