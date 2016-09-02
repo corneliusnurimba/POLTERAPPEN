@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ActivityDayplanner.destroy_all
 ActivityPolterabend.destroy_all
 Activity.destroy_all
 
