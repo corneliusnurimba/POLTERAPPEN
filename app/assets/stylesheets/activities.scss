@@ -6,7 +6,7 @@
 .filter-h3{
   margin-top:0;
   background-size: 10px;
-  font-size: 22px;
+  font-size: 34px;
 }
 .green {
   color: #32B796 !important;
@@ -14,7 +14,6 @@
 
 .favourite-icon-size {
   font-size: 30px;
-  color: #FDB631;
   display: flex;
   justify-content: space-between;
 }
@@ -100,6 +99,19 @@
   height: 40px;
 }
 
+.save-act {
+  background: #FF2055;
+  font-size: 17px;
+  border-bottom: 2px;
+  border: none ;
+  border-radius: 4px;
+  padding: 7px 18px;
+  color: white;
+  height: 40px;
+  text-align: center;
+
+}
+
 .footer{
 border-top: 1px solid #e8e8e8;
 padding-top: 20px;
@@ -147,18 +159,77 @@ margin-top: 20px;
   align-self: flex-start;
 }
 
-.card-title
-{
-  font-size:22px;
+.card-title {
+  font-size:20px;
   color: green;
 }
 
-.card-category
-{
-  color: #757575;
+.card-category {
+  color: #32B796;
+  font-size: 16px;
+  padding-bottom: -70%;
 }
+
+.card-address {
+  color: #757575;
+  font-size: 14px;
+}
+
 
 .card-city
 {
   color: #757575;
 }
+
+.cost-boxing {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  font-size: 16px;
+  color: white;
+  background-color: rgba(0,0,0,0.4);
+  padding: 10px;
+
+}
+
+.favourite-boxing {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  font-size: 15px;
+  padding: 10px;
+  color: #B1B1B1 ;
+
+}
+
+.activities-container-cards {
+  padding: 30px;
+}
+
+.activity-card-2 {
+  margin-bottom: 20px;
+  border: #B1B1B1 2px solid;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.30);
+  height: 400px;
+}
+
+
+.img {
+  height: 220px;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.picture-box {
+  position: relative;
+
+}
+
+.activity-card-3 {
+  padding: 10px;
+
+}
+
+
+

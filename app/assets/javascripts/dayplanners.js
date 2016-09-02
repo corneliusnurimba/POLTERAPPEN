@@ -23,6 +23,7 @@ $(document).ready(function() {
     window.item_number = window.item_number-1;
   }
 
+
   $('.box-item').draggable({
       cursor: 'move',
       helper: "clone"
