@@ -108,6 +108,28 @@ class PolterabendsController < ApplicationController
   end
 
 
+  def make_show_attributes
+    @polterabend = Polterabend.find(
+      params[:polterabend_id] ? params[:polterabend_id] : params[:id]
+      )
+    @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
+    @planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
+    if @planned_activities.empty?
+      @plans = []
+    else
+      @plans = @planned_activities.map do |p|
+        Activity.find(p.activity_id) if p.activity_id
+        # todo: when the begin and end times are added to the
+        # ActivityDayplanner model, add these to the list:
+        #   [Activity.find(p.activity_id), begins, ends]
+        # order @plans according to the start time:
+        #   @plans[i][3] is the element to use
+        # and access them in the view to assign the time slots.
+        # It's not a huge job to do but it does require some thought.
+      end
+    end
+    @activities = Activity.all - @plans
+  end
 end
 
 

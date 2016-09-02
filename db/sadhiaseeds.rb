@@ -65,7 +65,7 @@ Activity.create(
 )
 Activity.create(
     category: 'geeky',
-    name: 'Trip to Expementariet',
+    name: 'Trip to Experimentariet',
     description: 'Go science-crazy while doing cool experiments',
     address: 'Tuborg Havnevej 7, 2900 Hellerup',
     cost: 100,

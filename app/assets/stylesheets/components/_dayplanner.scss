@@ -1,37 +1,150 @@
-.box-container {
-  height: 100%;
-  min-height: 600px;
-}
-.container2{
 
+// DAYPLANNER STYLE START
+.polterabend-card-grey {
+  background-color: #f9f9f9;
 }
-.container1{
+.polterabend-card {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.30);
+  border-radius: 4px;
+  padding: 30px 50px;
 
+  .activities-box{
+    display: flex;
+    flex-direction: column;
+    .activities-title-dp{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .dp-button{
+        max-height: 30px;
+        align-self: flex-end;
+        margin-right: 20px;
+      }
+    }
+  }
 }
 .activity-item {
-  background-color: #24CCB8;
-  font-size: 14px !important;
-  height: 50px;
-  color: white;
-  padding: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 1.5px;
+  font-size: 16px !important;
+  padding: 15px;
   border-radius: 4px;
-  margin: 2px 0px;
-  padding-right: 0;
+  margin-bottom: 15px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  transition: box-shadow 300ms;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+}
+.dp-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.ai-text {
+  font-size: 14px;
+}
+.activity-card-dp{
+  width: 420px;
+}
+.text-sm--dp{
+  margin: 2px;
 }
 
-.activity-item:hover {
-  cursor: pointer;
-  background-color: yellow;
-  color: black;
+#container1 {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-self: flex-start;
+  .activity-item{
+    max-width: 420px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: #333333;
+    .activity-item-content{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .ai-name-time{
+        display: flex;
+        flex-direction: column;
+        .ai-name{
+          color: #1f1f1f;
+          font-size: 18
+        }
+      }
+      .ai-text{
+        color: #9b9b9b;
+        opacity: 1;
+      }
+    }
+  }
 }
+
+.dayplanner-container{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  .planned-activities{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+  }
+}
+
+#container2 {
+  height: 100%;
+  align-self: center;
+  .activity-item{
+    border: solid white 1px;
+    margin-top: -15px;
+    max-width: 420px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #03bb95;
+    color: white;
+    .activity-item-content{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .ai-name-time{
+        display: flex;
+        flex-direction: column;
+        .ai-name{
+          color: #1f1f1f;
+          font-size: 18
+        }
+      }
+      .ai-text{
+        color: white;
+        opacity: 0.7;
+      }
+    }
+  }
+  .activity-item-text{
+
+  }
+
+}
+.acts-dayplanners-btn{
+  align-self: flex-end;
+  margin-top: 5px;
+}
+
 
 .time-slot-hour {
-  // background-color: #24CCB8;
   font-size: 14px !important;
-  height: 25px;
+  height: 30px;
   color: black;
   padding: 5px;
   vertical-align: middle;
@@ -40,9 +153,8 @@
 }
 
 .time-slot-half-hour {
-  // background-color: #24CCB8;
   font-size: 14px !important;
-  height: 25px;
+  height: 30px;
   color: black;
   padding: 5px;
   vertical-align: middle;
@@ -50,27 +162,10 @@
   border-width: 2px;
 }
 
-.no-margin {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-
 // box items duration
-
 .box-item {
   width: 100%;
   z-index: 1000;
   font-size: 10px;
 }
 
-.box-item-time {
-    width: 100%;
-    z-index: 1000;
-    font-size: 10px;
-}
-
-.time-picker {
-  font-size: 10px;
-  width: 50%;
-  background-color: red;
-}
