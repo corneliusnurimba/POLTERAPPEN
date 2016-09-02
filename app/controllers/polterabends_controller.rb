@@ -17,6 +17,10 @@ class PolterabendsController < ApplicationController
   end
 
   def make_show_attributes
+    $stderr.puts('============================================================')
+    $stderr.puts("params: #{params}")
+    params.each {|k,v| $stderr.puts("#{k}: #{k}")
+    $stderr.puts('============================================================')
     @polterabend = Polterabend.find(
       params[:polterabend_id] ? params[:polterabend_id] : params[:id]
       )
