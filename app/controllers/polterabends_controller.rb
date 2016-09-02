@@ -49,10 +49,10 @@ class PolterabendsController < ApplicationController
 
     @comment = Comment.new
     # activities = Activity.where.not(latitude: nil, longitude: nil)
-    activities = @pacts_and_acts
-    @hash = Gmaps4rails.build_markers(activities) do |activity_polterabend, marker|
-      marker.lat activity_polterabend[1].latitude
-      marker.lng activity_polterabend[1].longitude
+    activities = @plans
+    @hash = Gmaps4rails.build_markers(activities) do |activity_dayplanner, marker|
+      marker.lat activity_dayplanner.latitude
+      marker.lng activity_dayplanner.longitude
     end
   end
 

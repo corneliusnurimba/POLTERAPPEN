@@ -178,13 +178,6 @@
   </div>
 </div>
 
-<!-- temporary -->
-<% if @dayplanner %>
-  <h3> crappy dayplanner </h3>
-  <%= link_to 'dayplanner', polterabend_dayplanner_path(@polterabend.id, @dayplanner.id)%>
-<% end %>
-<!-- temporary -->
-
 <div id="comments" class='wrapper polterabend-card'>
   <!-- <div class="container polterabend-card"> -->
     <h2><%= pluralize @polterabend.comments.size, "comment" %></h2>
