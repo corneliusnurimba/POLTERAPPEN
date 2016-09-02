@@ -69,7 +69,7 @@ $(".upvote-hand").on("click", function() {
       $.post(
           '<%= save_activities_path %>',
           json_for_activities,
-          function() { alert('we are the champions my friend'); }
+          function() { alert('You have saved the activities to favourites - congratulations! Go plan your party!'); }
           );
   });
 
