@@ -25,7 +25,7 @@ $(document).ready(function() {
 
   $(function () {
       $('#datetimepicker3').datetimepicker({
-          format: 'L'
+          // format: 'LT'
       });
   });
 
