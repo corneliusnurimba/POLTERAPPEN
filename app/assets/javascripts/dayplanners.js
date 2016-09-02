@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   $('.box-item').draggable({
       cursor: 'move',
-      // helper: "clone"
+      helper: "clone"
   });
 
   $("#container1").droppable({

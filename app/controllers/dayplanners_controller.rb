@@ -16,7 +16,7 @@ class DayplannersController < ApplicationController
       #       pulled from the time fields on the show page
     end if params[:activity_ids]
     make_show_attributes
-    render :show 
+    render :show
   end
 
   def show
@@ -51,15 +51,15 @@ class DayplannersController < ApplicationController
     ActivityDayplanner.where(dayplanner_id: dayplan_id).each do |adp|
       adp.delete
     end
-  end 
+  end
 
   def make_show_attributes
     @dayplanner = Dayplanner.find(params[:id] ? params[:id] : params[:dayplanner_id])
-    @polterabend = Polterabend.find_by_id(@dayplanner.polterabend_id)    
+    @polterabend = Polterabend.find_by_id(@dayplanner.polterabend_id)
     @planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
     if @planned_activities.empty?
       @plans = []
-    else 
+    else
       @plans = @planned_activities.map do |p|
         Activity.find(p.activity_id) if p.activity_id
         # todo: when the begin and end times are added to the

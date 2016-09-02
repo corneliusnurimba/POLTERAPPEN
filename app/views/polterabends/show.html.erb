@@ -151,7 +151,7 @@
          <div id="container2" class="col-xs-10 box-container">
           <% unless @plans.empty? %>
             <% @plans.each do |plan| %>
-              <%= content_tag(:div, nil, itemid: "itm-" + plan.id.to_s, class: "activity-item box-item", data: {duration: "#{plan.duration}"}) do %>
+              <%= content_tag(:div, nil, itemid: "itm-" + plan.id.to_s, class: "row activity-item box-item", data: {duration: "#{plan.duration}"}) do %>
                 <div class="pa-act hidden">
                   <%= plan.id %>
                 </div>
