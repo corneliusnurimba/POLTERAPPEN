@@ -59,10 +59,15 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    @polterabend = Polterabend.find(current_user.membership.polterabend_id)
     @activity = Activity.new(activity_params)
     if @activity.save
       @activity.update(category: 'custom')
-      redirect_to activity_path(@activity)
+      ActivityPolterabend.create(total_upvotes: 0,
+                                 polterabend_id: current_user.membership.polterabend_id,
+                                 activity_id: @activity.id
+                                ).save
+      redirect_to polterabend_path(@polterabend)
     else
       @errors = @activity.errors.full_messages
       render :new

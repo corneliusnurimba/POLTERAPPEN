@@ -3,30 +3,57 @@ class PolterabendsController < ApplicationController
   def index
   end
 
-  def show
+  def save_pa_acts
+    dayplanner_id = params[:dayplanner_id]
+    clear_plans dayplanner_id
+    params[:activity_ids].each do |activity_id|
+      ActivityDayplanner.create(dayplanner_id: dayplanner_id,
+                                activity_id: activity_id
+                                ).save
+      # todo: need to add begin and end to ActivityDayplanner model
+      #       pulled from the time fields on the show page
+    end if params[:activity_ids]
+    make_show_attributes
+    render :show
+  end
 
-    @polterabend = Polterabend.find_by_id(params[:id])
-    @pacts = ActivityPolterabend.where(polterabend_id: @polterabend.id)
-    @pacts_and_acts = []
-    @pacts.each do |p|
-      @pacts_and_acts << [p, Activity.find(p.activity_id)]
+  def make_show_attributes
+    @polterabend = Polterabend.find(
+      params[:polterabend_id] ? params[:polterabend_id] : params[:id]
+      )
+    @dayplanner = Dayplanner.find(@polterabend.id)
+    planned_activities = ActivityDayplanner.where(dayplanner_id: @dayplanner.id)
+    if planned_activities.empty?
+      @plans = []
+    else
+      @plans = planned_activities.map do |p|
+        Activity.find(p.activity_id) if p.activity_id
+      end
+    end
+    @activities = Activity.all - @plans
+  end
+
+  def show
+    make_show_attributes
+    pacts = ActivityPolterabend.where(polterabend_id: @polterabend.id)
+    @pacts_and_acts = pacts.map {|p| [p, Activity.find(p.activity_id)]}
+    @pacts_and_acts.delete_if do |p_a|
+      @plans.any?{|p| p_a[1].id == p.id }
     end
     @membership = Membership.where(polterabend_id: @polterabend.id)
     @members = []
     @membership.each do |m|
       @members << User.find(m.user_id)
     end
-    @dayplanner = Dayplanner.where(polterabend_id: @polterabend.id).first
+
 
     @comment = Comment.new
-
     # activities = Activity.where.not(latitude: nil, longitude: nil)
     activities = @pacts_and_acts
     @hash = Gmaps4rails.build_markers(activities) do |activity_polterabend, marker|
       marker.lat activity_polterabend[1].latitude
       marker.lng activity_polterabend[1].longitude
     end
-
   end
 
   def new
@@ -72,6 +99,13 @@ class PolterabendsController < ApplicationController
   def polterabend_params
     params.require(:polterabend).permit(:title, :photo, :photo_cache)
   end
+
+  def clear_plans dayplan_id
+    ActivityDayplanner.where(dayplanner_id: dayplan_id).each do |adp|
+      adp.delete
+    end
+  end
+
 
 end
 

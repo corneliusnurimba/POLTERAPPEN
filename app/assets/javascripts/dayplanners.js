@@ -2,6 +2,19 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
+
+  $(".activity-item").each(function(){
+    var duration = $(this).data("duration");
+    if (duration > 20) {
+
+    $(this).css({
+      'height' : duration + 'px'
+    }, 100);
+    }
+    // $(this).parent().parent().find("h3").delay(650).fadeIn(650);
+  });
+
+
   window.item_number = 0;
   window.increment_items = function (){
     window.item_number = window.item_number+1;
@@ -9,6 +22,7 @@ $(document).ready(function() {
   window.decrement_items = function (){
     window.item_number = window.item_number-1;
   }
+
   $(function () {
       $('#datetimepicker3').datetimepicker({
           format: 'L'

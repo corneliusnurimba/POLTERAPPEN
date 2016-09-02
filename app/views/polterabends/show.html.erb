@@ -17,11 +17,11 @@
 <div class='wrapper polterabend-card'>
   <div class="row">
     <div class="col-xs-6">
-      <h2> The Polter </h2>
+      <h2>The Polter</h2>
       <%= cl_image_tag @polterabend.photo_url %>
     </div>
     <div class="col-xs-6">
-      <h2> Who's Coming </h2>
+      <h3> Who's Coming </h3>
       <% @members.each do |member| %>
         <% if member.membership.organiser %>
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -32,9 +32,14 @@
         <br>
         <% end %>
       <% end %>
-      <h2>Total Cost: <%= cost_array.sum %> DKK</h2>
-      <h2>Cost Per Person: <%= cost_array.sum / @members.length %> DKK</h2>
-      <h2> Polterabend Date </h2>
+
+      <h3>Total Cost</h3>
+       <%= cost_array.sum %> DKK
+
+      <h3>Cost Per Person</h3>
+       <%= cost_array.sum / @members.length %>DKK
+
+      <h3> Polterabend Date </h3>
       <div class="form-group">
         <div class='input-group date' id='datetimepicker3'>
           <input type='text' class="form-control"/>
@@ -60,32 +65,29 @@
         </div>
         <div id="container1" class="box-container">
           <% @pacts_and_acts.each do |pact_act| %>
-            <div id="duration" data-dur="<%= pact_act[1].duration %>" itemid="<%= "itm-" + "#{pact_act[1].id}" %>" data-id="<%= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" >
-              <div class="col-xs-10">
-                <%= pact_act[1].name %>
-                <%#= pact_act[1].address %>
-              </div>
-              <div class="col-xs-2 cost-box text-center">
-                <%= pact_act[1].cost %> DKK
-                <%= pact_act[1].duration %> min
-              </div>
+            <div itemid="<%= "itm-" + "#{pact_act[1].id}" %>" class="row activity-item box-item" >
+              <%#= content_tag(:div, nil, itemid: "itm-" + pact_act[1].id.to_s, class: "activity-item box-item", data: {duration: "#{pact_act[1].duration}"}) do %>
+                <div class="pa-act hidden">
+                  <%= pact_act[1].id %>
+                </div>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <%= pact_act[1].name %>
+                  <%#= pact_act[1].address %>
+                  </div>
+                  <div class="col-xs-2 cost-box text-center">
+                    <%= pact_act[1].cost %> DKK
+                    <%= pact_act[1].duration %> min
+                  </div>
+                </div>
+              <%# end %>
             </div>
-            <script type="text/javascript">
-              // var dur = $("#duration").data("dur");
-              // var id = $("#duration").data("id");
-              // $('#duration').each(function() {
-              //   if ($(this).attr("itemid") === itemid) {
-              //     $(this).css({"height": '100'});
-              //   }
-              // });
-              $(".activity-item").css({"height": '100'});
-            </script>
           <% end %>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Add Custom Activity</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-activity">Add Custom Activity</button>
     </div>
-
+    <%= render 'shared/form_popup_activity' %>
 <!--     <div class="col-xs-2">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -112,24 +114,65 @@
         <div class="row">
          <div class="col-xs-2">
           <ul class="list-unstyled">
-            <li class="activity-item" >06:00</li>
-            <li>07:00</li>
-            <li>08:00</li>
-            <li>09:00</li>
-            <li>10:00</li>
-            <li>11:00</li>
-            <li>12:00</li>
-            <li>13:00</li>
-            <li>14:00</li>
-            <li>15:00</li>
-            <li>16:00</li>
+            <li class="time-slot-hour" >09:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >10:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >11:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >12:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >13:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >14:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >15:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >16:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >17:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >18:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >19:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >20:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >21:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >22:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >23:00</li>
+            <li class="time-slot-half-hour" ></li>
+            <li class="time-slot-hour" >24:00</li>
+            <li class="time-slot-half-hour" ></li>
           </ul>
          </div>
          <div id="container2" class="col-xs-10 box-container">
-
+          <% unless @plans.empty? %>
+            <% @plans.each do |plan| %>
+              <%= content_tag(:div, nil, itemid: "itm-" + plan.id.to_s, class: "activity-item box-item", data: {duration: "#{plan.duration}"}) do %>
+                <div class="pa-act hidden">
+                  <%= plan.id %>
+                </div>
+                <div class="row">
+                  <div class="col-xs-10">
+                    <%= plan.name %>
+                  </div>
+                  <div class="col-xs-2 cost-box text-center">
+                    <%= plan.cost %> DKK
+                    <%= plan.duration %> min
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
+        <!-- marks code -->
+        <div class="acts-dayplanners-btn">
+          <%= submit_tag "Save the awesome dayplan you have chosen", class: "btn btn-primary" %>
         </div>
-
+        <!-- marks code -->
       </div>
     </div>
   </div>
@@ -180,3 +223,36 @@
   <% end %>
 <% end %>
 
+<script>
+  $(document).ready(() => {
+    var loop_max;
+    if (<%= @plans.empty? %>){
+      loop_max = 0;
+    } else {
+      loop_max = <%=  @plans.length %>;
+    }
+    for (var i = 0; i < loop_max; i++){
+      $('.time-field-'+i).removeClass('hidden');
+      window.increment_items();
+    }
+  });
+  $(".acts-dayplanners-btn").on("click", function() {
+    var array = $("#container2>.activity-item>.pa-act");
+    var json_for_pa_acts = {};
+    json_for_pa_acts.activity_ids = [];
+    console.log($("#container2>.activity-item>.pa-act"));
+
+    for (var i = 0; i < array.length; i++) {
+      json_for_pa_acts.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
+      console.log(array[i].innerHTML);
+    }
+    json_for_pa_acts.dayplanner_id = <%= params[:id] %>;
+    console.log(json_for_pa_acts);
+    $.post(
+        '<%= save_pa_acts_path %>',
+        json_for_pa_acts,
+        function(data) {
+          alert('Saved your awesome dayplan');
+    });
+  });
+</script>
