@@ -5,7 +5,7 @@ class PolterabendsController < ApplicationController
 
   def save_pa_acts
     make_show_attributes
-    clear_plans dayplanner_id
+    clear_plans @dayplanner.id
     params[:activity_ids].each do |activity_id|
       ActivityDayplanner.create(dayplanner_id: @dayplanner.id,
                                 activity_id: activity_id
