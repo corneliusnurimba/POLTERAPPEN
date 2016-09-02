@@ -1,4 +1,4 @@
-<div class="wrapper text-center">
+  <div class="wrapper text-center">
   <h2> <%= @polterabend.title %> </h2>
 </div>
 
@@ -208,7 +208,7 @@ handler.getMap().setZoom(14);
       json_for_pa_acts.activity_ids.push(array[i].innerHTML.replace(/ /g,"").replace(/\n/g,""));
       console.log(array[i].innerHTML);
     }
-    json_for_pa_acts.dayplanner_id = <%= params[:id] %>;
+    json_for_pa_acts.polterabend_id = <%= params[:id] %>;
     console.log(json_for_pa_acts);
     $.post(
       '<%= save_pa_acts_path %>',
