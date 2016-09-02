@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   $('.box-item').draggable({
       cursor: 'move',
-      helper: "clone"
+      // helper: "clone"
   });
 
   $("#container1").droppable({
@@ -42,8 +42,8 @@ $(document).ready(function() {
           $(this).appendTo("#container1");
         }
       });
-      window.decrement_items();
-      $('.time-field-'+window.item_number).addClass('hidden');
+      // window.decrement_items();
+      // $('.time-field-'+window.item_number).addClass('hidden');
     }
   });
 
@@ -55,8 +55,8 @@ $(document).ready(function() {
           $(this).appendTo("#container2");
         }
       });
-      $('.time-field-'+window.item_number).removeClass('hidden');
-      window.increment_items();
+      // $('.time-field-'+window.item_number).removeClass('hidden');
+      // window.increment_items();
     }
   });
 });

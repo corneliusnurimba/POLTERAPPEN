@@ -85,9 +85,10 @@
             <div class="deets-rhs">
               <% unless current_user.nil? || current_user.membership.nil? %>
                 <div class="<%= activity.name %>">
-                  <i class="fa fa-star favourite-icon-size upvote-hand <% if @selected_activities.include? activity.id %> green <% end %>" aria-hidden="true"></i>
-                  <div style="display:none !important;" class="activity_id">
-                    <%= activity.id %>
+                  <div class="fa fa-star favourite-icon-size upvote-hand <% if @selected_activities.include? activity.id %> green <% end %>" aria-hidden="true">
+                    <div style="display:none !important;" class="activity_id">
+                      <%= activity.id %>
+                    </div>
                   </div>
                 </div>
               <% end %>
@@ -133,43 +134,8 @@
       $.post(
         '<%= save_activities_path %>',
         json_for_activities,
-        function() { alert('we are the champions my friend'); }
+        function() { alert('Saved to favourites'); }
         );
     });
   </script>
 <% end %>
-<!-- BACKUP CARDS - STYLE REFERENCE - SEE ACTIVITIES.SCSS_BAK MAKE SURE YOU UNCOMMENT EVERYFUCKING THING
-<div class="container">
-  <div class="row">
-    <%# @filtered_activities.each do |activity| %>
-      <div class="col-xs-4">
-        <div class="activity-card">
-          <div class="activity-pic">
-            <%#= image_tag activity.photo_url, class: 'img-responsive' %>
-          </div><!-- activity-pic end --><!--
-          <div class="activity-deets">
-            <div class="deets-center">
-              <h4><%#= link_to activity.name, activity_path(activity) %></h4>
-              <div class="card-category"><%#= activity.category %></div>
-              <div class="card-city sm-text"><%#= activity.address %></div>
-            </div><!-- deets-center end --><!--
-            <div class="deets-rhs">
-              <%# unless current_user.nil? || current_user.membership.nil? %>
-                <div class="upvote-hand <%#= activity.name %> <%# if @selected_activities.include? activity.id %> green <%# end %>">
-                  <i class="fa fa-star favourite-icon-size" aria-hidden="true"></i>
-                  <div style="display:none !important;" class="activity_id">
-                    <%#= activity.id %>
-                  </div>
-                </div>
-              <#% end %>
-              <div class="deets-lhs">
-                <div class="card-cost"><%#= activity.cost %> DKK</div>
-              </div><!-- deets-rhs end --><!--
-            </div><!-- deets-rhs --><!--
-          </div><!-- activity-deets end --><!--
-        </div>
-      </div>
-    <%# end %>
-  </div>
-</div>
--->
